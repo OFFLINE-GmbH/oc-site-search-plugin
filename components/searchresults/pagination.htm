@@ -1,0 +1,19 @@
+{% if results.hasPages %}
+    <ul class="pagination">
+        {% if results.currentPage > 1 %}
+            <li>
+                <a href="{{ results.previousPageUrl }}">
+                    &larr;
+                </a>
+            </li>
+        {% endif %}
+
+        {% if results.hasMorePages %}
+            <li>
+                <a href="{{ results.nextPageUrl }}">
+                    &rarr;
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}
