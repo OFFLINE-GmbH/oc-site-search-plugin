@@ -9,6 +9,7 @@ return [
     'provider_badges' => [
         'rainlab_blog'  => 'Blog',
         'rainlab_pages' => 'Seite',
+        'cms_pages'     => 'Seite',
     ],
 
     'searchResults' => [
@@ -31,5 +32,10 @@ return [
                 'description' => 'Dieser Text wird unterhalb jedes Suchresultates angezeigt',
             ],
         ],
+    ],
+
+    'siteSearchInclude' => [
+        'title'       => 'In SiteSearch beachten',
+        'description' => 'Zu einer CMS Seite hinzufügen, um diese bei der Suche zu berücksichtigen',
     ],
 ];

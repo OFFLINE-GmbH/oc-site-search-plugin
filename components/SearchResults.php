@@ -4,6 +4,7 @@ use Cms\Classes\ComponentBase;
 use DomainException;
 use Illuminate\Pagination\Paginator;
 use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\CmsPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
@@ -169,6 +170,7 @@ class SearchResults extends ComponentBase
                 (new RainlabBlogResultsProvider($this->query))->search()->results(),
                 (new RainlabPagesResultsProvider($this->query))->search()->results(),
                 (new GenericResultsProvider($this->query))->search()->results(),
+                (new CmsPagesResultsProvider($this->query))->search()->results(),
             ]);
         }
 

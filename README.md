@@ -6,6 +6,7 @@ This plugin adds global search capabilities to October CMS.
 
 * RainLab.Pages
 * RainLab.Blog
+* Native CMS pages (experimental)
 
 Support for more plugins is added upon request.
 
@@ -30,6 +31,23 @@ Make sure you change the `posturl` config value to point to the right url. If yo
 
 If you don't want to provide search results for Rainlab.Blog change the `enabled` config value to `false`.
 
+### CMS pages (experimental)
+
+If you want to provide search results for CMS pages change the `enabled` config value to `true`.
+
+You have to specifically add the component `siteSearchInclude` to every CMS page you want to be searched.
+Pages **without** this component will **not** be searched.
+
+Components on CMS pages will **not** be rendered. Use this provider only for simple html pages. All Twig syntax will be stripped out to prevent the leaking of source code to the search results.
+
+CMS pages with dynamic URLs (like `/page/:slug`) won't be linked correctly from the search results listing.
+
+If you have CMS pages with dynamic contents consider writing your own search provider (see `Add support for custom 
+plugin contents`)
+
+
+### Config file template
+
 ```php
 return [
     'mark_results'   => true,
@@ -43,6 +61,10 @@ return [
         'rainlab_pages' => [
             'enabled' => true,
             'label'   => Lang::get('offline.sitesearch::lang.provider_badges.rainlab_pages'),
+        ],
+        'cms_pages' => [
+            'enabled' => false,
+            'label'   => Lang::get('offline.sitesearch::lang.provider_badges.cms_pages'),
         ],
     ],
 ];

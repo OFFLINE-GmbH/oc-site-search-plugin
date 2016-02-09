@@ -13,5 +13,9 @@ return [
             'enabled' => true,
             'label'   => Lang::get('offline.sitesearch::lang.provider_badges.rainlab_pages'),
         ],
+        'cms_pages' => [
+            'enabled' => false,
+            'label'   => Lang::get('offline.sitesearch::lang.provider_badges.cms_pages'),
+        ],
     ],
 ];
