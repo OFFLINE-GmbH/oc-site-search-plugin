@@ -1,3 +1,7 @@
-1.0.1: First version of SiteSearch
-1.0.2: Added experimental CMS pages results provider
-1.0.3: Added missing component
+1.0.1: 'First version of SiteSearch'
+1.0.2: 'Added experimental CMS pages results provider'
+1.0.3: 'Added missing component'
+1.0.4:
+    - 'Added support for RadiantWeb.ProBlog'
+1.0.5:
+    - 'Moved configuration to the backend'

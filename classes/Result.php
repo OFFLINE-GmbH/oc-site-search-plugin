@@ -4,6 +4,7 @@ namespace OFFLINE\SiteSearch\Classes;
 
 use Config;
 use Html;
+use OFFLINE\SiteSearch\Models\Settings;
 use Str;
 
 /**
@@ -207,7 +208,7 @@ class Result
     private function markQuery($text)
     {
         // Only mark the query if this feature is enabled
-        if ( ! Config::get('offline.sitesearch::mark_results', true)) {
+        if ( ! Settings::get('mark_results', true)) {
             return $text;
         }
 
@@ -224,7 +225,7 @@ class Result
      */
     private function createExcerpt($text)
     {
-        $length = Config::get('offline.sitesearch::excerpt_length', 250);
+        $length = Settings::get('excerpt_length', 250);
 
         $position = strpos($text, '<mark>' . $this->query . '</mark>');
         $start    = (int)$position - ($length / 2);

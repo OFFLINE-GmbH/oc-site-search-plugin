@@ -3,8 +3,8 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use Cms\Classes\Page;
 use Cms\Classes\Theme;
-use Config;
 use Illuminate\Database\Eloquent\Collection;
+use OFFLINE\SiteSearch\Models\Settings;
 
 /**
  * Searches the contents of native cms pages.
@@ -49,7 +49,7 @@ class CmsPagesResultsProvider extends ResultsProvider
      */
     protected function isEnabled()
     {
-        return Config::get('offline.sitesearch::providers.cms_pages.enabled', false);
+        return Settings::get('cms_pages_enabled', false);
     }
 
     /**
@@ -93,7 +93,7 @@ class CmsPagesResultsProvider extends ResultsProvider
      */
     public function displayName()
     {
-        return Config::get('offline.sitesearch::providers.cms_pages.label', 'Page');
+        return Settings::get('cms_pages_label', 'Page');
     }
 
     /**

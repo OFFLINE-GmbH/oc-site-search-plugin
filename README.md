@@ -6,34 +6,34 @@ This plugin adds global search capabilities to October CMS.
 
 * RainLab.Pages
 * RainLab.Blog
+* RadiantWeb.ProBlog
 * Native CMS pages (experimental)
 
 Support for more plugins is added upon request.
 
 **You can easily extend this plugin to search your custom plugin's contents as well. See `Add support for custom plugin contents`.**
 
-## Config
+## Settings
 
-To overwrite default config values create a `config/offline/sitesearch/config.php` and return the values you would 
-like to overwrite.
+You can manage all of this plugin's settings in the October CMS backend.
 
 ### Rainlab.Pages
 
 No special configuration is required.
 
-If you don't want to provide search results for Rainlab.Pages change 
-the `enabled` config value to `false`.
-
 ### Rainlab.Blog
 
-Make sure you change the `posturl` config value to point to the right url. If your posts are located under 
-`/blog/post/:slug` the default value is okay.
+Make sure you set the `Url of blog post page` setting to point to the right url. Only specify the fixed part of 
+the URL: `/blog/post`. If your posts are located under `/blog/post/:slug` the default value is okay.
 
-If you don't want to provide search results for Rainlab.Blog change the `enabled` config value to `false`.
+### RadiantWeb.ProBlog
+
+Make sure you set the `Url of blog post page` setting to point to the right url. Only specify the fixed part of 
+the URL: `/blog`. If your posts are located under `/blog/:category/:slug` the default value is okay.
 
 ### CMS pages (experimental)
 
-If you want to provide search results for CMS pages change the `enabled` config value to `true`.
+If you want to provide search results for CMS pages change the `enabled` setting to `On`.
 
 You have to specifically add the component `siteSearchInclude` to every CMS page you want to be searched.
 Pages **without** this component will **not** be searched.
@@ -45,30 +45,6 @@ CMS pages with dynamic URLs (like `/page/:slug`) won't be linked correctly from 
 If you have CMS pages with dynamic contents consider writing your own search provider (see `Add support for custom 
 plugin contents`)
 
-
-### Config file template
-
-```php
-return [
-    'mark_results'   => true,
-    'excerpt_length' => 250,
-    'providers'      => [
-        'rainlab_blog'  => [
-            'enabled' => true,
-            'label'   => Lang::get('offline.sitesearch::lang.provider_badges.rainlab_blog'),
-            'posturl' => '/blog/post',
-        ],
-        'rainlab_pages' => [
-            'enabled' => true,
-            'label'   => Lang::get('offline.sitesearch::lang.provider_badges.rainlab_pages'),
-        ],
-        'cms_pages' => [
-            'enabled' => false,
-            'label'   => Lang::get('offline.sitesearch::lang.provider_badges.cms_pages'),
-        ],
-    ],
-];
-```
 
 ## Overwrite default markup
 
@@ -138,7 +114,7 @@ visitPageMessage = "Visit page"
     display: inline-block;
 }
 .ss-result__text {
-    margin-bottom .5em;
+    margin-bottom: .5em;
 }
 .ss-result__url {
 }

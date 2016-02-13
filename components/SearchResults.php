@@ -3,8 +3,9 @@
 use Cms\Classes\ComponentBase;
 use DomainException;
 use Illuminate\Pagination\Paginator;
-use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\CmsPagesResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
@@ -167,6 +168,7 @@ class SearchResults extends ComponentBase
 
         if ($this->query !== '') {
             $results->addMany([
+                (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
                 (new RainlabBlogResultsProvider($this->query))->search()->results(),
                 (new RainlabPagesResultsProvider($this->query))->search()->results(),
                 (new GenericResultsProvider($this->query))->search()->results(),

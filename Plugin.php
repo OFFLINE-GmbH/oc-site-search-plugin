@@ -31,8 +31,43 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'OFFLINE\SiteSearch\Components\SearchResults' => 'searchResults',
+            'OFFLINE\SiteSearch\Components\SearchResults'     => 'searchResults',
             'OFFLINE\SiteSearch\Components\SiteSearchInclude' => 'siteSearchInclude',
+        ];
+    }
+
+    /**
+     * Registers any back-end permissions.
+     *
+     * @return array
+     */
+    public function registerPermissions()
+    {
+        return [
+            'offline.sitesearch.manage_settings' => [
+                'tab'   => 'offline.sitesearch::lang.plugin.name',
+                'label' => 'offline.sitesearch::lang.plugin.manage_settings_permission',
+            ],
+        ];
+    }
+
+    /**
+     * Registers any back-end settings.
+     *
+     * @return array
+     */
+    public function registerSettings()
+    {
+        return [
+            'config' => [
+                'label'       => 'offline.sitesearch::lang.plugin.name',
+                'description' => 'offline.sitesearch::lang.plugin.manage_settings',
+                'category'    => 'system::lang.system.categories.cms',
+                'icon'        => 'icon-search',
+                'class'       => 'Offline\SiteSearch\Models\Settings',
+                'order'       => 500,
+                'keywords'    => 'search',
+            ],
         ];
     }
 }
