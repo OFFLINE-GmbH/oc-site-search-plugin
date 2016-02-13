@@ -1,18 +1,27 @@
-<?php
-return [
-    'plugin' => [
-        'name'        => 'SiteSearch',
-        'description' => 'Global search for your frontend',
-        'author'      => 'OFFLINE LLC',
+<?php return [
+    'plugin'            => [
+        'name'                       => 'SiteSearch',
+        'description'                => 'Global search for your frontend',
+        'author'                     => 'OFFLINE LLC',
+        'manage_settings'            => 'Manage SiteSearch settings',
+        'manage_settings_permission' => 'Can manage SiteSearch settings',
     ],
-
-    'provider_badges' => [
-        'rainlab_blog'  => 'Blog',
-        'rainlab_pages' => 'Page',
-        'cms_pages'     => 'Page',
+    'settings'          => [
+        'mark_results'               => 'Mark matches in search results',
+        'mark_results_comment'       => 'Wrap the search term in <mark> tags',
+        'excerpt_length'             => 'Excerpt length',
+        'excerpt_length_comment'     => 'Length of the excerpt shown in the search results listing.',
+        'use_this_provider'          => 'Use this provider',
+        'use_this_provider_comment'  => 'Enable to display results for this provider',
+        'provider_badge'             => 'Provider badge',
+        'provider_badge_comment'     => 'Text to display in a search result\'s badge',
+        'blog_posturl'               => 'Url of blog post page',
+        'blog_posturl_comment'       => 'Only specify the fixed part of the URL without any dynamic parameters',
+        'experimental'               => 'Experimental feature:',
+        'experimental_refer_to_docs' => 'This provider is experimental! Please refer to <a target="_blank"
+href="http://octobercms.com/plugin/offline-sitesearch#documentation">the documentation</a> before using it.',
     ],
-
-    'searchResults' => [
+    'searchResults'     => [
         'title'       => 'Search results',
         'description' => 'Displays a list of search results',
         'properties'  => [
@@ -33,7 +42,6 @@ return [
             ],
         ],
     ],
-
     'siteSearchInclude' => [
         'title'       => 'Include in SiteSearch',
         'description' => 'Add this to a CMS page to include it in the search results',

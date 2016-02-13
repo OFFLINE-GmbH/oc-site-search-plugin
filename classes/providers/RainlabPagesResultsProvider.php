@@ -1,8 +1,8 @@
 <?php
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
-use Config;
 use Illuminate\Database\Eloquent\Collection;
+use OFFLINE\SiteSearch\Models\Settings;
 use RainLab\Pages\Classes\Page;
 use System\Classes\PluginManager;
 
@@ -59,7 +59,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
     protected function pagesInstalledAndEnabled()
     {
         return PluginManager::instance()->hasPlugin('RainLab.Pages')
-        && Config::get('offline.sitesearch::providers.rainlab_pages.enabled', true);
+        && Settings::get('rainlab_pages_enabled', true);
     }
 
     /**
@@ -81,7 +81,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
      */
     public function displayName()
     {
-        return Config::get('offline.sitesearch::providers.rainlab_pages.label', 'Page');
+        return Settings::get('rainlab_pages_label', 'Page');
     }
 }
 
