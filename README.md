@@ -34,7 +34,7 @@ Create a search form that sends a query to your search page:
 
 ##### Search form
 
-```
+```html
 <form action="{{ '/search' | app }}" method="get">
     <input name="q" type="text" placeholder="What are you looking for?" autocomplete="off">
     <button type="submit"></button>
@@ -48,7 +48,7 @@ Create a search form that sends a query to your search page:
 Create a page to display your search results. Add the `searchResults` component to it.
 Use the `searchResults.query` parameter to display the user's search query.
 
-```
+```html
 title = "Search results"
 url = "/search"
 ...
@@ -66,7 +66,7 @@ visitPageMessage = "Visit page"
 
 ##### Example css to style the component
 
-```
+```css
 .ss-result {
     margin-bottom: 2em;
 }
@@ -121,7 +121,7 @@ Return an array containing a `provider` string and `results` array. Each result 
 
 ### Example to search for custom `documents`
 
-```
+```php
 public function boot()
 {
     Event::listen('offline.sitesearch.query', function ($query) {
