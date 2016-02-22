@@ -194,7 +194,7 @@ class SearchResults extends ComponentBase
             $this->pageNumber
         );
 
-        return $paginator->setPath('/suche')->appends('q', $this->query);
+        return $paginator->setPath($this->page->settings['url'])->appends('q', $this->query);
     }
 
     /**

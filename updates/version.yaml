@@ -5,3 +5,5 @@
     - 'Added support for RadiantWeb.ProBlog'
 1.0.5:
     - 'Moved configuration to the backend'
+1.0.6:
+    - 'Fixed hardcoded url in pagination'
