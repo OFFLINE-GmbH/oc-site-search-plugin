@@ -198,6 +198,16 @@ class SearchResults extends ComponentBase
     }
 
     /**
+     * Return number of last page.
+     *
+     * @return int
+     */
+    public function lastPage()
+    {
+        return intval(ceil($this->resultCollection->count() / $this->resultsPerPage));
+    }
+
+    /**
      * Returns the slice for the current page + 1
      * extra element to make the pagination work.
      *
