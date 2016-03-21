@@ -7,3 +7,5 @@
     - 'Moved configuration to the backend'
 1.0.6:
     - 'Fixed hardcoded url in pagination'
+1.0.7:
+    - 'Add function for getting last page number (Thanks to vojtasvoboda)'
