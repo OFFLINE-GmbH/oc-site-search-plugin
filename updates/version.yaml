@@ -9,3 +9,5 @@
     - 'Fixed hardcoded url in pagination'
 1.0.7:
     - 'Add function for getting last page number (Thanks to vojtasvoboda)'
+1.0.8:
+    - 'Add cs_CZ locale (Thanks to vojtasvoboda)'

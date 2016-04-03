@@ -6,6 +6,7 @@ This plugin adds global search capabilities to October CMS.
 
 * English
 * German
+* Czech
 
 You can translate all contents into your own language.
 
