@@ -75,6 +75,29 @@ tabs:
             span: auto
             default: /blog
 
+        arrizalamin_portfolio_enabled:
+            type: switch
+            tab: ArrizalAmin.Portfolio
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: true
+
+        arrizalamin_portfolio_label:
+            type: text
+            tab: ArrizalAmin.Portfolio
+            label: offline.sitesearch::lang.settings.provider_badge
+            comment: offline.sitesearch::lang.settings.provider_badge_comment
+            span: auto
+            default: Portfolio
+
+        arrizalamin_portfolio_posturl:
+            type: text
+            tab: ArrizalAmin.Portfolio
+            label: offline.sitesearch::lang.settings.portfolio_itemurl
+            comment: offline.sitesearch::lang.settings.portfolio_itemurl_comment
+            span: auto
+            default: /portfolio/project
+
         cms_pages_warning:
             type: partial
             path: $/offline/sitesearch/models/settings/_experimental.htm

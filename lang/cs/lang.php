@@ -19,6 +19,8 @@ return [
         'provider_badge_comment' => 'Textové označení služby které se zobrazí vedle výsledku vyhledávání',
         'blog_posturl' => 'URL detailu blogového článku',
         'blog_posturl_comment' => 'Zadejte pevnou část URL bez dynamických parametrů, jako je konkrétní URL článku, nebo stránkování',
+        'portfolio_itemurl'          => 'Url of portfolio detail page',
+        'portfolio_itemurl_comment'  => 'Zadejte pevnou část URL bez dynamických parametrů, jako je konkrétní URL článku, nebo stránkování',
         'experimental' => 'Experimentalní funkce:',
         'experimental_refer_to_docs' => 'Tato služba je zatím v testování! Před použitím doporučujeme přečíst <a target="_blank" href="http://octobercms.com/plugin/offline-sitesearch#documentation">stránku dokumentace</a>.',
     ],

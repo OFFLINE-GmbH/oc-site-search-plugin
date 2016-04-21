@@ -3,6 +3,7 @@
 use Cms\Classes\ComponentBase;
 use DomainException;
 use Illuminate\Pagination\Paginator;
+use OFFLINE\SiteSearch\Classes\Providers\ArrizalaminPortfolioResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\CmsPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
@@ -169,10 +170,11 @@ class SearchResults extends ComponentBase
         if ($this->query !== '') {
             $results->addMany([
                 (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
+                (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
                 (new RainlabBlogResultsProvider($this->query))->search()->results(),
                 (new RainlabPagesResultsProvider($this->query))->search()->results(),
+                (new RainlabPagesResultsProvider($this->query))->search()->results(),
                 (new GenericResultsProvider($this->query))->search()->results(),
-                (new CmsPagesResultsProvider($this->query))->search()->results(),
             ]);
         }
 

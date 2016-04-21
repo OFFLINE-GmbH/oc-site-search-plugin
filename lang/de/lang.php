@@ -17,6 +17,8 @@
         'provider_badge_comment' => 'Dieser Text wird neben jedem Suchresultat angezeigt.',
         'blog_posturl' => 'URL der Blog-Post Seite',
         'blog_posturl_comment' => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
+        'portfolio_itemurl'          => 'URL der Portfolio Detail-Seite',
+        'portfolio_itemurl_comment'  => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'experimental' => 'Experimentelle Funktion:',
         'experimental_refer_to_docs' => 'Dieser Provider ist experimentell! Bitte lies <a target="_blank"
 href="http://octobercms.com/plugin/offline-sitesearch#documentation">die Dokumentation</a>, bevor du ihn benutzt!',
