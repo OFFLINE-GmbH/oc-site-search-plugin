@@ -177,6 +177,11 @@ the URL: `/blog/post`. If your posts are located under `/blog/post/:slug` the de
 Make sure you set the `Url of blog post page` setting to point to the right url. Only specify the fixed part of 
 the URL: `/blog`. If your posts are located under `/blog/:category/:slug` the default value is okay.
 
+### ArrizalAmin.Portfolio
+
+Make sure you set the `Url of portfolio detail page` setting to point to the right url. Only specify the fixed part of 
+the URL: `/portfolio/project`. If your detail page is located under `/portfolio/project/:slug` the default value is okay.
+
 ### CMS pages (experimental)
 
 If you want to provide search results for CMS pages change the `enabled` setting to `On`.
