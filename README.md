@@ -14,7 +14,8 @@ You can translate all contents into your own language.
 
 * RainLab.Pages
 * RainLab.Blog
-* **NEW!** [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog)
+* [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog)
+* **NEW!** [Arrizalamin.Portfolio](http://octobercms.com/plugin/arrizalamin-portfolio)
 * Native CMS pages (experimental)
 
 Support for more plugins is added upon request.
