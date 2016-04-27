@@ -13,3 +13,5 @@
     - 'Add cs_CZ locale (Thanks to vojtasvoboda)'
 1.0.9:
     - 'Added support for ArrizalAmin.Portfolio plugin'
+1.0.10:
+    - 'Removed unused component'

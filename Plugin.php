@@ -32,7 +32,6 @@ class Plugin extends PluginBase
     {
         return [
             'OFFLINE\SiteSearch\Components\SearchResults'     => 'searchResults',
-            'OFFLINE\SiteSearch\Components\SiteSearchInclude' => 'siteSearchInclude',
         ];
     }
 
