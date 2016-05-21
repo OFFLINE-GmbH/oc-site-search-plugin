@@ -8,7 +8,7 @@
     ],
     'settings' => [
         'mark_results' => 'Markiere Treffer in Suchergebnissen',
-        'mark_results_comment' => 'Suchbegriff wird mit mit <mark> Tags umschlossen',
+        'mark_results_comment' => 'Suchbegriff wird mit <mark> Tags umschlossen',
         'excerpt_length' => 'Länge des Textauszuges',
         'excerpt_length_comment' => 'Länge des Textauszuges, der in den Suchresultaten angezeigt wird',
         'use_this_provider' => 'Diesen Provider verwenden',
