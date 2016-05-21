@@ -15,3 +15,5 @@
     - 'Added support for ArrizalAmin.Portfolio plugin'
 1.0.10:
     - 'Removed unused component'
+1.0.11:
+    - 'Fixed bug where Rainlab.Pages results were displayed twice'

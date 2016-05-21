@@ -173,7 +173,6 @@ class SearchResults extends ComponentBase
                 (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
                 (new RainlabBlogResultsProvider($this->query))->search()->results(),
                 (new RainlabPagesResultsProvider($this->query))->search()->results(),
-                (new RainlabPagesResultsProvider($this->query))->search()->results(),
                 (new GenericResultsProvider($this->query))->search()->results(),
             ]);
         }
