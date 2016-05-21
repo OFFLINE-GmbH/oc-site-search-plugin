@@ -108,5 +108,15 @@ class CmsPagesResultsProvider extends ResultsProvider
     {
         return $this->containsQuery($contents) || $this->containsQuery($page->settings['title']);
     }
+
+    /**
+     * Returns the plugin's identifier string.
+     *
+     * @return string
+     */
+    public function identifier()
+    {
+        return '';
+    }
 }
 

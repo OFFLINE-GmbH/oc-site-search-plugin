@@ -16,4 +16,7 @@
 1.0.10:
     - 'Removed unused component'
 1.0.11:
-    - 'Fixed bug where Rainlab.Pages results were displayed twice'
+    - Added support for translated contents in RainLab.Pages, ArrizalAmin.Portfolio and RadiantWeb.ProBlog
+    - Fixed bug where RainLab.Pages results were displayed twice
+    - Honor disabled plugins setting
+    - Generate absolute URLs in search results by default

@@ -100,5 +100,15 @@ class GenericResultsProvider extends ResultsProvider
     {
         return 'Generic';
     }
+
+    /**
+     * Returns the plugin's identifier string.
+     *
+     * @return string
+     */
+    public function identifier()
+    {
+        return '';
+    }
 }
 
