@@ -21,7 +21,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
      */
     public function search()
     {
-        if ( ! $this->pagesInstalledAndEnabled()) {
+        if ( ! $this->isInstalledAndEnabled()) {
             return $this;
         }
 
@@ -56,7 +56,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
      *
      * @return bool
      */
-    protected function pagesInstalledAndEnabled()
+    protected function isInstalledAndEnabled()
     {
         return PluginManager::instance()->hasPlugin('RainLab.Pages')
         && Settings::get('rainlab_pages_enabled', true);

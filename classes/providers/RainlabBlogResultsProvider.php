@@ -21,7 +21,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
      */
     public function search()
     {
-        if ( ! $this->blogInstalledAndEnabled()) {
+        if ( ! $this->isInstalledAndEnabled()) {
             return $this;
         }
 
@@ -56,7 +56,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
      *
      * @return bool
      */
-    protected function blogInstalledAndEnabled()
+    protected function isInstalledAndEnabled()
     {
         return PluginManager::instance()->hasPlugin('RainLab.Blog')
         && Settings::get('rainlab_blog_enabled', true);

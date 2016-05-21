@@ -23,7 +23,7 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
      */
     public function search()
     {
-        if ( ! $this->blogInstalledAndEnabled()) {
+        if ( ! $this->isInstalledAndEnabled()) {
             return $this;
         }
 
@@ -59,7 +59,7 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
      *
      * @return bool
      */
-    protected function blogInstalledAndEnabled()
+    protected function isInstalledAndEnabled()
     {
         return PluginManager::instance()->hasPlugin('Radiantweb.Problog')
         && SiteSearchSettings::get('radiantweb_problog_enabled', true);
