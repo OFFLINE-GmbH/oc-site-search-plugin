@@ -68,6 +68,7 @@ class Plugin extends PluginBase
                 'class'       => 'Offline\SiteSearch\Models\Settings',
                 'order'       => 500,
                 'keywords'    => 'search',
+                'permissions' => ['offline.sitesearch.manage_settings']
             ],
         ];
     }

@@ -22,3 +22,5 @@
     - Generate absolute URLs in search results by default
 1.1.1:
     - Added optimized siteSearchInclude component for cms pages search
+1.1.2:
+    - Fixed backend permissions
