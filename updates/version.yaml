@@ -20,3 +20,5 @@
     - Fixed bug where RainLab.Pages results were displayed twice
     - Honor disabled plugins setting
     - Generate absolute URLs in search results by default
+1.1.1:
+    - Added optimized siteSearchInclude component for cms pages search

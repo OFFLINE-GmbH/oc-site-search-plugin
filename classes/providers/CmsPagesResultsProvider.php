@@ -25,7 +25,6 @@ class CmsPagesResultsProvider extends ResultsProvider
         }
 
         foreach ($this->pages() as $page) {
-
             $contents = $this->removeTwigTags($page->markup);
 
             if ( ! $page->hasComponent('siteSearchInclude') || ! $this->containsQueryIn($contents, $page)) {

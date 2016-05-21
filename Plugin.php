@@ -1,7 +1,7 @@
 <?php namespace OFFLINE\SiteSearch;
 
-use System\Classes\PluginBase;
 use Backend;
+use System\Classes\PluginBase;
 
 /**
  * SiteSearch Plugin Information File
@@ -20,7 +20,7 @@ class Plugin extends PluginBase
             'description' => 'offline.sitesearch::lang.plugin.description',
             'author'      => 'offline.sitesearch::lang.plugin.author',
             'icon'        => 'icon-search',
-            'homepage'    => 'https://github.com/OFFLINE-GmbH/oc-site-search-plugin'
+            'homepage'    => 'https://github.com/OFFLINE-GmbH/oc-site-search-plugin',
         ];
     }
 
@@ -32,7 +32,8 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'OFFLINE\SiteSearch\Components\SearchResults' => 'searchResults'
+            'OFFLINE\SiteSearch\Components\SearchResults'     => 'searchResults',
+            'OFFLINE\SiteSearch\Components\SiteSearchInclude' => 'siteSearchInclude',
         ];
     }
 
@@ -46,7 +47,7 @@ class Plugin extends PluginBase
         return [
             'offline.sitesearch.manage_settings' => [
                 'tab'   => 'offline.sitesearch::lang.plugin.name',
-                'label' => 'offline.sitesearch::lang.plugin.manage_settings_permission'
+                'label' => 'offline.sitesearch::lang.plugin.manage_settings_permission',
             ],
         ];
     }
@@ -66,8 +67,8 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-search',
                 'class'       => 'Offline\SiteSearch\Models\Settings',
                 'order'       => 500,
-                'keywords'    => 'search'
-            ]
+                'keywords'    => 'search',
+            ],
         ];
     }
 }
