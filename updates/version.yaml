@@ -15,7 +15,7 @@
     - 'Added support for ArrizalAmin.Portfolio plugin'
 1.0.10:
     - 'Removed unused component'
-1.0.11:
+1.1.0:
     - Added support for translated contents in RainLab.Pages, ArrizalAmin.Portfolio and RadiantWeb.ProBlog
     - Fixed bug where RainLab.Pages results were displayed twice
     - Honor disabled plugins setting
