@@ -58,7 +58,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
      */
     protected function isInstalledAndEnabled()
     {
-        return $this->isPluginAvailable('Rainlab.Pages')
+        return $this->isPluginAvailable($this->identifier)
         && Settings::get('rainlab_pages_enabled', true);
     }
 

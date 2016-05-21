@@ -134,7 +134,7 @@ abstract class ResultsProvider
      */
     protected function translator()
     {
-        return $this->isPluginAvailable($this->identifier)
+        return $this->isPluginAvailable('RainLab.Translate')
             ? Translator::instance()
             : false;
     }
