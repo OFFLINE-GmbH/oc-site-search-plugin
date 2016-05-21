@@ -12,11 +12,12 @@ You can translate all contents into your own language.
 
 ## Currently supported content types
 
-* RainLab.Pages
+* RainLab.Pages (**NEW!** RainLab.Translate compatible)
 * RainLab.Blog
-* [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog)
-* **NEW!** [Arrizalamin.Portfolio](http://octobercms.com/plugin/arrizalamin-portfolio)
+* [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog) (**NEW!** RainLab.Translate compatible)
+* [Arrizalamin.Portfolio](http://octobercms.com/plugin/arrizalamin-portfolio) (**NEW!** RainLab.Translate compatible)
 * Native CMS pages (experimental)
+
 
 Support for more plugins is added upon request.
 
