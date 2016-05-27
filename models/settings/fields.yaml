@@ -52,6 +52,29 @@ tabs:
             span: auto
             default: Page
 
+        octoshop_products_enabled:
+            type: switch
+            tab: Feegleweb.Octoshop
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: true
+
+        octoshop_products_label:
+            type: text
+            tab: Feegleweb.Octoshop
+            label: offline.sitesearch::lang.settings.provider_badge
+            comment: offline.sitesearch::lang.settings.provider_badge_comment
+            span: auto
+            default: offline.sitesearch::lang.settings.octoshop_itemurl_badge
+
+        octoshop_products_itemurl:
+            type: text
+            tab: Feegleweb.Octoshop
+            label: offline.sitesearch::lang.settings.octoshop_itemurl
+            comment: offline.sitesearch::lang.settings.octoshop_itemurl_comment
+            span: auto
+            default: /product
+
         radiantweb_problog_enabled:
             type: switch
             tab: RadiantWeb.ProBlog
@@ -103,7 +126,6 @@ tabs:
             path: $/offline/sitesearch/models/settings/_experimental.htm
             tab: CMS pages
 
-
         cms_pages_hint:
             type: hint
             path: $/offline/sitesearch/models/settings/_cmspages_info.htm
@@ -123,26 +145,3 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: Page
-
-        octoshop_products_enabled:
-            type: switch
-            tab: Feegleweb.Octoshop
-            label: offline.sitesearch::lang.settings.use_this_provider
-            comment: offline.sitesearch::lang.settings.use_this_provider_comment
-            default: true
-
-        octoshop_products_label:
-            type: text
-            tab: Feegleweb.Octoshop
-            label: offline.sitesearch::lang.settings.provider_badge
-            comment: offline.sitesearch::lang.settings.provider_badge_comment
-            span: auto
-            default: Product
-
-        octoshop_products_itemurl:
-            type: text
-            tab: Feegleweb.Octoshop
-            label: offline.sitesearch::lang.settings.octoshop_itemurl
-            comment: offline.sitesearch::lang.settings.octoshop_itemurl_comment
-            span: auto
-            default: /products/product

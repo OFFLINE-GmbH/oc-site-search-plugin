@@ -3,6 +3,7 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use Html;
 use Illuminate\Database\Eloquent\Collection;
+use OFFLINE\SiteSearch\Classes\Result;
 use OFFLINE\SiteSearch\Models\Settings as SiteSearchSettings;
 use Radiantweb\Problog\Models\Post;
 use Radiantweb\Problog\Models\Settings;
@@ -30,16 +31,12 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
             // Make this result more relevant, if the query is found in the title
             $relevance = stripos($post->title, $this->query) === false ? 1 : 2;
 
-            $field_data =
-            [   'title'     =>  $post->title
-            ,   'text'      =>  $this->getSummary($post)
-            ,   'url'       =>  $this->getUrl($post)
-            ,   'thumb'     =>  ''
-            ];
+            $result        = new Result($this->query, $relevance);
+            $result->title = $post->title;
+            $result->text  = $this->getSummary($post);
+            $result->url   = $this->getUrl($post);
 
-            $this->addResult($field_data, $relevance);
-
-
+            $this->addResult($result);
         }
 
         return $this;
@@ -74,7 +71,7 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
     }
 
     /**
-     * Genreates the url to a blog post.
+     * Generates the url to a blog post.
      *
      * @param $post
      *

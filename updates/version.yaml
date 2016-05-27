@@ -26,3 +26,6 @@
     - Fixed backend permissions
 1.1.3:
     - Added ru_RU locale (Thanks to mokeev1995)
+1.2.1:
+    - 'Added support for Feegleweb.Octoshop (Thanks to billyzduke)'
+    - Refactored search providers and results page

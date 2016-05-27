@@ -9,7 +9,7 @@ use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\OctoshopProductsResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\FeeglewebOctoshopProductsResultsProvider;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
 use Request;
 
@@ -167,11 +167,10 @@ class SearchResults extends ComponentBase
     {
         $results = new ResultCollection();
         $results->setQuery($this->query);
-
         if ($this->query !== '') {
             $results->addMany([
                 (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
-                (new OctoshopProductsResultsProvider($this->query))->search()->results(),
+                (new FeeglewebOctoshopProductsResultsProvider($this->query))->search()->results(),
                 (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
                 (new RainlabBlogResultsProvider($this->query))->search()->results(),
                 (new RainlabPagesResultsProvider($this->query))->search()->results(),
@@ -193,13 +192,13 @@ class SearchResults extends ComponentBase
     public function results()
     {
         $paginator = new LengthAwarePaginator(
-            $this->resultCollection,
+            $this->getPaginatorSlice($this->resultCollection),
             $this->resultCollection->count(),
             $this->resultsPerPage,
             $this->pageNumber
         );
 
-        return $paginator->setPath($this->page->settings['url'])->appends('q', $this->query);
+        return $paginator->setPath(\Url::to($this->page->settings['url']))->appends('q', $this->query);
     }
 
     /**
@@ -209,7 +208,7 @@ class SearchResults extends ComponentBase
      */
     public function lastPage()
     {
-        return intval(ceil($this->resultCollection->count() / $this->resultsPerPage));
+        return (int)ceil($this->resultCollection->count() / $this->resultsPerPage);
     }
 
     /**
@@ -222,7 +221,7 @@ class SearchResults extends ComponentBase
      */
     protected function getPaginatorSlice($results)
     {
-        return $results->slice(($this->pageNumber - 1) * $this->resultsPerPage, $this->resultsPerPage + 1);
+        return $results->slice(($this->pageNumber - 1) * $this->resultsPerPage, $this->resultsPerPage);
     }
 
 }

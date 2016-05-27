@@ -21,6 +21,7 @@
         'portfolio_itemurl_comment'  => 'Only specify the fixed part of the URL without any dynamic parameters',
         'octoshop_itemurl'           => 'Url of product detail page',
         'octoshop_itemurl_comment'   => 'Only specify the fixed part of the URL without any dynamic parameters',
+        'octoshop_itemurl_badge'     => 'Product',
         'experimental'               => 'Experimental feature:',
         'experimental_refer_to_docs' => 'This provider is experimental! Please refer to <a target="_blank"
 href="http://octobercms.com/plugin/offline-sitesearch#documentation">the documentation</a> before using it.',

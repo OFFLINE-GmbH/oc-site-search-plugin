@@ -2,6 +2,8 @@
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use Illuminate\Database\Eloquent\Collection;
+use OFFLINE\SiteSearch\Classes\Result;
+use OFFLINE\SiteSearch\Classes\ResultData;
 use OFFLINE\SiteSearch\Models\Settings;
 use RainLab\Blog\Models\Post;
 
@@ -28,16 +30,16 @@ class RainlabBlogResultsProvider extends ResultsProvider
             // Make this result more relevant, if the query is found in the title
             $relevance = stripos($post->title, $this->query) === false ? 1 : 2;
 
-            $thumb = (is_object($post->featured_images) && get_class($post->featured_images) == 'Illuminate\Database\Eloquent\Collection') ? $post->featured_images->where('attachment_id',$post->id) : new \stdClass();
+            $result        = new Result($this->query, $relevance);
+            $result->title = $post->title;
+            $result->text  = $post->summary;
+            $result->url   = $this->getUrl($post);
 
-            $field_data = 
-            [   'title'     =>  $post->title
-            ,   'text'      =>  $post->summary
-            ,   'url'       =>  $this->getUrl($post)
-            ,   'thumb'     =>  $thumb
-            ];
+            if($post->featured_images) {
+                $result->thumb = $post->featured_images->first();
+            }
 
-            $this->addResult($field_data, $relevance);
+            $this->addResult($result);
         }
 
         return $this;
@@ -71,7 +73,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
     }
 
     /**
-     * Genreates the url to a blog post.
+     * Generates the url to a blog post.
      *
      * @param $post
      *
