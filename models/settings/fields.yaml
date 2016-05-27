@@ -123,3 +123,26 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: Page
+
+        octoshop_products_enabled:
+            type: switch
+            tab: Feegleweb.Octoshop
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: true
+
+        octoshop_products_label:
+            type: text
+            tab: Feegleweb.Octoshop
+            label: offline.sitesearch::lang.settings.provider_badge
+            comment: offline.sitesearch::lang.settings.provider_badge_comment
+            span: auto
+            default: Product
+
+        octoshop_products_itemurl:
+            type: text
+            tab: Feegleweb.Octoshop
+            label: offline.sitesearch::lang.settings.octoshop_itemurl
+            comment: offline.sitesearch::lang.settings.octoshop_itemurl_comment
+            span: auto
+            default: /products/product

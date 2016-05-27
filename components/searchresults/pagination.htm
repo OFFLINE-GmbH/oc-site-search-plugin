@@ -1,19 +1,20 @@
 {% if results.hasPages %}
-    <ul class="pagination">
-        {% if results.currentPage > 1 %}
-            <li>
-                <a href="{{ results.previousPageUrl }}">
-                    &larr;
-                </a>
-            </li>
-        {% endif %}
+    <div class="text-center" style="clear:both">
+        <ul class="pagination">
+            {% if results.currentPage > 1 %}
+                <li class="previous"><a href="{{ results.previousPageUrl }}">&larr;&nbsp;Prev</a></li>
+            {% endif %}
 
-        {% if results.hasMorePages %}
-            <li>
-                <a href="{{ results.nextPageUrl }}">
-                    &rarr;
-                </a>
-            </li>
-        {% endif %}
-    </ul>
+            {% for page in 1..results.lastPage %}
+                <li class="{{ results.currentPage == page ? 'active' : null }}">
+                    <a href="/sitesearch?q={{ searchResults.query|e('url') }}&page={{ page }}">{{ page }}</a>
+                </li>
+            {% endfor %}
+
+            {% if results.lastPage > results.currentPage %}
+                <li class="next"><a href="{{ results.nextPageUrl }}">Next&nbsp;&rarr;</a></li>
+            {% endif %}
+        </ul>
+    </div>
 {% endif %}
+

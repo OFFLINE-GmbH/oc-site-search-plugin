@@ -91,13 +91,13 @@ abstract class ResultsProvider
      *
      * @return ResultsProvider
      */
-    public function addResult($title, $text = '', $url = '', $relevance = '', $provider = null)
+    public function addResult($field_data, $relevance = '', $provider = null)
     {
         if ($provider === null) {
             $provider = $this->displayName;
         }
 
-        $this->results[] = new Result($this->query, $title, $text, $url, $relevance, $provider);
+        $this->results[] = new Result($this->query, $field_data, $relevance, $provider);
 
         return $this;
     }

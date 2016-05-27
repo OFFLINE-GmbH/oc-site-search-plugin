@@ -51,14 +51,24 @@ class Result
      * @param string $url
      * @param int    $relevance
      */
-    public function __construct($query, $title, $text = '', $url = '', $relevance = 1, $provider = '')
+    public function __construct($query, $field_data, $relevance = 1, $provider = '')
     {
         $this->setQuery($query);
-        $this->setTitle($title);
-        $this->setText($text);
-        $this->setUrl($url);
+        foreach ($field_data as $field => $data):
+            $this->setFieldData($field,$data);
+        endforeach;
         $this->setRelevance($relevance);
         $this->setProvider($provider);
+    }
+
+    public function setFieldData($field,$data) {
+        $setMethod = 'set'.ucwords(strtolower($field));
+        if (method_exists($this,$setMethod)):
+            $this->$setMethod($data);
+            return true;
+        endif;
+
+        return false;
     }
 
     /**
@@ -88,6 +98,10 @@ class Result
      */
     public function setTitle($title)
     {
+        $this->title = $this->markQuery($title);
+
+        return $this;
+
         $this->title = $this->markQuery($this->prepare($title));
 
         return $this;
@@ -136,6 +150,26 @@ class Result
     public function setUrl($url)
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getThumb()
+    {
+        return $this->thumb;
+    }
+
+    /**
+     * @param string $url
+     *
+     * @return Result
+     */
+    public function setThumb($thumb)
+    {
+        $this->thumb = $thumb;
 
         return $this;
     }

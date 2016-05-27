@@ -33,7 +33,14 @@ class CmsPagesResultsProvider extends ResultsProvider
 
             $relevance = $this->containsQuery($page->settings['title']) ? 2 : 1;
 
-            $this->addResult($page->settings['title'], $contents, $page->settings['url'], $relevance);
+            $field_data =
+            [   'title'     =>  $page->settings['title']
+            ,   'text'      =>  $contents
+            ,   'url'       =>  $page->settings['url']
+            ,   'thumb'     =>  ''
+            ];
+
+            $this->addResult($field_data, $relevance);
 
         }
 
@@ -118,4 +125,3 @@ class CmsPagesResultsProvider extends ResultsProvider
         return '';
     }
 }
-
