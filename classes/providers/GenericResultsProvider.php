@@ -44,13 +44,10 @@ class GenericResultsProvider extends ResultsProvider
     {
         foreach ($results as $result) {
             $result = $this->validateResult($result);
-            $this->addResult(
-                $result['title'],
-                $result['text'],
-                $result['url'],
-                $result['relevance'],
-                $provider
-            );
+
+            $relevance = array_pop($result);
+
+            $this->addResult($result, $relevance, $provider);
         }
     }
 
@@ -81,7 +78,7 @@ class GenericResultsProvider extends ResultsProvider
      */
     private function fillMissingKeys(array $result)
     {
-        $keys = ['text', 'url', 'relevance'];
+        $keys = ['text', 'url', 'thumb', 'relevance'];
         foreach ($keys as $key) {
             if ( ! array_key_exists($key, $result)) {
                 $result[$key] = '';
@@ -111,4 +108,3 @@ class GenericResultsProvider extends ResultsProvider
         return '';
     }
 }
-

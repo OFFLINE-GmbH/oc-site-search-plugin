@@ -30,7 +30,16 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
             // Make this result more relevant, if the query is found in the title
             $relevance = stripos($post->title, $this->query) === false ? 1 : 2;
 
-            $this->addResult($post->title, $this->getSummary($post), $this->getUrl($post), $relevance);
+            $field_data =
+            [   'title'     =>  $post->title
+            ,   'text'      =>  $this->getSummary($post)
+            ,   'url'       =>  $this->getUrl($post)
+            ,   'thumb'     =>  ''
+            ];
+
+            $this->addResult($field_data, $relevance);
+
+
         }
 
         return $this;
@@ -122,4 +131,3 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
         return 'Radiantweb.Problog';
     }
 }
-

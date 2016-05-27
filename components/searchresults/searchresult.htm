@@ -1,16 +1,23 @@
+[viewBag]
+==
 <div class="ss-result">
-    <h4 class="ss-result__title">
-        {{ result.title | raw }}
-        {% if __SELF__.showProviderBadge %}
-        <span class="ss-result__badge">
-            {{ result.provider }}
-        </span>
-        {% endif %}
-    </h4>
-    <p class="ss-result__text">
-        {{ result.excerpt | raw }}
-    </p>
-    <p class="ss-result__url">
-        <a href="{{ result.url | app }}" class="ss-result__link">{{ __SELF__.visitPageMessage }} &rarr;</a>
-    </p>
+    {% spaceless %}
+    <a title="{% if __SELF__.showProviderBadge %}{{ result.provider }}: {% endif %}{{ result.title | striptags }}" class="ss-result__bullet{% if result.thumb|length %} fancybox" href="{{ result.thumb.first.path }}" /><img src="{{ result.thumb.first.getThumb(64, 'auto') }}" />{% else %}" href="{{ result.url }}" />{% endif %}
+    </a>
+        
+    <div class="ss-result__content">
+        <h4 class="ss-result__title">
+            <a href="{{ result.url }}">{{ result.title|raw }}</a>&nbsp;&nbsp;
+            {% if __SELF__.showProviderBadge %}
+            <span class="ss-result__badge">
+                {{ result.provider }}
+            </span>
+            {% endif %}
+        </h4>
+        <p class="ss-result__text">
+            {{ result.excerpt|raw }}
+        </p>
+    </div>
+    <hr/>
+    {% endspaceless %}
 </div>

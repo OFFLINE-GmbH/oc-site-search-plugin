@@ -29,7 +29,15 @@ class RainlabPagesResultsProvider extends ResultsProvider
             // Make this result more relevant, if the query is found in the title
             $relevance = $this->containsQuery($page->viewBag['title']) ? 2 : 1;
 
-            $this->addResult($page->viewBag['title'], $page->parsedMarkup, $this->getUrl($page), $relevance);
+            $field_data =
+            [   'title'     =>  $page->viewBag['title']
+            ,   'text'      =>  $page->parsedMarkup
+            ,   'url'       =>  $this->getUrl($page)
+            ,   'thumb'     =>  ''
+            ];
+
+            $this->addResult($field_data, $relevance);
+
         }
 
         return $this;
@@ -108,4 +116,3 @@ class RainlabPagesResultsProvider extends ResultsProvider
         return 'RainLab.Pages';
     }
 }
-

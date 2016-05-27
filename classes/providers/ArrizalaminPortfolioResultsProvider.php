@@ -28,7 +28,15 @@ class ArrizalaminPortfolioResultsProvider extends ResultsProvider
             // Make this result more relevant, if the query is found in the title
             $relevance = stripos($item->title, $this->query) === false ? 1 : 2;
 
-            $this->addResult($item->title, $item->description, $this->getUrl($item), $relevance);
+            $field_data =
+            [   'title'     =>  $item->title
+            ,   'text'      =>  $item->description
+            ,   'url'       =>  $this->getUrl($item)
+            ,   'thumb'     =>  ''
+            ];
+
+            $this->addResult($field_data, $relevance);
+
         }
 
         return $this;
@@ -93,4 +101,3 @@ class ArrizalaminPortfolioResultsProvider extends ResultsProvider
         return 'ArrizalAmin.Portfolio';
     }
 }
-

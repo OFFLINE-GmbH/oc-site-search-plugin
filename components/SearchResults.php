@@ -2,13 +2,14 @@
 
 use Cms\Classes\ComponentBase;
 use DomainException;
-use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use OFFLINE\SiteSearch\Classes\Providers\ArrizalaminPortfolioResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\CmsPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\OctoshopProductsResultsProvider;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
 use Request;
 
@@ -170,6 +171,7 @@ class SearchResults extends ComponentBase
         if ($this->query !== '') {
             $results->addMany([
                 (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
+                (new OctoshopProductsResultsProvider($this->query))->search()->results(),
                 (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
                 (new RainlabBlogResultsProvider($this->query))->search()->results(),
                 (new RainlabPagesResultsProvider($this->query))->search()->results(),
@@ -190,8 +192,9 @@ class SearchResults extends ComponentBase
      */
     public function results()
     {
-        $paginator = new Paginator(
-            $this->getPaginatorSlice($this->resultCollection),
+        $paginator = new LengthAwarePaginator(
+            $this->resultCollection,
+            $this->resultCollection->count(),
             $this->resultsPerPage,
             $this->pageNumber
         );
