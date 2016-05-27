@@ -34,6 +34,7 @@ class ResultCollection extends Collection
      * @param array $resultsArray
      *
      * @return ResultCollection
+     * @throws \DomainException
      */
     public function addMany(array $resultsArray)
     {

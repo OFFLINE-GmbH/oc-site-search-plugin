@@ -74,6 +74,10 @@ visitPageMessage = "Visit page"
 .ss-result {
     margin-bottom: 2em;
 }
+.ss-result__aside {
+    float: right;
+    margin-left: .5em;
+}
 .ss-result__title {
     font-weight: bold;
     margin-bottom: .5em;
@@ -146,6 +150,7 @@ public function boot()
                 'title'     => $document->title,
                 'text'      => $document->content,
                 'url'       => '/documents/' . $document->slug,
+                'thumb'     => $document->thumbnails->first(), // Instance of System\Models\File
                 'relevance' => $relevance, // higher relevance results in a higher 
                                            // position in the results listing
             ];
@@ -173,6 +178,11 @@ No special configuration is required.
 
 Make sure you set the `Url of blog post page` setting to point to the right url. Only specify the fixed part of 
 the URL: `/blog/post`. If your posts are located under `/blog/post/:slug` the default value is okay.
+
+### Feegleweb.Octoshop
+
+Make sure you set the `Url of product detail page` setting to point to the right url. Only specify the fixed part of 
+the URL: `/product`. If your products are located under `/product/:slug` the default value is okay.
 
 ### RadiantWeb.ProBlog
 

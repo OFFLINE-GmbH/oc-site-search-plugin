@@ -4,6 +4,7 @@
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use OFFLINE\SiteSearch\Classes\Result;
+use OFFLINE\SiteSearch\Classes\ResultData;
 use RainLab\Translate\Classes\Translator;
 use System\Classes\PluginManager;
 
@@ -83,21 +84,18 @@ abstract class ResultsProvider
     /**
      * Adds a result to the results array.
      *
-     * @param string $title
-     * @param string $text
-     * @param string $url
-     * @param string $relevance
+     * @param Result $result
      * @param null   $provider
      *
      * @return ResultsProvider
      */
-    public function addResult($field_data, $relevance = '', $provider = null)
+    public function addResult(Result $result, $provider = null)
     {
         if ($provider === null) {
-            $provider = $this->displayName;
+            $result->provider = $this->displayName;
         }
 
-        $this->results[] = new Result($this->query, $field_data, $relevance, $provider);
+        $this->results[] = $result;
 
         return $this;
     }
