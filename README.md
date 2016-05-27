@@ -13,12 +13,14 @@ You can translate all contents into your own language.
 
 ## Currently supported content types
 
-* RainLab.Pages (**NEW!** RainLab.Translate compatible)
+* RainLab.Pages
 * RainLab.Blog
-* [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog) (**NEW!** RainLab.Translate compatible)
-* [Arrizalamin.Portfolio](http://octobercms.com/plugin/arrizalamin-portfolio) (**NEW!** RainLab.Translate compatible)
+* [**NEW!** Feegleweb.Octoshop](https://octobercms.com/plugin/feegleweb-octoshop)
+* [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog)
+* [Arrizalamin.Portfolio](http://octobercms.com/plugin/arrizalamin-portfolio)
 * Native CMS pages (experimental)
 
+**Multilingual contents via RainLab.Translate are supported.**
 
 Support for more plugins is added upon request.
 
@@ -73,6 +75,10 @@ visitPageMessage = "Visit page"
 ```css
 .ss-result {
     margin-bottom: 2em;
+}
+.ss-result__aside {
+    float: right;
+    margin-left: .5em;
 }
 .ss-result__title {
     font-weight: bold;
@@ -146,6 +152,7 @@ public function boot()
                 'title'     => $document->title,
                 'text'      => $document->content,
                 'url'       => '/documents/' . $document->slug,
+                'thumb'     => $document->thumbnails->first(), // Instance of System\Models\File
                 'relevance' => $relevance, // higher relevance results in a higher 
                                            // position in the results listing
             ];
@@ -173,6 +180,11 @@ No special configuration is required.
 
 Make sure you set the `Url of blog post page` setting to point to the right url. Only specify the fixed part of 
 the URL: `/blog/post`. If your posts are located under `/blog/post/:slug` the default value is okay.
+
+### Feegleweb.Octoshop
+
+Make sure you set the `Url of product detail page` setting to point to the right url. Only specify the fixed part of 
+the URL: `/product`. If your products are located under `/product/:slug` the default value is okay.
 
 ### RadiantWeb.ProBlog
 
@@ -205,3 +217,12 @@ To overwrite the default markup copy all files from `plugins/offline/sitesearch/
 `themes/your-theme/partials/searchResults` and modify them as needed.
 
 If you gave an alias to the `searchResults` component make sure to put the markup in the appropriate partials directory `themes/your-theme/partials/your-given-alias`.
+
+
+# Contributors
+
+- [tobias-kuendig](https://github.com/tobias-kuendig)
+- [mokeev1995](https://github.com/mokeev1995)
+- [gergo85](https://github.com/gergo85)
+- [vojtasvoboda](https://github.com/vojtasvoboda)
+- [billyzduke](https://github.com/billyzduke)

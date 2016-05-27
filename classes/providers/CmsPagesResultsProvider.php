@@ -4,6 +4,8 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 use Cms\Classes\Page;
 use Cms\Classes\Theme;
 use Illuminate\Database\Eloquent\Collection;
+use OFFLINE\SiteSearch\Classes\Result;
+use OFFLINE\SiteSearch\Classes\ResultData;
 use OFFLINE\SiteSearch\Models\Settings;
 
 /**
@@ -33,15 +35,12 @@ class CmsPagesResultsProvider extends ResultsProvider
 
             $relevance = $this->containsQuery($page->settings['title']) ? 2 : 1;
 
-            $field_data =
-            [   'title'     =>  $page->settings['title']
-            ,   'text'      =>  $contents
-            ,   'url'       =>  $page->settings['url']
-            ,   'thumb'     =>  ''
-            ];
+            $result        = new Result($this->query, $relevance);
+            $result->title = $page->settings['title'];
+            $result->text  = $contents;
+            $result->url   = $page->settings['url'];
 
-            $this->addResult($field_data, $relevance);
-
+            $this->addResult($result);
         }
 
         return $this;

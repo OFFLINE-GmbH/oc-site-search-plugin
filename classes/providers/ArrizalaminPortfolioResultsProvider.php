@@ -3,6 +3,7 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use ArrizalAmin\Portfolio\Models\Item;
 use Illuminate\Database\Eloquent\Collection;
+use OFFLINE\SiteSearch\Classes\Result;
 use OFFLINE\SiteSearch\Models\Settings;
 
 /**
@@ -28,15 +29,12 @@ class ArrizalaminPortfolioResultsProvider extends ResultsProvider
             // Make this result more relevant, if the query is found in the title
             $relevance = stripos($item->title, $this->query) === false ? 1 : 2;
 
-            $field_data =
-            [   'title'     =>  $item->title
-            ,   'text'      =>  $item->description
-            ,   'url'       =>  $this->getUrl($item)
-            ,   'thumb'     =>  ''
-            ];
+            $result        = new Result($this->query, $relevance);
+            $result->title = $item->title;
+            $result->text  = $item->description;
+            $result->url   = $this->getUrl($item);
 
-            $this->addResult($field_data, $relevance);
-
+            $this->addResult($result);
         }
 
         return $this;
@@ -67,7 +65,7 @@ class ArrizalaminPortfolioResultsProvider extends ResultsProvider
     }
 
     /**
-     * Genreates the url to a blog post.
+     * Generates the url to a blog post.
      *
      * @param $post
      *
