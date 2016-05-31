@@ -65,7 +65,6 @@ tabs:
             label: offline.sitesearch::lang.settings.provider_badge
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
-            default: offline.sitesearch::lang.settings.octoshop_itemurl_badge
 
         octoshop_products_itemurl:
             type: text
