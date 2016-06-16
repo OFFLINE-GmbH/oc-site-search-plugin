@@ -131,7 +131,7 @@ class Result
     {
         $this->text    = $this->prepare($text);
         $this->excerpt = $this->createExcerpt(
-            $this->markQuery($text)
+            $this->markQuery($this->text)
         );
 
         return $this;
