@@ -31,3 +31,5 @@
     - Refactored search providers and results page
 1.2.2:
     - 'Minor bugfix in Feegleweb.Octoshop settings page translation'
+1.2.3:
+    - 'Fixed bug where the search results sometimes broke the page layout'
