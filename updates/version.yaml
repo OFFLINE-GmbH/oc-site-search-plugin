@@ -31,3 +31,7 @@
     - Refactored search providers and results page
 1.2.2:
     - 'Minor bugfix in Feegleweb.Octoshop settings page translation'
+1.2.3:
+    - 'Fixed bug where the search results sometimes broke the page layout'
+1.2.4:
+    - 'Fixed bug where unavailable thumbnails lead to an error'
