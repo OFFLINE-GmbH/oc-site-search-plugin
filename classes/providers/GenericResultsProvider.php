@@ -50,7 +50,7 @@ class GenericResultsProvider extends ResultsProvider
 
             $relevance = isset($return['relevance']) ? $return['relevance'] : 1;
 
-            $result = new Result($this->query, $relevance);
+            $result = new Result($this->query, $relevance, $provider);
             foreach ($return as $key => $value) {
                 $result->{$key} = $value;
             }
