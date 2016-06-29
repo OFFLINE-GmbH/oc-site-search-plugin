@@ -35,3 +35,5 @@
     - 'Fixed bug where the search results sometimes broke the page layout'
 1.2.4:
     - 'Fixed bug where unavailable thumbnails lead to an error'
+1.2.5:
+    - 'Fixed bug where the provider badge is not displayed for custom search providers'
