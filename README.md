@@ -134,7 +134,7 @@ Return an array containing a `provider` string and `results` array. Each result 
 ```php
 public function boot()
 {
-    Event::listen('offline.sitesearch.query', function ($query) {
+    \Event::listen('offline.sitesearch.query', function ($query) {
     
         // Search your plugin's contents
         $documents = YourCustomDocumentModel::where('title', 'like', "%${query}%")
