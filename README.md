@@ -27,6 +27,14 @@ Support for more plugins is added upon request.
 **You can easily extend this plugin to search your custom plugin's contents as well.
 See the documentation for further information.**
 
+### Get native support for your plugin
+
+If you are a plugin developer and wish to have native support for your contents in SiteSearch please submit a pull 
+request for your search provider or send us a copy of you plugin so we can create the provider for you.
+   
+We cannot add support for every plugin but will add any plugin that has a notable project count on the October 
+Marketplace.
+
 
 ## Components
 
