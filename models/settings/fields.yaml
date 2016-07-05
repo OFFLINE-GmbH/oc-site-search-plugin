@@ -112,7 +112,7 @@ tabs:
             span: auto
             default: Portfolio
 
-        arrizalamin_portfolio_posturl:
+        arrizalamin_portfolio_url:
             type: text
             tab: ArrizalAmin.Portfolio
             label: offline.sitesearch::lang.settings.portfolio_itemurl
@@ -135,7 +135,7 @@ tabs:
             span: auto
             default: Showcase
 
-        responsiv_showcase_posturl:
+        responsiv_showcase_url:
             type: text
             tab: Responsiv.Showcase
             label: offline.sitesearch::lang.settings.showcase_itemurl
