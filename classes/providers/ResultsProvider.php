@@ -4,7 +4,6 @@
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use OFFLINE\SiteSearch\Classes\Result;
-use OFFLINE\SiteSearch\Classes\ResultData;
 use RainLab\Translate\Classes\Translator;
 use System\Classes\PluginManager;
 

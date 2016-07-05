@@ -19,6 +19,8 @@
         'blog_posturl_comment'       => 'Only specify the fixed part of the URL without any dynamic parameters',
         'portfolio_itemurl'          => 'Url of portfolio detail page',
         'portfolio_itemurl_comment'  => 'Only specify the fixed part of the URL without any dynamic parameters',
+        'showcase_itemurl'           => 'Url of showcase detail page',
+        'showcase_itemurl_comment'   => 'Only specify the fixed part of the URL without any dynamic parameters',
         'octoshop_itemurl'           => 'Url of product detail page',
         'octoshop_itemurl_comment'   => 'Only specify the fixed part of the URL without any dynamic parameters',
         'octoshop_itemurl_badge'     => 'Product',

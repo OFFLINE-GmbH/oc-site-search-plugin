@@ -120,6 +120,29 @@ tabs:
             span: auto
             default: /portfolio/project
 
+        responsiv_showcase_enabled:
+            type: switch
+            tab: Responsiv.Showcase
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: true
+
+        responsiv_showcase_label:
+            type: text
+            tab: Responsiv.Showcase
+            label: offline.sitesearch::lang.settings.provider_badge
+            comment: offline.sitesearch::lang.settings.provider_badge_comment
+            span: auto
+            default: Showcase
+
+        responsiv_showcase_posturl:
+            type: text
+            tab: Responsiv.Showcase
+            label: offline.sitesearch::lang.settings.showcase_itemurl
+            comment: offline.sitesearch::lang.settings.showcase_itemurl_comment
+            span: auto
+            default: /showcase/project
+
         cms_pages_warning:
             type: partial
             path: $/offline/sitesearch/models/settings/_experimental.htm
