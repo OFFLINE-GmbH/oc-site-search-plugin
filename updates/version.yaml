@@ -41,3 +41,5 @@
     - 'Added support for Responsiv.Showcase (Thanks to MichiReich)'
 1.2.7:
     - 'Fixed bug where custom url settings were ignored in search results for some providers'
+1.2.8:
+    - 'Added support for viewBag properties in RainLab.Pages'
