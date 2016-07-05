@@ -39,3 +39,5 @@
     - 'Fixed bug where the provider badge is not displayed for custom search providers'
 1.2.6:
     - 'Added support for Responsiv.Showcase (Thanks to MichiReich)'
+1.2.7:
+    - 'Fixed bug where custom url settings were ignored in search results for some providers'
