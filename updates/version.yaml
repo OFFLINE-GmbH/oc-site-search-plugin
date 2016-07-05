@@ -37,3 +37,5 @@
     - 'Fixed bug where unavailable thumbnails lead to an error'
 1.2.5:
     - 'Fixed bug where the provider badge is not displayed for custom search providers'
+1.2.6:
+    - 'Added support for Responsiv.Showcase (Thanks to MichiReich)'

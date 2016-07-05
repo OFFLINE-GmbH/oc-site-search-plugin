@@ -13,11 +13,12 @@ You can translate all contents into your own language.
 
 ## Currently supported content types
 
-* RainLab.Pages
-* RainLab.Blog
-* [**NEW!** Feegleweb.Octoshop](https://octobercms.com/plugin/feegleweb-octoshop)
+* [RainLab.Pages](https://octobercms.com/plugin/rainlab-pages)
+* [RainLab.Blog](https://octobercms.com/plugin/rainlab-blog)
+* [Feegleweb.Octoshop](https://octobercms.com/plugin/feegleweb-octoshop)
 * [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog)
-* [Arrizalamin.Portfolio](http://octobercms.com/plugin/arrizalamin-portfolio)
+* [Arrizalamin.Portfolio](https://octobercms.com/plugin/arrizalamin-portfolio)
+* [**NEW!** Responsiv.Showcase](https://octobercms.com/plugin/responsiv-showcase)
 * Native CMS pages (experimental)
 
 **Multilingual contents via RainLab.Translate are supported.**

@@ -19,6 +19,8 @@
         'blog_posturl_comment'       => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'portfolio_itemurl'          => 'URL der Portfolio Detail-Seite',
         'portfolio_itemurl_comment'  => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
+        'showcase_itemurl'           => 'URL der Shpwcase Detail-Seite',
+        'showcase_itemurl_comment'   => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'octoshop_itemurl'           => 'Url der Produkt Detail-Seite',
         'octoshop_itemurl_comment'   => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'octoshop_itemurl_badge'     => 'Produkt',
