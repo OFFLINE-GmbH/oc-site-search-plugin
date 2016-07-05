@@ -47,9 +47,10 @@ class RainlabPagesResultsProvider extends ResultsProvider
      */
     protected function pages()
     {
+
         $pages = Page::all()->filter(function ($page) {
             return $this->containsQuery($page->parsedMarkup)
-            || $this->containsQuery($page->viewBag['title']);
+            || $this->viewBagContainsQuery($page->viewBag);
         });
 
         return $pages;
@@ -68,7 +69,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
     }
 
     /**
-     * Checks if $subjects contains the query string.
+     * Checks if $subject contains the query string.
      *
      * @param $subject
      *
@@ -76,7 +77,54 @@ class RainlabPagesResultsProvider extends ResultsProvider
      */
     protected function containsQuery($subject)
     {
-        return mb_strpos(strtolower($subject), strtolower($this->query)) !== false;
+        return is_array($subject)
+            ? $this->arrayContainsQuery($subject)
+            : mb_strpos(strtolower($subject), strtolower($this->query)) !== false;
+    }
+
+    /**
+     * Checks if a viewBag contains the query string.
+     *
+     * @param $viewBag
+     *
+     * @return bool
+     */
+    protected function viewBagContainsQuery($viewBag)
+    {
+        $ignoreViewBagKeys = [
+            'title',
+            'url',
+            'layout',
+            'is_hidden',
+            'navigation_hidden',
+        ];
+
+        $properties = collect($viewBag)->except($ignoreViewBagKeys)->toArray();
+        foreach ($properties as $property) {
+            if ($this->containsQuery($property)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Checks if an array contains the query string.
+     *
+     * @param $array
+     *
+     * @return bool
+     */
+    protected function arrayContainsQuery(array $array)
+    {
+        foreach ($array as $value) {
+            if ($this->containsQuery($value)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
