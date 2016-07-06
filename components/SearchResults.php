@@ -5,11 +5,11 @@ use DomainException;
 use Illuminate\Pagination\LengthAwarePaginator;
 use OFFLINE\SiteSearch\Classes\Providers\ArrizalaminPortfolioResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\CmsPagesResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\FeeglewebOctoshopProductsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\FeeglewebOctoshopProductsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\ResponsivShowcaseResultsProvider;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
 use Request;
@@ -200,7 +200,27 @@ class SearchResults extends ComponentBase
             $this->pageNumber
         );
 
-        return $paginator->setPath(\Url::to($this->page->settings['url']))->appends('q', $this->query);
+        return $paginator->setPath(\Url::to($this->getPageUrl()))->appends('q', $this->query);
+    }
+
+    /**
+     * Try to get the page's url.
+     *
+     * @return string
+     */
+    public function getPageUrl()
+    {
+        // Component sits in cms page
+        if (isset($this->page->settings['url'])) {
+            return $this->page->settings['url'];
+        }
+
+        // Component sits in static page via snippet
+        if (isset($this->page->apiBag['staticPage'])) {
+            return $this->page->apiBag['staticPage']->viewBag['url'];
+        }
+
+        return '';
     }
 
     /**
