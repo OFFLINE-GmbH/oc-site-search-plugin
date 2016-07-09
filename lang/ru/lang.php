@@ -17,6 +17,8 @@
         'provider_badge_comment'     => 'Текст, отображаемый в Bage результата поиска',
         'blog_posturl'               => 'Url поста из блога',
         'blog_posturl_comment'       => 'Only specify the fixed part of the URL without any dynamic parameters',
+        'blog_page'                  => 'Страница поста из блога',
+        'blog_page_comment'          => 'Укажите страницу, используемую для вывода поста из блога. Это нужно для правильной генерации URL поста.',
         'portfolio_itemurl'          => 'Url of portfolio detail page',
         'portfolio_itemurl_comment'  => 'Only specify the fixed part of the URL without any dynamic parameters',
         'octoshop_itemurl'           => 'Url of product detail page',
