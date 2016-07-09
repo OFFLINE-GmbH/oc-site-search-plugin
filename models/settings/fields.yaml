@@ -29,13 +29,13 @@ tabs:
             span: auto
             default: Blog
 
-        rainlab_blog_posturl:
-            type: text
+        rainlab_blog_page:
+            type: dropdown
+            options: blogPageOptions
             tab: RainLab.Blog
-            label: offline.sitesearch::lang.settings.blog_posturl
-            comment: offline.sitesearch::lang.settings.blog_posturl_comment
+            label: offline.sitesearch::lang.settings.blog_page
+            comment: offline.sitesearch::lang.settings.blog_page_comment
             span: auto
-            default: /blog/post
 
         rainlab_pages_enabled:
             type: switch
