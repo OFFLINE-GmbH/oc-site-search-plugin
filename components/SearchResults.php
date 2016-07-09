@@ -174,7 +174,7 @@ class SearchResults extends ComponentBase
                 (new FeeglewebOctoshopProductsResultsProvider($this->query))->search()->results(),
                 (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
                 (new ResponsivShowcaseResultsProvider($this->query))->search()->results(),
-                (new RainlabBlogResultsProvider($this->query))->search()->results(),
+                (new RainlabBlogResultsProvider($this->query, $this->controller))->search()->results(),
                 (new RainlabPagesResultsProvider($this->query))->search()->results(),
                 (new CmsPagesResultsProvider($this->query))->search()->results(),
                 (new GenericResultsProvider($this->query))->search()->results(),
