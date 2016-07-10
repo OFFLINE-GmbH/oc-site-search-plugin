@@ -45,3 +45,5 @@
     - 'Added support for viewBag properties in RainLab.Pages'
 1.2.9:
     - 'Added support for static page component hosts'
+1.2.10:
+    - 'Added support for multiple variables in Rainlab.Blog urls (Thanks to graker)'
