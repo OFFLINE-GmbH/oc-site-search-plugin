@@ -187,8 +187,7 @@ No special configuration is required.
 
 ### Rainlab.Blog
 
-Make sure you set the `Url of blog post page` setting to point to the right url. Only specify the fixed part of 
-the URL: `/blog/post`. If your posts are located under `/blog/post/:slug` the default value is okay.
+Make sure you select your CMS page with the `blogPost` component as the `blog post page` in the backend settings.
 
 ### Feegleweb.Octoshop
 
