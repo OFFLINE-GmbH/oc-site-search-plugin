@@ -190,7 +190,7 @@ class Result
     {
         $length = Settings::get('excerpt_length', 250);
 
-        $position = strpos($text, '<mark>' . $this->query . '</mark>');
+        $position = mb_strpos($text, '<mark>' . $this->query . '</mark>');
         $start    = (int)$position - ($length / 2);
 
         if ($start < 0) {
@@ -199,7 +199,7 @@ class Result
 
         // The relevant part is in the middle of the string, so surround
         // it with ...
-        return '...' . trim(substr($text, $start, $length)) . '...';
+        return '...' . trim(mb_substr($text, $start, $length)) . '...';
     }
 
 
