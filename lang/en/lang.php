@@ -17,6 +17,8 @@
         'provider_badge_comment'     => 'Text to display in a search result\'s badge',
         'blog_posturl'               => 'Url of blog post page',
         'blog_posturl_comment'       => 'Only specify the fixed part of the URL without any dynamic parameters',
+        'blog_page'                  => 'Blog post page',
+        'blog_page_comment'          => 'Select a page used to display a single blog post. Needed to form URL for posts.',
         'portfolio_itemurl'          => 'Url of portfolio detail page',
         'portfolio_itemurl_comment'  => 'Only specify the fixed part of the URL without any dynamic parameters',
         'showcase_itemurl'           => 'Url of showcase detail page',

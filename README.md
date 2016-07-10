@@ -235,3 +235,4 @@ If you gave an alias to the `searchResults` component make sure to put the marku
 - [gergo85](https://github.com/gergo85)
 - [vojtasvoboda](https://github.com/vojtasvoboda)
 - [billyzduke](https://github.com/billyzduke)
+- [graker](https://github.com/graker)
