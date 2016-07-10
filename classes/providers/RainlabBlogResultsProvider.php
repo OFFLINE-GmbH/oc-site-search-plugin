@@ -25,7 +25,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
     /**
      * ResultsProvider constructor.
      *
-     * @param $query
+     * @param                         $query
      * @param \Cms\Classes\Controller $controller
      */
     public function __construct($query, Controller $controller)
@@ -33,7 +33,6 @@ class RainlabBlogResultsProvider extends ResultsProvider
         parent::__construct($query);
         $this->controller = $controller;
     }
-
 
     /**
      * Runs the search for this provider.
@@ -53,9 +52,15 @@ class RainlabBlogResultsProvider extends ResultsProvider
             $result        = new Result($this->query, $relevance);
             $result->title = $post->title;
             $result->text  = $post->summary;
-            $result->url   = $post->setUrl(Settings::get('rainlab_blog_page', ''), $this->controller);
 
-            if($post->featured_images) {
+            // Maintain compatibility with old setting
+            if (Settings::get('rainlab_blog_page') !== null) {
+                $result->url = $post->setUrl(Settings::get('rainlab_blog_page', ''), $this->controller);
+            } else {
+                $result->url = $this->getUrl($post);
+            }
+
+            if ($post->featured_images) {
                 $result->thumb = $post->featured_images->first();
             }
 
