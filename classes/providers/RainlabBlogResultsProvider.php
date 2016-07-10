@@ -1,9 +1,9 @@
 <?php
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
+use Cms\Classes\Controller;
 use Illuminate\Database\Eloquent\Collection;
 use OFFLINE\SiteSearch\Classes\Result;
-use OFFLINE\SiteSearch\Classes\ResultData;
 use OFFLINE\SiteSearch\Models\Settings;
 use RainLab\Blog\Models\Post;
 
@@ -15,6 +15,24 @@ use RainLab\Blog\Models\Post;
  */
 class RainlabBlogResultsProvider extends ResultsProvider
 {
+
+    /**
+     * @var Controller to be used to form urls to search results
+     */
+    protected $controller;
+
+    /**
+     * ResultsProvider constructor.
+     *
+     * @param                         $query
+     * @param \Cms\Classes\Controller $controller
+     */
+    public function __construct($query, Controller $controller)
+    {
+        parent::__construct($query);
+        $this->controller = $controller;
+    }
+
     /**
      * Runs the search for this provider.
      *
@@ -33,9 +51,15 @@ class RainlabBlogResultsProvider extends ResultsProvider
             $result        = new Result($this->query, $relevance);
             $result->title = $post->title;
             $result->text  = $post->summary;
-            $result->url   = $this->getUrl($post);
 
-            if($post->featured_images) {
+            // Maintain compatibility with old setting
+            if (Settings::get('rainlab_blog_page') !== null) {
+                $result->url = $post->setUrl(Settings::get('rainlab_blog_page', ''), $this->controller);
+            } else {
+                $result->url = $this->getUrl($post);
+            }
+
+            if ($post->featured_images) {
                 $result->thumb = $post->featured_images->first();
             }
 
