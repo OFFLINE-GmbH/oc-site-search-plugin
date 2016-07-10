@@ -199,7 +199,7 @@ class Result
 
         // The relevant part is in the middle of the string, so surround
         // it with ...
-        return '...' . trim(substr($text, $start, $length)) . '...';
+        return '...' . trim(mb_substr($text, $start, $length)) . '...';
     }
 
 
