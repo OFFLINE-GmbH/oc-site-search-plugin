@@ -17,6 +17,8 @@
         'provider_badge_comment'     => 'Dieser Text wird neben jedem Suchresultat angezeigt.',
         'blog_posturl'               => 'URL der Blog-Post Seite',
         'blog_posturl_comment'       => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
+        'blog_page'                  => 'Blog-Post Seite',
+        'blog_page_comment'          => 'Wähle die Seite aus, auf der dein Blog-Post angezeigt wird.',
         'portfolio_itemurl'          => 'URL der Portfolio Detail-Seite',
         'portfolio_itemurl_comment'  => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'showcase_itemurl'           => 'URL der Shpwcase Detail-Seite',
