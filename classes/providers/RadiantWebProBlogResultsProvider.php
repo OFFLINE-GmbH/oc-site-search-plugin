@@ -29,7 +29,7 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
 
         foreach ($this->posts() as $post) {
             // Make this result more relevant, if the query is found in the title
-            $relevance = stripos($post->title, $this->query) === false ? 1 : 2;
+            $relevance = mb_stripos($post->title, $this->query) === false ? 1 : 2;
 
             $result        = new Result($this->query, $relevance);
             $result->title = $post->title;
@@ -96,7 +96,7 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
     private function getSummary($post)
     {
         $excerpt = $post->excerpt;
-        if (strlen(trim($excerpt))) {
+        if (mb_strlen(trim($excerpt))) {
             return $excerpt;
         }
 

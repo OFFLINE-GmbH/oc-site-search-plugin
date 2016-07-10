@@ -190,7 +190,7 @@ class Result
     {
         $length = Settings::get('excerpt_length', 250);
 
-        $position = strpos($text, '<mark>' . $this->query . '</mark>');
+        $position = mb_strpos($text, '<mark>' . $this->query . '</mark>');
         $start    = (int)$position - ($length / 2);
 
         if ($start < 0) {

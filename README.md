@@ -155,7 +155,7 @@ public function boot()
         foreach ($documents as $document) {
             // Make this result more relevant if the query
             // is found in the result's title
-            $relevance = stripos($document->title, $query) !== false ? 2 : 1;
+            $relevance = mb_stripos($document->title, $query) !== false ? 2 : 1;
         
             $results[] = [
                 'title'     => $document->title,
