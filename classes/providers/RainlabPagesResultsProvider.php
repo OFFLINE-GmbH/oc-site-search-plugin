@@ -79,7 +79,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
     {
         return is_array($subject)
             ? $this->arrayContainsQuery($subject)
-            : mb_strpos(strtolower($subject), strtolower($this->query)) !== false;
+            : mb_strpos(mb_strtolower($subject), mb_strtolower($this->query)) !== false;
     }
 
     /**
