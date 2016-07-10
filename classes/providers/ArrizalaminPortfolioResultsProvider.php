@@ -27,7 +27,7 @@ class ArrizalaminPortfolioResultsProvider extends ResultsProvider
 
         foreach ($this->items() as $item) {
             // Make this result more relevant, if the query is found in the title
-            $relevance = stripos($item->title, $this->query) === false ? 1 : 2;
+            $relevance = mb_stripos($item->title, $this->query) === false ? 1 : 2;
 
             $result        = new Result($this->query, $relevance);
             $result->title = $item->title;
