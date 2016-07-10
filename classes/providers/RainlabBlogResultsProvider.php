@@ -4,7 +4,6 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 use Cms\Classes\Controller;
 use Illuminate\Database\Eloquent\Collection;
 use OFFLINE\SiteSearch\Classes\Result;
-use OFFLINE\SiteSearch\Classes\ResultData;
 use OFFLINE\SiteSearch\Models\Settings;
 use RainLab\Blog\Models\Post;
 
