@@ -47,3 +47,5 @@
     - 'Added support for static page component hosts'
 1.2.10:
     - 'Added support for multiple variables in Rainlab.Blog urls (Thanks to graker)'
+1.2.11:
+    - 'Optimized handling of multibyte strings'
