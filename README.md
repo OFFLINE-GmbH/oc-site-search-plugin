@@ -16,9 +16,10 @@ You can translate all contents into your own language.
 * [RainLab.Pages](https://octobercms.com/plugin/rainlab-pages)
 * [RainLab.Blog](https://octobercms.com/plugin/rainlab-blog)
 * [Feegleweb.Octoshop](https://octobercms.com/plugin/feegleweb-octoshop)
+* [**NEW!** Jiri.JKShop](http://octobercms.com/plugin/jiri-jkshop)
 * [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog)
 * [Arrizalamin.Portfolio](https://octobercms.com/plugin/arrizalamin-portfolio)
-* [**NEW!** Responsiv.Showcase](https://octobercms.com/plugin/responsiv-showcase)
+* [Responsiv.Showcase](https://octobercms.com/plugin/responsiv-showcase)
 * Native CMS pages (experimental)
 
 **Multilingual contents via RainLab.Translate are supported.**
