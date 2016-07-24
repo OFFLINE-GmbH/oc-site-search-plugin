@@ -59,9 +59,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
                 $result->url = $this->getUrl($post);
             }
 
-            if ($post->featured_images) {
-                $result->thumb = $post->featured_images->first();
-            }
+            $result->thumb = $this->getThumb($post->featured_images);
 
             $this->addResult($result);
         }
@@ -77,6 +75,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
     protected function posts()
     {
         return Post::isPublished()
+                   ->with(['featured_images'])
                    ->where('title', 'like', "%{$this->query}%")
                    ->orWhere('content', 'like', "%{$this->query}%")
                    ->orWhere('excerpt', 'like', "%{$this->query}%")

@@ -35,6 +35,7 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
             $result->title = $post->title;
             $result->text  = $this->getSummary($post);
             $result->url   = $this->getUrl($post);
+            $result->thumb = $this->getThumb($post->featured_images);
 
             $this->addResult($result);
         }
@@ -49,7 +50,7 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
      */
     protected function posts()
     {
-        return Post::with('categories')
+        return Post::with(['categories', 'featured_images'])
                    ->isPublished()
                    ->where('title', 'like', "%{$this->query}%")
                    ->orWhere('content', 'like', "%{$this->query}%")

@@ -7,6 +7,7 @@ use OFFLINE\SiteSearch\Classes\Providers\ArrizalaminPortfolioResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\CmsPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\FeeglewebOctoshopProductsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\JiriJKShopResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
@@ -172,6 +173,7 @@ class SearchResults extends ComponentBase
             $results->addMany([
                 (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
                 (new FeeglewebOctoshopProductsResultsProvider($this->query))->search()->results(),
+                (new JiriJKShopResultsProvider($this->query))->search()->results(),
                 (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
                 (new ResponsivShowcaseResultsProvider($this->query))->search()->results(),
                 (new RainlabBlogResultsProvider($this->query, $this->controller))->search()->results(),
