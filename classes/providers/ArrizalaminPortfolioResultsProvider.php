@@ -33,6 +33,7 @@ class ArrizalaminPortfolioResultsProvider extends ResultsProvider
             $result->title = $item->title;
             $result->text  = $item->description;
             $result->url   = $this->getUrl($item);
+            $result->thumb = $this->getThumb($item->images);
 
             $this->addResult($result);
         }
@@ -47,7 +48,8 @@ class ArrizalaminPortfolioResultsProvider extends ResultsProvider
      */
     protected function items()
     {
-        return Item::where('title', 'like', "%{$this->query}%")
+        return Item::with(['images'])
+                   ->where('title', 'like', "%{$this->query}%")
                    ->orWhere('description', 'like', "%{$this->query}%")
                    ->get();
     }
@@ -98,4 +100,5 @@ class ArrizalaminPortfolioResultsProvider extends ResultsProvider
     {
         return 'ArrizalAmin.Portfolio';
     }
+
 }

@@ -73,7 +73,7 @@ class JiriJKShopResultsProvider extends ResultsProvider
     protected function isInstalledAndEnabled()
     {
         return $this->isPluginAvailable($this->identifier)
-        && Settings::get('jiri_jkshop_enabled', true);
+        && Settings::get('jiri_jkshop_enabled', false);
     }
 
     /**
