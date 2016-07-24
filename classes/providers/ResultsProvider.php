@@ -6,6 +6,7 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 use OFFLINE\SiteSearch\Classes\Result;
 use RainLab\Translate\Classes\Translator;
 use System\Classes\PluginManager;
+use System\Models\File;
 
 /**
  * Abstract base class for result providers
@@ -134,5 +135,26 @@ abstract class ResultsProvider
         return $this->isPluginAvailable('RainLab.Translate')
             ? Translator::instance()
             : false;
+    }
+
+    /**
+     * Extract the item's thumb.
+     *
+     * @param $images
+     *
+     * @return null|File
+     */
+    protected function getThumb($images)
+    {
+        if (count($images) < 1) {
+            return null;
+        }
+
+        $image = $images->first();
+        if ( ! $image instanceof File) {
+            return null;
+        }
+
+        return $image;
     }
 }

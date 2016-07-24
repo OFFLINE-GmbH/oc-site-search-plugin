@@ -26,6 +26,9 @@
         'octoshop_itemurl'           => 'Url der Produkt Detail-Seite',
         'octoshop_itemurl_comment'   => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'octoshop_itemurl_badge'     => 'Produkt',
+        'jkshop_itemurl'             => 'Url der Produkt Detail-Seite',
+        'jkshop_itemurl_comment'     => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
+        'jkshop_itemurl_badge'       => 'Produkt',
         'experimental'               => 'Experimentelle Funktion:',
         'experimental_refer_to_docs' => 'Dieser Provider ist experimentell! Bitte lies <a target="_blank"
 href="http://octobercms.com/plugin/offline-sitesearch#documentation">die Dokumentation</a>, bevor du ihn benutzt!',

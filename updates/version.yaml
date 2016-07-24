@@ -49,3 +49,5 @@
     - 'Added support for multiple variables in Rainlab.Blog urls (Thanks to graker)'
 1.2.11:
     - 'Optimized handling of multibyte strings'
+1.2.12:
+    - 'Added support for Jiri.Jkshop'
