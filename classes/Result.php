@@ -190,7 +190,11 @@ class Result
     {
         $length = Settings::get('excerpt_length', 250);
 
-        $position = mb_strpos($text, '<mark>' . $this->query . '</mark>');
+        // lowercase text and query to find the first occurence
+        $lowered_text = mb_strtolower($text);
+        $lowered_query = mb_strtolower($this->query);
+      
+        $position = mb_strpos($lowered_text, '<mark>' . $lowered_query . '</mark>');
         $start    = (int)$position - ($length / 2);
 
         if ($start < 0) {
