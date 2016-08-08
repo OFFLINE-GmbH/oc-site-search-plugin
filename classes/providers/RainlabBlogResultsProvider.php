@@ -76,9 +76,11 @@ class RainlabBlogResultsProvider extends ResultsProvider
     {
         return Post::isPublished()
                    ->with(['featured_images'])
-                   ->where('title', 'like', "%{$this->query}%")
-                   ->orWhere('content', 'like', "%{$this->query}%")
-                   ->orWhere('excerpt', 'like', "%{$this->query}%")
+                    ->where(function ($query) {
+                        $query->where('title', 'like', "%{$this->query}%")
+                            ->orWhere('content', 'like', "%{$this->query}%")
+                            ->orWhere('excerpt', 'like', "%{$this->query}%");
+                    })
                    ->orderBy('published_at', 'desc')
                    ->get();
     }

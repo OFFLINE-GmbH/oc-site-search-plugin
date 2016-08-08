@@ -51,3 +51,5 @@
     - 'Optimized handling of multibyte strings'
 1.2.12:
     - 'Added support for Jiri.Jkshop'
+1.2.13:
+    - 'Minor bugfixes for marked queries in search results and Rainlab.Blog provider (Thanks to graker)'
