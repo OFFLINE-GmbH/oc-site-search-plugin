@@ -190,21 +190,20 @@ class Result
     {
         $length = Settings::get('excerpt_length', 250);
 
-        // lowercase text and query to find the first occurence
-        $lowered_text = mb_strtolower($text);
-        $lowered_query = mb_strtolower($this->query);
-      
-        $position = mb_strpos($lowered_text, '<mark>' . $lowered_query . '</mark>');
+        $loweredText  = mb_strtolower($text);
+        $loweredQuery = mb_strtolower($this->query);
+
+        $position = mb_strpos($loweredText, '<mark>' . $loweredQuery . '</mark>');
         $start    = (int)$position - ($length / 2);
 
         if ($start < 0) {
             $excerpt = Str::limit($text, $length);
         } else {
-            // The relevant part is in the middle of the string, so surround
-            // it with ...
+            // The relevant part is in the middle of the string,
+            // so surround it with "..."
             $excerpt = '...' . trim(mb_substr($text, $start, $length)) . '...';
         }
-        
+
         return $this->checkBorders($excerpt);
     }
 
@@ -226,27 +225,28 @@ class Result
 
         return (string)preg_replace('/(' . preg_quote($this->query, '/') . ')/i', '<mark>$0</mark>', $text);
     }
-  
-  
-  /**
-   *
-   * Looks for unclosed/broken <mark> tag on the end of the excerpt and removes it
-   *
-   * @param string $excerpt
-   * @return string
-   */
-    protected function checkBorders($excerpt) {
-      
+
+
+    /**
+     * Checks for unclosed/broken <mark> tags on the
+     * end of the excerpt and removes it if found.
+     *
+     * @param string $excerpt
+     *
+     * @return string
+     */
+    protected function checkBorders($excerpt)
+    {
         // count opening and closing tags
         $openings = substr_count($excerpt, '<mark>');
         $closings = substr_count($excerpt, '</mark>');
-        if ($openings != $closings) {
-          // last mark tag seems to be broken, remove it
-          $position = mb_strrpos($excerpt, '<mark>');
-          $excerpt = trim(mb_substr($excerpt, 0, $position)) . '...';
+        if ($openings !== $closings) {
+            // last mark tag seems to be broken, remove it
+            $position = mb_strrpos($excerpt, '<mark>');
+            $excerpt  = trim(mb_substr($excerpt, 0, $position)) . '...';
         }
-      
+
         return $excerpt;
     }
-  
+
 }
