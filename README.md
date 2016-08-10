@@ -147,26 +147,24 @@ public function boot()
     \Event::listen('offline.sitesearch.query', function ($query) {
     
         // Search your plugin's contents
-        $documents = YourCustomDocumentModel::where('title', 'like', "%${query}%")
-                                            ->orWhere('content', 'like', "%${query}%")
-                                            ->get();
+        $items = YourCustomDocumentModel::where('title', 'like', "%${query}%")
+                                        ->orWhere('content', 'like', "%${query}%")
+                                        ->get();
 
         // Now build a results array
-        $results = [];
-        foreach ($documents as $document) {
-            // Make this result more relevant if the query
-            // is found in the result's title
-            $relevance = mb_stripos($document->title, $query) !== false ? 2 : 1;
-        
-            $results[] = [
-                'title'     => $document->title,
-                'text'      => $document->content,
-                'url'       => '/documents/' . $document->slug,
-                'thumb'     => $document->thumbnails->first(), // Instance of System\Models\File
-                'relevance' => $relevance, // higher relevance results in a higher 
+        $results = $items->map(function ($item) use ($query) {
+
+            $relevance = mb_stripos($item->title, $query) !== false ? 2 : 1;
+
+            return [
+                'title'     => $item->title,
+                'text'      => $item->content,
+                'url'       => '/document/' . $item->slug,
+                'thumb'     => $item->images->first(), // Instance of System\Models\File
+                'relevance' => $relevance, // higher relevance results in a higher
                                            // position in the results listing
             ];
-        }
+        });
 
         return [
             'provider' => 'Document', // The badge to display for this result
