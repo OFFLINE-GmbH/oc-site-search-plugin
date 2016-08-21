@@ -53,3 +53,5 @@
     - 'Added support for Jiri.Jkshop'
 1.2.13:
     - 'Minor bugfixes for marked queries in search results and Rainlab.Blog provider (Thanks to graker)'
+1.2.14:
+    - 'Fixed bug in Jiri.JKShop provider'
