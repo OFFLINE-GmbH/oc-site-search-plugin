@@ -59,7 +59,7 @@ class JiriJKShopResultsProvider extends ResultsProvider
                       ->where('title', 'like', "%{$this->query}%")
                       ->orWhere('description', 'like', "%{$this->query}%")
                       ->orWhere('short_description', 'like', "%{$this->query}%")
-                      ->having('active', true)
+                      ->having('active', '=', true)
                       ->orderBy('updated_at', 'desc')
                       ->get();
     }
