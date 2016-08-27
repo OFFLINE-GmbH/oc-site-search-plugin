@@ -51,6 +51,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
             $result        = new Result($this->query, $relevance);
             $result->title = $post->title;
             $result->text  = $post->summary;
+            $result->meta  = $post->created_at;
 
             // Maintain compatibility with old setting
             if (Settings::get('rainlab_blog_page') !== null) {

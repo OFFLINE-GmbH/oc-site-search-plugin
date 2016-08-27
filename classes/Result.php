@@ -31,6 +31,10 @@ class Result
      * @var string
      */
     public $query;
+    /**
+     * @var mixed
+     */
+    public $meta;
 
     /**
      * Result constructor.
@@ -78,6 +82,18 @@ class Result
     public function setQuery($query)
     {
         $this->query = $query;
+
+        return $this;
+    }
+    
+    /**
+     * @param $meta
+     *
+     * @return Result
+     */
+    public function setMeta($meta)
+    {
+        $this->meta = $meta;
 
         return $this;
     }
