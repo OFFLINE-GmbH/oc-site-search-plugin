@@ -32,7 +32,7 @@ class Result
      */
     public $query;
     /**
-     * @var string
+     * @var mixed
      */
     public $meta;
 
