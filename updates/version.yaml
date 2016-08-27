@@ -55,3 +55,5 @@
     - 'Minor bugfixes for marked queries in search results and Rainlab.Blog provider (Thanks to graker)'
 1.2.14:
     - 'Fixed bug in Jiri.JKShop provider'
+1.2.15:
+    - 'Added a new meta property for search results (thanks to cracki)'

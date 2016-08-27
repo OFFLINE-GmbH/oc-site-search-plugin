@@ -154,6 +154,7 @@ public function boot()
         // Now build a results array
         $results = $items->map(function ($item) use ($query) {
 
+            // If the query is found in the title, set a relevance of 2
             $relevance = mb_stripos($item->title, $query) !== false ? 2 : 1;
 
             return [
@@ -163,6 +164,8 @@ public function boot()
                 'thumb'     => $item->images->first(), // Instance of System\Models\File
                 'relevance' => $relevance, // higher relevance results in a higher
                                            // position in the results listing
+                // 'meta' => 'data',       // optional, any other information you want
+                                           // to associate with this result
             ];
         });
 
@@ -188,10 +191,19 @@ No special configuration is required.
 
 Make sure you select your CMS page with the `blogPost` component as the `blog post page` in the backend settings.
 
+You can access a post's published_at date in your search results via `{{ result.meta }}`.
+
 ### Feegleweb.Octoshop
 
 Make sure you set the `Url of product detail page` setting to point to the right url. Only specify the fixed part of 
 the URL: `/product`. If your products are located under `/product/:slug` the default value is okay.
+
+### Jiri.JKShop
+
+Make sure you set the `Url of product detail page` setting to point to the right url. Only specify the fixed part of 
+the URL: `/product`. If your products are located under `/product/:slug` the default value is okay.
+
+You can access an article's price in your search results via `{{ result.meta }}`.
 
 ### RadiantWeb.ProBlog
 
