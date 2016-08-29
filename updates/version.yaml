@@ -57,3 +57,5 @@
     - 'Fixed bug in Jiri.JKShop provider'
 1.2.15:
     - 'Added a new meta property for search results (thanks to cracki)'
+1.2.16:
+    - 'Added Persian (Farsi) translations (thanks to cracki)'
