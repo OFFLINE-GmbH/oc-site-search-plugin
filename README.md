@@ -207,6 +207,11 @@ the URL: `/product`. If your products are located under `/product/:slug` the def
 
 You can access an article's price in your search results via `{{ result.meta }}`.
 
+### Indikator.News
+
+Make sure you set the `News post page` setting to point to the right url. Only specify the fixed part of
+the URL: `/news/post`. If your products are located under `/news/post/:slug` the default value is okay.
+
 ### RadiantWeb.ProBlog
 
 Make sure you set the `Url of blog post page` setting to point to the right url. Only specify the fixed part of
