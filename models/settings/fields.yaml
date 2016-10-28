@@ -52,6 +52,29 @@ tabs:
             span: auto
             default: Page
 
+        indikator_news_enabled:
+            type: switch
+            tab: Indikator.News
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: true
+
+        indikator_news_label:
+            type: text
+            tab: Indikator.News
+            label: offline.sitesearch::lang.settings.provider_badge
+            comment: offline.sitesearch::lang.settings.provider_badge_comment
+            span: auto
+            default: News
+
+        indikator_news_posturl:
+            type: text
+            tab: Indikator.News
+            label: offline.sitesearch::lang.settings.news_page
+            comment: offline.sitesearch::lang.settings.news_page_comment
+            default: /news
+            span: auto
+
         octoshop_products_enabled:
             type: switch
             tab: Feegleweb.Octoshop

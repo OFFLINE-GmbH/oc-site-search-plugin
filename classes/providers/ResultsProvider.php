@@ -1,6 +1,4 @@
 <?php
-
-
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use OFFLINE\SiteSearch\Classes\Result;

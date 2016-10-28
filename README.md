@@ -1,6 +1,6 @@
-# SiteSearch Plugin for October CMS
+# SiteSearch Plugin for OctoberCMS
 
-This plugin adds global search capabilities to October CMS.
+This plugin adds global search capabilities to OctoberCMS.
 
 ## Available languages
 
@@ -16,6 +16,7 @@ You can translate all contents into your own language.
 
 * [RainLab.Pages](https://octobercms.com/plugin/rainlab-pages)
 * [RainLab.Blog](https://octobercms.com/plugin/rainlab-blog)
+* [Indikator.News](https://github.com/gergo85/oc-news)
 * [Feegleweb.Octoshop](https://octobercms.com/plugin/feegleweb-octoshop)
 * [Jiri.JKShop](http://octobercms.com/plugin/jiri-jkshop)
 * [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog)
@@ -32,10 +33,10 @@ See the documentation for further information.**
 
 ### Get native support for your plugin
 
-If you are a plugin developer and wish to have native support for your contents in SiteSearch please submit a pull 
+If you are a plugin developer and wish to have native support for your contents in SiteSearch please submit a pull
 request for your search provider or send us a copy of you plugin so we can create the provider for you.
-   
-We cannot add support for every plugin but will add any plugin that has a notable project count on the October 
+
+We cannot add support for every plugin but will add any plugin that has a notable project count on the October
 Marketplace.
 
 
@@ -43,7 +44,7 @@ Marketplace.
 
 ### searchResults
 
-Place this component on your page to display search results. 
+Place this component on your page to display search results.
 
 #### Usage example
 
@@ -52,9 +53,9 @@ Create a search form that sends a query to your search page:
 ##### Search form
 
 ```html
-<form action="{{ '/search' | app }}" method="get">
+<form action="{{ 'search' | page }}" method="get">
     <input name="q" type="text" placeholder="What are you looking for?" autocomplete="off">
-    <button type="submit"></button>
+    <button type="submit">Search</button>
 </form>
 ```
 
@@ -135,7 +136,7 @@ A link is placed below each search result. Use this property to change that link
 
 ## Add support for custom plugin contents
 
-To return search results for you own custom plugin, register an event listener for the `offline.sitesearch.query` 
+To return search results for you own custom plugin, register an event listener for the `offline.sitesearch.query`
 event in your plugin's boot method.
 
 Return an array containing a `provider` string and `results` array. Each result must provide at least a `title` key.  
@@ -146,7 +147,7 @@ Return an array containing a `provider` string and `results` array. Each result 
 public function boot()
 {
     \Event::listen('offline.sitesearch.query', function ($query) {
-    
+
         // Search your plugin's contents
         $items = YourCustomDocumentModel::where('title', 'like', "%${query}%")
                                         ->orWhere('content', 'like', "%${query}%")
@@ -196,24 +197,24 @@ You can access a post's published_at date in your search results via `{{ result.
 
 ### Feegleweb.Octoshop
 
-Make sure you set the `Url of product detail page` setting to point to the right url. Only specify the fixed part of 
+Make sure you set the `Url of product detail page` setting to point to the right url. Only specify the fixed part of
 the URL: `/product`. If your products are located under `/product/:slug` the default value is okay.
 
 ### Jiri.JKShop
 
-Make sure you set the `Url of product detail page` setting to point to the right url. Only specify the fixed part of 
+Make sure you set the `Url of product detail page` setting to point to the right url. Only specify the fixed part of
 the URL: `/product`. If your products are located under `/product/:slug` the default value is okay.
 
 You can access an article's price in your search results via `{{ result.meta }}`.
 
 ### RadiantWeb.ProBlog
 
-Make sure you set the `Url of blog post page` setting to point to the right url. Only specify the fixed part of 
+Make sure you set the `Url of blog post page` setting to point to the right url. Only specify the fixed part of
 the URL: `/blog`. If your posts are located under `/blog/:category/:slug` the default value is okay.
 
 ### ArrizalAmin.Portfolio
 
-Make sure you set the `Url of portfolio detail page` setting to point to the right url. Only specify the fixed part of 
+Make sure you set the `Url of portfolio detail page` setting to point to the right url. Only specify the fixed part of
 the URL: `/portfolio/project`. If your detail page is located under `/portfolio/project/:slug` the default value is okay.
 
 ### CMS pages (experimental)
@@ -227,13 +228,13 @@ Components on CMS pages will **not** be rendered. Use this provider only for sim
 
 CMS pages with dynamic URLs (like `/page/:slug`) won't be linked correctly from the search results listing.
 
-If you have CMS pages with dynamic contents consider writing your own search provider (see `Add support for custom 
+If you have CMS pages with dynamic contents consider writing your own search provider (see `Add support for custom
 plugin contents`)
 
 
 ## Overwrite default markup
 
-To overwrite the default markup copy all files from `plugins/offline/sitesearch/components/searchresults` to 
+To overwrite the default markup copy all files from `plugins/offline/sitesearch/components/searchresults` to
 `themes/your-theme/partials/searchResults` and modify them as needed.
 
 If you gave an alias to the `searchResults` component make sure to put the markup in the appropriate partials directory `themes/your-theme/partials/your-given-alias`.
