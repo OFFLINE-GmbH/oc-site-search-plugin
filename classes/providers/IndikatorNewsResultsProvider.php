@@ -32,6 +32,7 @@ class IndikatorNewsResultsProvider extends ResultsProvider
             $result        = new Result($this->query, $relevance);
             $result->title = $post->title;
             $result->text  = $post->introductory;
+            $result->url   = $this->getUrl($post);
             $result->meta  = $post->published_at;
 
             $this->addResult($result);
