@@ -175,7 +175,7 @@ class SearchResults extends ComponentBase
                 (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
                 (new FeeglewebOctoshopProductsResultsProvider($this->query))->search()->results(),
                 (new JiriJKShopResultsProvider($this->query))->search()->results(),
-                (new IndikatorNewsResultsProvider($this->query, $this->controller))->search()->results(),
+                (new IndikatorNewsResultsProvider($this->query))->search()->results(),
                 (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
                 (new ResponsivShowcaseResultsProvider($this->query))->search()->results(),
                 (new RainlabBlogResultsProvider($this->query, $this->controller))->search()->results(),
