@@ -92,7 +92,6 @@ class RainlabPagesResultsProvider extends ResultsProvider
     protected function viewBagContainsQuery($viewBag)
     {
         $ignoreViewBagKeys = [
-            'title',
             'url',
             'layout',
             'is_hidden',
@@ -100,13 +99,8 @@ class RainlabPagesResultsProvider extends ResultsProvider
         ];
 
         $properties = collect($viewBag)->except($ignoreViewBagKeys)->toArray();
-        foreach ($properties as $property) {
-            if ($this->containsQuery($property)) {
-                return true;
-            }
-        }
 
-        return false;
+        return $this->arrayContainsQuery($properties);
     }
 
     /**
