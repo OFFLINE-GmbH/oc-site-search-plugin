@@ -63,3 +63,5 @@
     - 'Added support for Indikator.News (thanks to gergo85)'
 1.2.18:
     - 'Fixed bug where titles of static pages where not searched (thanks to beenen445)'
+1.2.19:
+    - 'Added support for OFFLINE.SnipcartShop'

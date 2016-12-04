@@ -24,6 +24,7 @@
         'octoshop_itemurl'           => 'Url of product detail page',
         'octoshop_itemurl_comment'   => 'Only specify the fixed part of the URL without any dynamic parameters',
         'octoshop_itemurl_badge'     => 'Product',
+        'snipcartshop_itemurl_badge'     => 'Product',
         'experimental'               => 'Эксперементальная фитча":',
         'experimental_refer_to_docs' => 'Этот провайдер является эксперементальным! Пожалуйста, обратитесь <a target="_blank"
 href="http://octobercms.com/plugin/offline-sitesearch#documentation">к документации</a> перед использованием его.',

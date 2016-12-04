@@ -97,6 +97,20 @@ tabs:
             span: auto
             default: /product
 
+        snipcartshop_products_enabled:
+            type: switch
+            tab: OFFLINE.SnipcartShop
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: true
+
+        snipcartshop_products_label:
+            type: text
+            tab: OFFLINE.SnipcartShop
+            label: offline.sitesearch::lang.settings.provider_badge
+            comment: offline.sitesearch::lang.settings.provider_badge_comment
+            span: auto
+
         jiri_jkshop_enabled:
             type: switch
             tab: Jiri.JKShop

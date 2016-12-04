@@ -28,6 +28,7 @@
         'octoshop_itemurl'           => 'Url of product detail page',
         'octoshop_itemurl_comment'   => 'Only specify the fixed part of the URL without any dynamic parameters',
         'octoshop_itemurl_badge'     => 'Product',
+        'snipcartshop_itemurl_badge' => 'Product',
         'jkshop_itemurl'             => 'Url of product detail page',
         'jkshop_itemurl_comment'     => 'Only specify the fixed part of the URL without any dynamic parameters',
         'jkshop_itemurl_badge'       => 'Product',

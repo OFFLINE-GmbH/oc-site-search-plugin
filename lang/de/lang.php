@@ -26,6 +26,7 @@
         'octoshop_itemurl'           => 'Url der Produkt Detail-Seite',
         'octoshop_itemurl_comment'   => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'octoshop_itemurl_badge'     => 'Produkt',
+        'snipcartshop_itemurl_badge' => 'Produkt',
         'jkshop_itemurl'             => 'Url der Produkt Detail-Seite',
         'jkshop_itemurl_comment'     => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'jkshop_itemurl_badge'       => 'Produkt',

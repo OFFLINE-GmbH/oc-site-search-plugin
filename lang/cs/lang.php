@@ -22,6 +22,7 @@
         'octoshop_itemurl' => 'Url der Produkt Detail-Seite',
         'octoshop_itemurl_comment' => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'octoshop_itemurl_badge' => 'Produkt',
+        'snipcartshop_itemurl_badge' => 'Produkt',
         'experimental' => 'Experimentalní funkce:',
         'experimental_refer_to_docs' => 'Tato služba je zatím v testování! Před použitím doporučujeme přečíst <a target="_blank" href="http://octobercms.com/plugin/offline-sitesearch#documentation">stránku dokumentace</a>.',
     ],

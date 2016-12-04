@@ -26,6 +26,7 @@
         'octoshop_itemurl'           => 'آدرس صفحه جزئیات محصول',
         'octoshop_itemurl_comment'   => 'تنها بخش ثابت از آدرس بدون هیچ پارامترهای پویا و مشخص است.',
         'octoshop_itemurl_badge'     => 'محصول',
+        'snipcartshop_itemurl_badge'     => 'محصول',
         'jkshop_itemurl'             => 'آدرس محصول',
         'jkshop_itemurl_comment'     => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'jkshop_itemurl_badge'       => 'محصولات',
