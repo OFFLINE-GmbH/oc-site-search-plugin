@@ -9,6 +9,7 @@ This plugin adds global search capabilities to OctoberCMS.
 * Czech
 * Russian
 * Persian (Farsi)
+* Portuguese
 
 You can translate all contents into your own language.
 
