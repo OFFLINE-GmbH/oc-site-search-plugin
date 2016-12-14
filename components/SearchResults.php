@@ -9,10 +9,12 @@ use OFFLINE\SiteSearch\Classes\Providers\FeeglewebOctoshopProductsResultsProvide
 use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\IndikatorNewsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\JiriJKShopResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\OfflineSnipcartShopResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\ResponsivShowcaseResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\VojtaSvobodaBrandsResultsProvider;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
 use Request;
 
@@ -172,6 +174,7 @@ class SearchResults extends ComponentBase
         $results->setQuery($this->query);
         if ($this->query !== '') {
             $results->addMany([
+                (new OfflineSnipcartShopResultsProvider($this->query))->search()->results(),
                 (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
                 (new FeeglewebOctoshopProductsResultsProvider($this->query))->search()->results(),
                 (new JiriJKShopResultsProvider($this->query))->search()->results(),
@@ -182,6 +185,7 @@ class SearchResults extends ComponentBase
                 (new RainlabPagesResultsProvider($this->query))->search()->results(),
                 (new CmsPagesResultsProvider($this->query))->search()->results(),
                 (new GenericResultsProvider($this->query))->search()->results(),
+                (new VojtaSvobodaBrandsResultsProvider($this->query))->search()->results(),
             ]);
         }
 
