@@ -67,3 +67,5 @@
     - 'Added support for OFFLINE.SnipcartShop'
 1.2.20:
     - 'Added support for VojtaSvoboda.Brands (thanks to vojtasvoboda)'
+1.2.21:
+    - 'Added Portuguese translations (thanks to ribsousa)'
