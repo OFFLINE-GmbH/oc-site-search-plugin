@@ -69,3 +69,5 @@
     - 'Added support for VojtaSvoboda.Brands (thanks to vojtasvoboda)'
 1.2.21:
     - 'Added Portuguese translations (thanks to ribsousa)'
+1.2.22:
+    - 'Fixed Portuguese translations'
