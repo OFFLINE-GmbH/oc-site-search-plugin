@@ -23,6 +23,8 @@
         'news_page_comment'          => 'Select a page used to display a single news post. Needed to form URL for news.',
         'portfolio_itemurl'          => 'Url of portfolio detail page',
         'portfolio_itemurl_comment'  => 'Only specify the fixed part of the URL without any dynamic parameters',
+        'brands_itemurl'             => 'Url of brand detail page',
+        'brands_itemurl_comment'     => 'Only specify the fixed part of the URL without any dynamic parameters',
         'showcase_itemurl'           => 'Url of showcase detail page',
         'showcase_itemurl_comment'   => 'Only specify the fixed part of the URL without any dynamic parameters',
         'octoshop_itemurl'           => 'Url of product detail page',

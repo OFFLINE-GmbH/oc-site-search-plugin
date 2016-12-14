@@ -179,6 +179,29 @@ tabs:
             span: auto
             default: /portfolio/project
 
+        vojtasvoboda_brands_enabled:
+            type: switch
+            tab: VojtaSvoboda.Brands
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: true
+
+        vojtasvoboda_brands_label:
+            type: text
+            tab: VojtaSvoboda.Brands
+            label: offline.sitesearch::lang.settings.provider_badge
+            comment: offline.sitesearch::lang.settings.provider_badge_comment
+            span: auto
+            default: Brands
+
+        vojtasvoboda_brands_url:
+            type: text
+            tab: VojtaSvoboda.Brands
+            label: offline.sitesearch::lang.settings.brands_itemurl
+            comment: offline.sitesearch::lang.settings.brands_itemurl_comment
+            span: auto
+            default: /brand
+
         responsiv_showcase_enabled:
             type: switch
             tab: Responsiv.Showcase

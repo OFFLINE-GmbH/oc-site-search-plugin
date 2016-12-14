@@ -21,6 +21,8 @@
         'blog_page_comment'          => 'Wähle die Seite aus, auf der dein Blog-Post angezeigt wird.',
         'portfolio_itemurl'          => 'URL der Portfolio Detail-Seite',
         'portfolio_itemurl_comment'  => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
+        'brands_itemurl'             => 'URL der Brands Detail-Seite',
+        'brands_itemurl_comment'     => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'showcase_itemurl'           => 'URL der Shpwcase Detail-Seite',
         'showcase_itemurl_comment'   => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'octoshop_itemurl'           => 'Url der Produkt Detail-Seite',

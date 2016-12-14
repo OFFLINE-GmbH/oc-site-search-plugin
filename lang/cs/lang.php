@@ -19,6 +19,8 @@
         'blog_posturl_comment' => 'Zadejte pevnou část URL bez dynamických parametrů, jako je konkrétní URL článku, nebo stránkování',
         'portfolio_itemurl' => 'Url of portfolio detail page',
         'portfolio_itemurl_comment' => 'Zadejte pevnou část URL bez dynamických parametrů, jako je konkrétní URL článku, nebo stránkování',
+        'brands_itemurl' => 'URL detailní stránky značky',
+        'brands_itemurl_comment' => 'Zadejte pevnou část URL bez dynamických parametrů, jako je konkrétní URL článku, nebo stránkování',
         'octoshop_itemurl' => 'Url der Produkt Detail-Seite',
         'octoshop_itemurl_comment' => 'Gib nur den statischen Teil der URL ein, keine dynamischen Parameter',
         'octoshop_itemurl_badge' => 'Produkt',

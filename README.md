@@ -22,6 +22,7 @@ You can translate all contents into your own language.
 * [RadiantWeb.ProBlog](https://octobercms.com/plugin/radiantweb-problog)
 * [Arrizalamin.Portfolio](https://octobercms.com/plugin/arrizalamin-portfolio)
 * [Responsiv.Showcase](https://octobercms.com/plugin/responsiv-showcase)
+* [VojtaSvoboda.Brands](https://octobercms.com/plugin/vojtasvoboda-brands)
 * Native CMS pages (experimental)
 
 **Multilingual contents via RainLab.Translate are supported.**
@@ -222,6 +223,10 @@ the URL: `/blog`. If your posts are located under `/blog/:category/:slug` the de
 Make sure you set the `Url of portfolio detail page` setting to point to the right url. Only specify the fixed part of
 the URL: `/portfolio/project`. If your detail page is located under `/portfolio/project/:slug` the default value is okay.
 
+### VojtaSvoboda.Brands
+
+Make sure you set the `Url of brand detail page` setting to point to the right URL. Only specify the fixed part of the URL: `/brand`. If your brand detail page is located under `/brand/:slug` then insert only `/brand` without the slug parameter.
+
 ### CMS pages (experimental)
 
 If you want to provide search results for CMS pages change the `enabled` setting to `On`.
@@ -243,3 +248,4 @@ To overwrite the default markup copy all files from `plugins/offline/sitesearch/
 `themes/your-theme/partials/searchResults` and modify them as needed.
 
 If you gave an alias to the `searchResults` component make sure to put the markup in the appropriate partials directory `themes/your-theme/partials/your-given-alias`.
+
