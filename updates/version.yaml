@@ -71,3 +71,5 @@
     - 'Added Portuguese translations (thanks to ribsousa)'
 1.2.22:
     - 'Fixed Portuguese translations'
+1.2.23:
+    - 'Fixed support for translated Rainlab.Blog contents'
