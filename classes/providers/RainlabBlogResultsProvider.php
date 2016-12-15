@@ -2,6 +2,7 @@
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use Cms\Classes\Controller;
+use DB;
 use Illuminate\Database\Eloquent\Collection;
 use OFFLINE\SiteSearch\Classes\Result;
 use OFFLINE\SiteSearch\Models\Settings;
@@ -74,15 +75,67 @@ class RainlabBlogResultsProvider extends ResultsProvider
      */
     protected function posts()
     {
-        return Post::isPublished()
-                   ->with(['featured_images'])
+        // If Rainlab.Translate is not installed or we are currently,
+        // using the default locale we simply query the default table.
+        $translator = $this->translator();
+        if ( ! $translator || $translator->getDefaultLocale() === $translator->getLocale()) {
+            return $this->postsFromDefaultLocale();
+        }
+
+        // If Rainlab.Translate is available we also have to
+        // query the rainlab_translate_attributes table for translated
+        // contents since the title and content attributes on the Post
+        // model are not indexed.
+        return $this->postsFromCurrentLocale();
+    }
+
+    /**
+     * Returns all matching posts from the default locale.
+     * Translated attributes are ignored.
+     *
+     * @return Collection
+     */
+    protected function postsFromDefaultLocale()
+    {
+        return $this->defaultModelQuery()
                     ->where(function ($query) {
                         $query->where('title', 'like', "%{$this->query}%")
-                            ->orWhere('content', 'like', "%{$this->query}%")
-                            ->orWhere('excerpt', 'like', "%{$this->query}%");
+                              ->orWhere('content', 'like', "%{$this->query}%")
+                              ->orWhere('excerpt', 'like', "%{$this->query}%");
                     })
-                   ->orderBy('published_at', 'desc')
-                   ->get();
+                    ->get();
+    }
+
+    /**
+     * Returns all matching posts with translated contents.
+     *
+     * @return Collection
+     */
+    protected function postsFromCurrentLocale()
+    {
+        // First fetch all model ids with maching contents.
+        $results = DB::table('rainlab_translate_attributes')
+                     ->where('model_type', Post::class)
+                     ->where('attribute_data', 'LIKE', "%{$this->query}%")
+                     ->get(['model_id']);
+
+        $ids = collect($results)->pluck('model_id');
+
+        // Then return all maching posts via Eloquent.
+        return $this->defaultModelQuery()
+                    ->whereIn('id', $ids)
+                    ->get();
+    }
+
+    /**
+     * This is the default "base query" for quering
+     * matching models.
+     */
+    protected function defaultModelQuery()
+    {
+        return Post::isPublished()
+                   ->with(['featured_images'])
+                   ->orderBy('published_at', 'desc');
     }
 
     /**
@@ -94,7 +147,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
     protected function isInstalledAndEnabled()
     {
         return $this->isPluginAvailable($this->identifier)
-        && Settings::get('rainlab_blog_enabled', true);
+            && Settings::get('rainlab_blog_enabled', true);
     }
 
     /**
