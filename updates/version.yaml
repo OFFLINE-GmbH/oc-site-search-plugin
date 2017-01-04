@@ -73,3 +73,5 @@
     - 'Fixed Portuguese translations'
 1.2.23:
     - 'Fixed support for translated Rainlab.Blog contents'
+1.2.24:
+    - 'Added composer.json to allow loading plugin as dependency (thanks to adduc)'
