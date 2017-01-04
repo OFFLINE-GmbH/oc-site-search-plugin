@@ -1,2 +1,4 @@
 oc-sitesearch-plugin.zip
 .idea
+/vendor
+/composer.lock
