@@ -209,8 +209,12 @@ class Result
         $loweredText  = mb_strtolower($text);
         $loweredQuery = mb_strtolower($this->query);
 
-        $position = mb_strpos($loweredText, '<mark>' . $loweredQuery . '</mark>');
+        $positions = $this->getAllMarkedPositions($loweredText, $loweredQuery);
+
+        $position = $positions[0];
         $start    = (int)$position - ($length / 2);
+
+        $length = $this->adjustExcerptLength($start, $length, $loweredQuery, $positions);
 
         if ($start < 0) {
             $excerpt = Str::limit($text, $length);
@@ -263,6 +267,84 @@ class Result
         }
 
         return $excerpt;
+    }
+
+
+    /**
+     *
+     * Returns array of numeric positions of all $query occurrences in $text
+     *
+     * @param string $text
+     * @param string $query
+     * @return int[]
+     */
+    protected function getAllMarkedPositions($text, $query) {
+        $positions = array();
+
+        $lastPos = 0;
+        do {
+            // this way, $position[0] will always be set to either int or FALSE
+            $lastPos = mb_strpos($text, '<mark>' . $query . '</mark>', $lastPos);
+            $positions[] = $lastPos;
+            if ($lastPos !== FALSE) {
+                $lastPos += mb_strlen('<mark>' . $query . '</mark>');
+            }
+        } while ($lastPos !== FALSE);
+
+        return $positions;
+    }
+
+    /**
+     *
+     * If there are more than 1 occurence of query text, there's a possibility of
+     * second (of third, etc) <mark>query</mark> appearance right on the excerpt border
+     *
+     * @param int $start - calculated start position
+     * @param int $length - current excerpt length
+     * @param string $query - query text
+     * @param int[] $positions - array of <mark>query</mark> positions
+     * @return int
+     */
+    private function adjustExcerptLength($start, $length, $query, $positions) {
+        if (count($positions) < 2) {
+            // no need to check
+            return $length;
+        }
+
+        $query_length = mb_strlen('<mark>' . $query . '</mark>');
+
+        array_shift($positions);
+        array_pop($positions);
+        // process positions after the first one and before last one (which is FALSE)
+        foreach ($positions as $position) {
+            if ($start <= 0) {
+                if ($position < ($length - $query_length)) {
+                    // still inside excerpt
+                    continue;
+                } else if ($position > $length) {
+                    // outside of excerpt
+                    break;
+                } else {
+                    // we found a match on the border of excerpt, it could mess up markup so update the length to remove it
+                    $length = $position - 1;
+                    break;
+                }
+            } else {
+                if ($position < ($start + $length/2 - $query_length)) {
+                    // still inside excerpt
+                    continue;
+                } else if ($position > $length/2) {
+                    // outside of excerpt
+                    break;
+                } else {
+                    // we found a match on the border of excerpt, it could mess up markup so update the length to remove it
+                    $length = ($position - 1 - $start) * 2;
+                    break;
+                }
+            }
+        }
+
+        return $length;
     }
 
 }
