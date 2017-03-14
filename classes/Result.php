@@ -146,9 +146,7 @@ class Result
     public function setText($text)
     {
         $this->text    = $this->prepare($text);
-        $this->excerpt = $this->createExcerpt(
-            $this->markQuery($this->text)
-        );
+        $this->excerpt = $this->createExcerpt($this->text);
 
         return $this;
     }
@@ -206,7 +204,7 @@ class Result
     {
         $length = Settings::get('excerpt_length', 250);
 
-        $loweredText  = mb_strtolower($text);
+        $loweredText  = $this->markQuery(mb_strtolower($text));
         $loweredQuery = mb_strtolower($this->query);
 
         $position = mb_strpos($loweredText, '<mark>' . $loweredQuery . '</mark>');
@@ -220,7 +218,7 @@ class Result
             $excerpt = '...' . trim(mb_substr($text, $start, $length)) . '...';
         }
 
-        return $this->checkBorders($excerpt);
+        return $this->markQuery($excerpt);
     }
 
 
@@ -239,30 +237,7 @@ class Result
             return $text;
         }
 
-        return (string)preg_replace('/(' . preg_quote($this->query, '/') . ')/i', '<mark>$0</mark>', $text);
-    }
-
-
-    /**
-     * Checks for unclosed/broken <mark> tags on the
-     * end of the excerpt and removes it if found.
-     *
-     * @param string $excerpt
-     *
-     * @return string
-     */
-    protected function checkBorders($excerpt)
-    {
-        // count opening and closing tags
-        $openings = substr_count($excerpt, '<mark>');
-        $closings = substr_count($excerpt, '</mark>');
-        if ($openings !== $closings) {
-            // last mark tag seems to be broken, remove it
-            $position = mb_strrpos($excerpt, '<mark>');
-            $excerpt  = trim(mb_substr($excerpt, 0, $position)) . '...';
-        }
-
-        return $excerpt;
+        return (string)preg_replace('/(' . preg_quote($this->query, '/') . ')/iu', '<mark>$0</mark>', $text);
     }
 
 }
