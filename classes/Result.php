@@ -204,10 +204,10 @@ class Result
     {
         $length = Settings::get('excerpt_length', 250);
 
-        $loweredText  = $this->markQuery(mb_strtolower($text));
+        $loweredText  = mb_strtolower($text);
         $loweredQuery = mb_strtolower($this->query);
 
-        $position = mb_strpos($loweredText, '<mark>' . $loweredQuery . '</mark>');
+        $position = mb_strpos($loweredText, $loweredQuery);
         $start    = (int)$position - ($length / 2);
 
         if ($start < 0) {
