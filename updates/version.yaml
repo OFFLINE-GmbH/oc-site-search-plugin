@@ -77,3 +77,5 @@
     - 'Added composer.json to allow loading plugin as dependency (thanks to adduc)'
 1.2.25:
     - 'Fixed bug that sometimes lead to broken html in search results (thanks to graker)'
+1.2.26:
+    - 'Exclude hidden static pages from search results (thanks to plyusninva)'
