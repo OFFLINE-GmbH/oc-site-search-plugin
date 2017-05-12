@@ -15,6 +15,7 @@ use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\ResponsivShowcaseResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\VojtaSvobodaBrandsResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\GrakerPhotoAlbumsResultsProvider;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
 use Request;
 
@@ -186,6 +187,7 @@ class SearchResults extends ComponentBase
                 (new CmsPagesResultsProvider($this->query))->search()->results(),
                 (new GenericResultsProvider($this->query))->search()->results(),
                 (new VojtaSvobodaBrandsResultsProvider($this->query))->search()->results(),
+                (new GrakerPhotoAlbumsResultsProvider($this->query, $this->controller))->search()->results(),
             ]);
         }
 

@@ -79,3 +79,5 @@
     - 'Fixed bug that sometimes lead to broken html in search results (thanks to graker)'
 1.2.26:
     - 'Exclude hidden static pages from search results (thanks to plyusninva)'
+1.2.27:
+    - 'Added support for Graker.PhotoAlbums (thanks to graker)'
