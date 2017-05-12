@@ -24,6 +24,7 @@ You can translate all contents into your own language.
 * [Arrizalamin.Portfolio](https://octobercms.com/plugin/arrizalamin-portfolio)
 * [Responsiv.Showcase](https://octobercms.com/plugin/responsiv-showcase)
 * [VojtaSvoboda.Brands](https://octobercms.com/plugin/vojtasvoboda-brands)
+* [Graker.PhotoAlbums](https://octobercms.com/plugin/graker-photoalbums)
 * Native CMS pages (experimental)
 
 **Multilingual contents via RainLab.Translate are supported.**
