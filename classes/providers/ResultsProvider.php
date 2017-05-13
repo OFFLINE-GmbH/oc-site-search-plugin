@@ -1,4 +1,5 @@
 <?php
+
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use OFFLINE\SiteSearch\Classes\Result;
@@ -93,6 +94,10 @@ abstract class ResultsProvider
             $result->provider = $this->displayName;
         }
 
+        if ( ! $result->identifier) {
+            $result->identifier = $this->identifier();
+        }
+
         $this->results[] = $result;
 
         return $this;
@@ -118,7 +123,7 @@ abstract class ResultsProvider
     protected function isPluginAvailable($name)
     {
         return PluginManager::instance()->hasPlugin($name)
-        && ! PluginManager::instance()->isDisabled($name);
+            && ! PluginManager::instance()->isDisabled($name);
     }
 
 
