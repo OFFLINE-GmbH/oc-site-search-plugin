@@ -121,6 +121,6 @@ class CmsPagesResultsProvider extends ResultsProvider
      */
     public function identifier()
     {
-        return '';
+        return 'CMS.Page';
     }
 }

@@ -81,3 +81,7 @@
     - 'Exclude hidden static pages from search results (thanks to plyusninva)'
 1.2.27:
     - 'Added support for Graker.PhotoAlbums (thanks to graker)'
+1.2.28:
+    - 'Added new result.identifier property'
+1.2.29:
+    - 'Optimized thumbnail generation for Graker.PhotoAlbums results (thanks to graker)'

@@ -30,6 +30,10 @@ class Result
     /**
      * @var string
      */
+    public $identifier;
+    /**
+     * @var string
+     */
     public $query;
     /**
      * @var mixed
