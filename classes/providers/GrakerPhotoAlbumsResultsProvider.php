@@ -75,9 +75,9 @@ class GrakerPhotoAlbumsResultsProvider extends ResultsProvider
         $result->url   = $model->setUrl(Settings::get('graker_photoalbums_' . $type . '_page', ''), $this->controller);
 
         if ($type == 'album') {
-            $result->thumb = $this->getThumb($model->latestPhoto());
-        } elseif ($type == 'photo') {
-            $result->thumb = $this->getThumb($model->image);
+            $result->thumb = $model->getImage();
+        } else if ($type == 'photo') {
+            $result->thumb = $model->image;
         }
 
         $this->addResult($result);
@@ -94,7 +94,14 @@ class GrakerPhotoAlbumsResultsProvider extends ResultsProvider
                     ->where(function ($query) {
                         $query->where('title', 'like', "%{$this->query}%")
                               ->orWhere('description', 'like', "%{$this->query}%");
-                    })->get();
+                    })
+                    ->with(['latestPhoto' => function ($query) {
+                        $query->with('image');
+                    }])
+                    ->with(['front' => function ($query) {
+                        $query->with('image');
+                    }])
+                    ->get();
     }
 
     /**
