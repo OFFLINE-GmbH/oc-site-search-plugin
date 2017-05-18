@@ -1,0 +1,14 @@
+<form action="{{ 'suche' | page }}" method="get">
+    <input data-track-input
+           data-request="onType"
+           data-request-update="'{{ __SELF__ }}::autocomplete': '#autocomplete-results'"
+           name="q" type="text"
+           placeholder="What are you looking for?"
+           autocomplete="off">
+
+    <div id="autocomplete-results">
+        Res
+    </div>
+
+    <button type="submit">Search</button>
+</form>
