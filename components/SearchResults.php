@@ -58,7 +58,7 @@ class SearchResults extends ComponentBase
      *
      * @var ResultCollection
      */
-    protected $resultCollection;
+    public $resultCollection;
     /**
      * The current page number.
      *
