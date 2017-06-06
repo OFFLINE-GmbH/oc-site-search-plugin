@@ -70,6 +70,11 @@ href="http://octobercms.com/plugin/offline-sitesearch#documentation">the documen
             'auto_complete_result_count' => [
                 'title' => 'Max. autocomplete results',
             ],
+            'search_page' => [
+                'title' => 'Page where all search results are listed',
+                'description' => '-- A link to display all results will be added to the end of the autocompleted results listing',
+                'null_value' => '-- Don\'t display a link',
+            ],
         ],
     ],
     'siteSearchInclude' => [

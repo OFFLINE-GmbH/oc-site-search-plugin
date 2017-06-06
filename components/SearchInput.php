@@ -1,5 +1,6 @@
 <?php namespace OFFLINE\SiteSearch\Components;
 
+use Cms\Classes\Page;
 use DomainException;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
 use OFFLINE\SiteSearch\Classes\SearchService;
@@ -44,7 +45,26 @@ class SearchInput extends BaseComponent
                 'validationMessage' => 'Please enter only numbers',
                 'default'           => '5',
             ],
+            'searchPage'              => [
+                'title'       => 'offline.sitesearch::lang.searchInput.properties.search_page.title',
+                'description' => 'offline.sitesearch::lang.searchInput.properties.search_page.description',
+                'type'        => 'dropdown',
+            ],
         ];
+    }
+
+    /**
+     * Returns all available pages.
+     *
+     * @return array
+     */
+    public function getSearchPageOptions()
+    {
+        $pages = Page::all();
+
+        $options = $pages->pluck('title', 'url')->toArray();
+
+        return ['' => trans('offline.sitesearch::lang.searchInput.properties.search_page.null_value'),] + $options;
     }
 
     /**
@@ -57,6 +77,7 @@ class SearchInput extends BaseComponent
     {
         $this->setVar('query', post('q', ''));
         $this->setVar('autoCompleteResultCount');
+        $this->setVar('searchPage');
 
         $results = $this->search();
 

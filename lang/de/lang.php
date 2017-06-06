@@ -68,6 +68,11 @@ href="http://octobercms.com/plugin/offline-sitesearch#documentation">die Dokumen
             'auto_complete_result_count' => [
                 'title' => 'Max. Anzahl Autovervollständigungen',
             ],
+            'search_page' => [
+                'title' => 'Seite für alle Suchresultate',
+                'description' => 'Ein Link um alle Resultate anzuzeigen wird am Ende der Treffer auf diese Seite verweisen.',
+                'null_value' => '-- Nicht verlinkt',
+            ],
         ],
     ],
     'siteSearchInclude' => [

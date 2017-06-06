@@ -1,6 +1,13 @@
 {% for result in results %}
-    {# Display all results #}
+    {# Display results #}
     {% partial __SELF__ ~ '::searchresult.htm' result = result %}
+    {% if searchPage %}
+        <p class="ss-show-all-results">
+            <a href="{{ searchPage | page }}?q={{ query | url_encode(true) }}">
+                Show all results &raquo;
+            </a>
+        </p>
+    {% endif %}
 {% else %}
     {# No results found #}
     <p>Your search for {{ query }} returned no results.</p>
