@@ -87,3 +87,5 @@
     - 'Optimized thumbnail generation for Graker.PhotoAlbums results (thanks to graker)'
 1.2.30:
     - The searchResults component's resultsCollection is now publically accessible
+1.2.31:
+    - Added model property for each search result to retreive the original model the result was generated from

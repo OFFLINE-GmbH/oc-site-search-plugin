@@ -171,6 +171,7 @@ public function boot()
                                            // position in the results listing
                 // 'meta' => 'data',       // optional, any other information you want
                                            // to associate with this result
+                // 'model' => $item,       // optional, pass along the original model
             ];
         });
 

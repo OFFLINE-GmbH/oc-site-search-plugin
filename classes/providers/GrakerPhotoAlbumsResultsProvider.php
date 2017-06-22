@@ -73,6 +73,7 @@ class GrakerPhotoAlbumsResultsProvider extends ResultsProvider
         $result->text  = $model->description;
         $result->meta  = $model->created_at;
         $result->url   = $model->setUrl(Settings::get('graker_photoalbums_' . $type . '_page', ''), $this->controller);
+        $result->model = $model;
 
         if ($type == 'album') {
             $result->thumb = $model->getImage();

@@ -34,6 +34,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
             $result->title = $page->viewBag['title'];
             $result->text  = $page->parsedMarkup;
             $result->url   = $this->getUrl($page);
+            $result->model = $page;
 
             $this->addResult($result);
         }
