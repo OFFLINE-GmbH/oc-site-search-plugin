@@ -139,12 +139,14 @@ A link is placed below each search result. Use this property to change that link
 
 ## Add support for custom plugin contents
 
+### Simple method
+
 To return search results for you own custom plugin, register an event listener for the `offline.sitesearch.query`
 event in your plugin's boot method.
 
 Return an array containing a `provider` string and `results` array. Each result must provide at least a `title` key.  
 
-### Example to search for custom `documents`
+#### Example to search for custom `documents`
 
 ```php
 public function boot()
@@ -184,6 +186,76 @@ public function boot()
 ```
 
 That's it!
+
+### Advanced method
+
+If you need a bit more flexibility you can also create your own `ResultsProvider` class. Simply extend SiteSearch's 
+`ResultProvider` and implement the needed methods. Have a look at the existing providers shipped by this plugin to get
+an idea of all the possibilities.
+
+When your own `ResultsProvider` class is ready, register an event listener for the `offline.sitesearch.extend`
+event in your plugin's boot method. There you can return one `ResultsProvider` (or multiple in an array) which will
+be included every time a user runs a search on your website.  
+
+#### Advanced example to search for custom `documents`
+
+```php
+public function boot()
+{
+    Event::listen('offline.sitesearch.extend', function () {
+        return new DocumentsSearchProvider();
+        
+        // or
+        // return [new DocumentsSearchProvider(), new FilesSearchProvider()]; 
+    });
+}
+```
+
+```php
+<?php
+use OFFLINE\SiteSearch\Classes\Providers\ResultsProvider;
+
+class DocumentsSearchProvider extends ResultsProvider
+{
+    public function search()
+    {
+        // Get your matching models
+        $matching = YourCustomDocumentModel::where('title', 'like', "%{$this->query}%")
+                                           ->orWhere('content', 'like', "%{$this->query}%")
+                                           ->get();
+
+        // Create a new Result for every match
+        foreach ($matching as $match) {
+            $result            = $this->newResult();
+
+            $result->relevance = 1;
+            $result->title     = $match->title;
+            $result->text      = $match->description;
+            $result->url       = $match->url;
+            $result->thumb     = $match->image;
+            $result->model     = $match;
+            $result->meta      = [
+                'some_data' => $match->some_other_property,
+            ];
+
+            // Add the results to the results collection
+            $this->addResult($result);
+        }
+
+        return $this;
+    }
+
+    public function displayName()
+    {
+        return 'My Result';
+    }
+
+    public function identifier()
+    {
+        return 'VendorName.PluginName';
+    }
+}
+```
 
 ## Settings
 

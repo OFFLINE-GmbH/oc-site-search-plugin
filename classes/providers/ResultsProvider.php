@@ -59,22 +59,33 @@ abstract class ResultsProvider
     }
 
     /**
-     * Search for results.
+     * Search your contents for matching models.
+     *
+     * Create a new instance of the OFFLINE\SiteSearch\Classes\Result class
+     * for every one of your results. Then add it to the results collection
+     * by calling the addResult() method.
+     *
+     * @see the SiteSearch native providers for more examples.
      *
      * @return ResultsProvider
      */
     abstract public function search();
 
     /**
-     * The display name for a provider.
-     * Displayed as badge for each result.
+     * The display name for this provider.
+     *
+     * The returned string from this method is displayed
+     * as a badge for each individual result.
      *
      * @return string
      */
     abstract public function displayName();
 
     /**
-     * Returns the plugin's identifier string.
+     * A unique identifier for this provider.
+     *
+     * It is recommended to return the plugin identifier
+     * string used by October. Eg: OFFLINE.SiteSearch
      *
      * @return string
      */
@@ -123,6 +134,18 @@ abstract class ResultsProvider
         $this->query = $query;
 
         return $this;
+    }
+
+    /**
+     * Returns a new Result instance.
+     *
+     * @param int $relevance
+     *
+     * @return Result
+     */
+    protected function newResult($relevance = 1)
+    {
+        return new Result($this->query, $relevance);
     }
 
     /**
