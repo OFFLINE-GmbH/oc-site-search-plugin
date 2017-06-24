@@ -50,7 +50,7 @@ abstract class ResultsProvider
      *
      * @param $query
      */
-    public function __construct($query)
+    public function __construct($query = null)
     {
         $this->query       = $query;
         $this->identifier  = $this->identifier();
@@ -111,6 +111,18 @@ abstract class ResultsProvider
     public function results()
     {
         return $this->results;
+    }
+
+    /**
+     * Sets the query for this provider.
+     *
+     * @return ResultsProvider
+     */
+    public function setQuery($query)
+    {
+        $this->query = $query;
+
+        return $this;
     }
 
     /**

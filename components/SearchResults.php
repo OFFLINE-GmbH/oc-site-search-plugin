@@ -1,29 +1,16 @@
 <?php namespace OFFLINE\SiteSearch\Components;
 
-use Cms\Classes\ComponentBase;
 use DomainException;
 use Illuminate\Pagination\LengthAwarePaginator;
-use OFFLINE\SiteSearch\Classes\Providers\ArrizalaminPortfolioResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\CmsPagesResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\FeeglewebOctoshopProductsResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\IndikatorNewsResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\JiriJKShopResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\OfflineSnipcartShopResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\ResponsivShowcaseResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\VojtaSvobodaBrandsResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\GrakerPhotoAlbumsResultsProvider;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
+use OFFLINE\SiteSearch\Classes\SearchService;
 use Request;
 
 /**
  * SearchResults Component
  * @package OFFLINE\SiteSearch\Components
  */
-class SearchResults extends ComponentBase
+class SearchResults extends BaseComponent
 {
     /**
      * The message to display when no results are returned.
@@ -126,7 +113,7 @@ class SearchResults extends ComponentBase
     {
         $this->prepareVars();
 
-        $this->resultCollection = $this->buildResultCollection();
+        $this->resultCollection = $this->search();
     }
 
     /**
@@ -145,55 +132,16 @@ class SearchResults extends ComponentBase
     }
 
     /**
-     * Sets a var as a property on this class
-     * and as a key in $this->page.
-     *
-     * If no value is specified the component property
-     * named $var is set as value.
-     *
-     * @param      $var
-     * @param null $value
-     */
-    protected function setVar($var, $value = null)
-    {
-        if ($value === null) {
-            $value = $this->property($var);
-        }
-        $this->{$var} = $this->page[$var] = $value;
-    }
-
-    /**
-     * Call all result providers and combine
-     * their results in a ResultCollection.
+     * Fetch the search results.
      *
      * @throws DomainException
      * @return ResultCollection
      */
-    protected function buildResultCollection()
+    protected function search()
     {
-        $results = new ResultCollection();
-        $results->setQuery($this->query);
-        if ($this->query !== '') {
-            $results->addMany([
-                (new OfflineSnipcartShopResultsProvider($this->query))->search()->results(),
-                (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
-                (new FeeglewebOctoshopProductsResultsProvider($this->query))->search()->results(),
-                (new JiriJKShopResultsProvider($this->query))->search()->results(),
-                (new IndikatorNewsResultsProvider($this->query))->search()->results(),
-                (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
-                (new ResponsivShowcaseResultsProvider($this->query))->search()->results(),
-                (new RainlabBlogResultsProvider($this->query, $this->controller))->search()->results(),
-                (new RainlabPagesResultsProvider($this->query))->search()->results(),
-                (new CmsPagesResultsProvider($this->query))->search()->results(),
-                (new GenericResultsProvider($this->query))->search()->results(),
-                (new VojtaSvobodaBrandsResultsProvider($this->query))->search()->results(),
-                (new GrakerPhotoAlbumsResultsProvider($this->query, $this->controller))->search()->results(),
-            ]);
-        }
+        $search = new SearchService($this->query, $this->controller);
 
-        $results = $results->sortByDesc('relevance');
-
-        return $results;
+        return $search->results();
     }
 
     /**
