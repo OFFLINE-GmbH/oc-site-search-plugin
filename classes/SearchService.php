@@ -112,8 +112,9 @@ class SearchService
      */
     protected function additionalResultsProviders()
     {
-        $returns = collect(Event::fire('offline.sitesearch.extend'));
-        $returns->flatten()->each(function ($return) {
+        $returns = collect(Event::fire('offline.sitesearch.extend'))->flatten();
+
+        $returns->each(function ($return) {
             if ( ! $return instanceof ResultsProvider) {
                 throw new LogicException('The offline.sitesearch.extend listener needs to return a ResultsProvider instance.');
             }
