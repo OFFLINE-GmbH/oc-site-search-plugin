@@ -91,3 +91,5 @@
     - Added model property for each search result to retreive the original model the result was generated from
 1.2.32:
     - 'Added support for custom ResultsProvider classes'
+1.2.33:
+    - 'Fix the use of multiple custom ResultsProvider for a plugin'
