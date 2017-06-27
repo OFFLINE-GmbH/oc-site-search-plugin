@@ -4,6 +4,9 @@ namespace OFFLINE\SiteSearch\Classes;
 
 
 use Cms\Classes\Controller;
+use Event;
+use Illuminate\Support\Collection;
+use LogicException;
 use OFFLINE\SiteSearch\Classes\Providers\ArrizalaminPortfolioResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\CmsPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\FeeglewebOctoshopProductsResultsProvider;
@@ -16,6 +19,7 @@ use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\ResponsivShowcaseResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\ResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\VojtaSvobodaBrandsResultsProvider;
 
 class SearchService
@@ -43,29 +47,79 @@ class SearchService
      */
     public function results()
     {
-        $results = new ResultCollection();
-        $results->setQuery($this->query);
+        $resultsCollection = new ResultCollection();
+        $resultsCollection->setQuery($this->query);
 
         if ($this->query === '') {
-            return $results;
+            return $resultsCollection;
         }
 
-        $results->addMany([
-            (new OfflineSnipcartShopResultsProvider($this->query))->search()->results(),
-            (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
-            (new FeeglewebOctoshopProductsResultsProvider($this->query))->search()->results(),
-            (new JiriJKShopResultsProvider($this->query))->search()->results(),
-            (new IndikatorNewsResultsProvider($this->query))->search()->results(),
-            (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
-            (new ResponsivShowcaseResultsProvider($this->query))->search()->results(),
-            (new RainlabBlogResultsProvider($this->query, $this->controller))->search()->results(),
-            (new RainlabPagesResultsProvider($this->query))->search()->results(),
-            (new CmsPagesResultsProvider($this->query))->search()->results(),
-            (new GenericResultsProvider($this->query))->search()->results(),
-            (new VojtaSvobodaBrandsResultsProvider($this->query))->search()->results(),
-            (new GrakerPhotoAlbumsResultsProvider($this->query, $this->controller))->search()->results(),
-        ]);
+        $results = $this->resultsProviders();
 
-        return $results->sortByDesc('relevance');
+        $results = $results->map(function (ResultsProvider $provider) {
+            $provider->setQuery($this->query);
+            $provider->search();
+
+            return $provider->results();
+        });
+
+        $resultsCollection->addMany($results->toArray());
+
+        return $resultsCollection->sortByDesc('relevance');
+    }
+
+    /**
+     * Returns all native and the additional results providers.
+     *
+     * @return Collection
+     */
+    protected function resultsProviders()
+    {
+        return collect($this->nativeResultsProviders())
+            ->merge($this->additionalResultsProviders());
+    }
+
+    /**
+     * Return all natively supported results providers.
+     *
+     * @return ResultsProvider[]
+     */
+    protected function nativeResultsProviders()
+    {
+        return [
+            new OfflineSnipcartShopResultsProvider(),
+            new RadiantWebProBlogResultsProvider(),
+            new FeeglewebOctoshopProductsResultsProvider(),
+            new JiriJKShopResultsProvider(),
+            new IndikatorNewsResultsProvider(),
+            new ArrizalaminPortfolioResultsProvider(),
+            new ResponsivShowcaseResultsProvider(),
+            new RainlabBlogResultsProvider($this->query, $this->controller),
+            new RainlabPagesResultsProvider(),
+            new CmsPagesResultsProvider(),
+            new GenericResultsProvider(),
+            new VojtaSvobodaBrandsResultsProvider(),
+            new GrakerPhotoAlbumsResultsProvider($this->query, $this->controller),
+        ];
+    }
+
+    /**
+     * Gather all additional ResultsProviders that
+     * are registered by other plugins.
+     *
+     * @return ResultsProvider[]
+     * @throws \LogicException
+     */
+    protected function additionalResultsProviders()
+    {
+        $returns = collect(Event::fire('offline.sitesearch.extend'))->flatten();
+
+        $returns->each(function ($return) {
+            if ( ! $return instanceof ResultsProvider) {
+                throw new LogicException('The offline.sitesearch.extend listener needs to return a ResultsProvider instance.');
+            }
+        });
+
+        return $returns->toArray();
     }
 }
