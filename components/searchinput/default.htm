@@ -1,10 +1,13 @@
-<form action="{{ 'suche' | page }}" method="get">
-    <input data-track-input
-           data-request="onType"
-           data-request-update="'{{ __SELF__ }}::autocomplete': '#autocomplete-results'"
-           name="q" type="text"
+<form action="{{ __SELF__.searchPage | page }}?q={{ query | url_encode(true) }}" method="get">
+    <input name="q"
+           type="text"
            placeholder="What are you looking for?"
-           autocomplete="off">
-
+           autocomplete="off"
+            {% if __SELF__.useAutoComplete %}
+                data-track-input
+                data-request="onType"
+                data-request-update="'{{ __SELF__ }}::autocomplete': '#autocomplete-results'"
+            {% endif %}
+    >
     <div id="autocomplete-results"></div>
 </form>

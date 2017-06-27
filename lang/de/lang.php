@@ -65,12 +65,15 @@ href="http://octobercms.com/plugin/offline-sitesearch#documentation">die Dokumen
         'title'       => 'Suchfeld',
         'description' => 'Zeigt ein Suchfeld an',
         'properties'  => [
+            'use_auto_complete' => [
+                'title' => 'Suche während der Eingabe',
+            ],
             'auto_complete_result_count' => [
-                'title' => 'Max. Anzahl Autovervollständigungen',
+                'title' => 'Max. Anzahl Sofort-Resultate',
             ],
             'search_page' => [
-                'title' => 'Seite für alle Suchresultate',
-                'description' => 'Ein Link um alle Resultate anzuzeigen wird am Ende der Treffer auf diese Seite verweisen.',
+                'title' => 'Seite für Suchresultate',
+                'description' => 'Die Suchanfrage wird an diese Seite versendet.',
                 'null_value' => '-- Nicht verlinkt',
             ],
         ],

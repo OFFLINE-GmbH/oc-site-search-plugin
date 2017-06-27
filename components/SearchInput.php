@@ -16,11 +16,30 @@ class SearchInput extends BaseComponent
     public $query;
 
     /**
+     * Wheter or not to use the autocomplete feature.
+     *
+     * @var boolean
+     */
+    public $useAutoComplete = true;
+
+    /**
      * Display this many autocomplete results max.
      *
      * @var int
      */
-    protected $autoCompleteResultCount = 5;
+    public $autoCompleteResultCount = 5;
+    /**
+     * Whether or not to display a provider badge for reach result.
+     *
+     * @var int
+     */
+    public $showProviderBadge;
+    /**
+     * The «show all» link will point to this page.
+     *
+     * @var int
+     */
+    public $searchPage;
 
     /**
      * The component's details.
@@ -38,12 +57,23 @@ class SearchInput extends BaseComponent
     public function defineProperties()
     {
         return [
+            'useAutoComplete' => [
+                'title'       => 'offline.sitesearch::lang.searchInput.properties.use_auto_complete.title',
+                'type'        => 'checkbox',
+                'default'     => 1,
+            ],
             'autoCompleteResultCount' => [
                 'title'             => 'offline.sitesearch::lang.searchInput.properties.auto_complete_result_count.title',
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$',
                 'validationMessage' => 'Please enter only numbers',
                 'default'           => '5',
+            ],
+            'showProviderBadge' => [
+                'title'       => 'offline.sitesearch::lang.searchResults.properties.provider_badge.title',
+                'description' => 'offline.sitesearch::lang.searchResults.properties.provider_badge.description',
+                'type'        => 'checkbox',
+                'default'     => 1,
             ],
             'searchPage'              => [
                 'title'       => 'offline.sitesearch::lang.searchInput.properties.search_page.title',
@@ -62,9 +92,18 @@ class SearchInput extends BaseComponent
     {
         $pages = Page::all();
 
-        $options = $pages->pluck('title', 'url')->toArray();
+        $options = $pages->pluck('title', 'fileName')->toArray();
 
         return ['' => trans('offline.sitesearch::lang.searchInput.properties.search_page.null_value'),] + $options;
+    }
+
+    /**
+     * Triggered on usual page load.
+     */
+    public function onRun()
+    {
+        $this->setVar('useAutoComplete');
+        $this->setVar('searchPage');
     }
 
     /**
@@ -76,8 +115,10 @@ class SearchInput extends BaseComponent
     public function onType()
     {
         $this->setVar('query', post('q', ''));
-        $this->setVar('autoCompleteResultCount');
+        $this->setVar('useAutoComplete');
         $this->setVar('searchPage');
+        $this->setVar('autoCompleteResultCount');
+        $this->setVar('showProviderBadge');
 
         $results = $this->search();
 

@@ -1,9 +1,12 @@
-{% for result in results %}
-    {# Display results #}
-    {% partial __SELF__ ~ '::searchresult.htm' result = result %}
-    {% if searchPage %}
+{% if results %}
+    {% for result in results | slice(0, __SELF__.autoCompleteResultCount) %}
+        {# Display results #}
+        {% partial __SELF__ ~ '::searchresult.htm' result = result %}
+    {% endfor %}
+
+    {% if __SELF__.searchPage %}
         <p class="ss-show-all-results">
-            <a href="{{ searchPage | page }}?q={{ query | url_encode(true) }}">
+            <a href="{{ __SELF__.searchPage | page }}?q={{ query | url_encode(true) }}">
                 Show all results &raquo;
             </a>
         </p>
@@ -11,4 +14,4 @@
 {% else %}
     {# No results found #}
     <p>Your search for {{ query }} returned no results.</p>
-{% endfor %}
+{% endif %}
