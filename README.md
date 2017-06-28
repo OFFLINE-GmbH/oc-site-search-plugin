@@ -64,6 +64,9 @@ Create a search form that sends a query to your search page:
 
 **Important**: Use the `q` parameter to send the user's query.
 
+Alternatively you can also use the `searchInput` component described below to generate this form
+for you.
+
 ##### Search results
 
 Create a page to display your search results. Add the `searchResults` component to it.
@@ -136,6 +139,75 @@ This message is shown if there are no results returned.
 ##### visitPageMessage
 
 A link is placed below each search result. Use this property to change that link's text.
+
+### searchInput
+
+Place this component anywhere you want to display a simple search input with "search as you type" capabilities.
+
+#### Usage example
+
+Add the `searchInput` component to any layout, partial or page.
+
+```html
+title = "Home"
+url = "/"
+...
+
+[searchInput]
+useAutoComplete = 1
+autoCompleteResultCount = 5
+showProviderBadge = 1
+searchPage = "search.htm"
+==
+{% component 'searchInput' %}
+```
+
+##### Example css to style the component
+
+```css
+.ss-search-form {
+    position: relative;
+}
+.ss-search-form__results {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    width: 100%;
+    background: #fff;
+    padding: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+}
+.ss-search-form__results--visible {
+    display: block;
+}
+```
+
+#### Properties
+
+The following properties are available to change the component's behaviour.
+
+##### useAutoComplete
+
+If this property is enabled, a search query will be executed as soon as the user begins to type.
+
+##### autoCompleteResultCount
+
+This many results will be displayed to the user below the input field. There will be a 
+"Show all results" link the user can click that takes her to a full search results page if one has
+been specified via the `searchPage` property.
+
+##### showProviderBadge
+
+The search works by querying multiple providers (Pages, Blog, or other). If this option is enabled
+each search result is marked with a badge to show which provider returned the result.
+
+This is useful if your site has many different entities (ex. teams, employees, pages, blog entries).
+
+##### searchPage
+
+The filename of the page where you have placed a `searchResults` component. If a user clicks on the "Show all 
+results" link it will take him to this page where a full search is run using the `searchResults` component.
 
 ## Add support for custom plugin contents
 

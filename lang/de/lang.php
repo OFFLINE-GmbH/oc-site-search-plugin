@@ -61,6 +61,23 @@ href="http://octobercms.com/plugin/offline-sitesearch#documentation">die Dokumen
             ],
         ],
     ],
+    'searchInput'       => [
+        'title'       => 'Suchfeld',
+        'description' => 'Zeigt ein Suchfeld an',
+        'properties'  => [
+            'use_auto_complete' => [
+                'title' => 'Suche während der Eingabe',
+            ],
+            'auto_complete_result_count' => [
+                'title' => 'Max. Anzahl Sofort-Resultate',
+            ],
+            'search_page' => [
+                'title' => 'Seite für Suchresultate',
+                'description' => 'Die Suchanfrage wird an diese Seite versendet.',
+                'null_value' => '-- Nicht verlinkt',
+            ],
+        ],
+    ],
     'siteSearchInclude' => [
         'title'       => 'In SiteSearch beachten',
         'description' => 'Zu einer CMS Seite hinzufügen, um diese bei der Suche zu berücksichtigen',
