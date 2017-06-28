@@ -16,14 +16,14 @@ class SearchInput extends BaseComponent
     public $query;
 
     /**
-     * Wheter or not to use the autocomplete feature.
+     * Whether or not to use the autocomplete feature.
      *
      * @var boolean
      */
     public $useAutoComplete = true;
 
     /**
-     * Display this many autocomplete results max.
+     * Display no more than this many autocomplete results.
      *
      * @var int
      */
@@ -35,7 +35,7 @@ class SearchInput extends BaseComponent
      */
     public $showProviderBadge;
     /**
-     * The «show all» link will point to this page.
+     * The "Show all results" link will point to this page.
      *
      * @var int
      */
@@ -54,6 +54,11 @@ class SearchInput extends BaseComponent
         ];
     }
 
+    /**
+     * The component's properties.
+     *
+     * @return array
+     */
     public function defineProperties()
     {
         return [
@@ -99,6 +104,8 @@ class SearchInput extends BaseComponent
 
     /**
      * Triggered on usual page load.
+     *
+     * @return void
      */
     public function onRun()
     {
@@ -108,9 +115,10 @@ class SearchInput extends BaseComponent
 
     /**
      * Triggered by October's AJAX framework when
-     * the users enters a query
+     * the users enters a query.
      *
      * @return array
+     * @throws \DomainException
      */
     public function onType()
     {
@@ -128,8 +136,8 @@ class SearchInput extends BaseComponent
     /**
      * Fetch the search results.
      *
-     * @throws DomainException
      * @return ResultCollection
+     * @throws DomainException
      */
     protected function search()
     {
