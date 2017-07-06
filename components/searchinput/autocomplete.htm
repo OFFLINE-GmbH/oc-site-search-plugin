@@ -1,4 +1,4 @@
-{% if results %}
+{% if results.count %}
     {% for result in results | slice(0, __SELF__.autoCompleteResultCount) %}
         {# Display results #}
         {% partial __SELF__ ~ '::searchresult.htm' result = result %}
