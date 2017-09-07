@@ -97,3 +97,5 @@
     - 'Added new searchInput component with search-as-you-type feature'
 1.3.2:
     - 'Fixed bug in AutoCompleteComponent'
+1.3.3:
+    - !!! All results are now returned with a relative URL to prevent problems with translated contents. Make sure to pass your result.url throught the "app" filter if you are using your own search result partials
