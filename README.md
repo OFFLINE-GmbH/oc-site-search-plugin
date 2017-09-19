@@ -140,6 +140,26 @@ This message is shown if there are no results returned.
 
 A link is placed below each search result. Use this property to change that link's text.
 
+#### Modify the query before searching
+
+If you want to modify the user's search query before the search is executed you can call the `forceQuery` method on the `searchResults` component from your page's `onStart` method.
+
+```
+[searchResults]
+resultsPerPage = 10
+showProviderBadge = 1
+noResultsMessage = "Your search returned no results."
+visitPageMessage = "Visit page"
+==
+function onStart() {
+    $query = Request::get('q');
+    $query = str_replace('ё', 'e', $query);
+    $this->page->components['searchResults']->forceQuery($query);
+}
+==
+{% component 'searchResults' %}
+```
+
 ### searchInput
 
 Place this component anywhere you want to display a simple search input with "search as you type" capabilities.
