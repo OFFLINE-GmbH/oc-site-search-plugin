@@ -117,6 +117,27 @@ visitPageMessage = "Visit page"
 }
 ```
 
+
+#### Modify the query before searching
+
+If you want to modify the user's search query before the search is executed you can call the `forceQuery` method on the `searchResults` component from your page's `onStart` method.
+
+```
+[searchResults]
+resultsPerPage = 10
+showProviderBadge = 1
+noResultsMessage = "Your search returned no results."
+visitPageMessage = "Visit page"
+==
+function onStart() {
+    $query = Request::get('q');
+    $query = str_replace('ё', 'e', $query);
+    $this->page->components['searchResults']->forceQuery($query);
+}
+==
+{% component 'searchResults' %}
+```
+
 #### Properties
 
 The following properties are available to change the component's behaviour.
@@ -140,25 +161,6 @@ This message is shown if there are no results returned.
 
 A link is placed below each search result. Use this property to change that link's text.
 
-#### Modify the query before searching
-
-If you want to modify the user's search query before the search is executed you can call the `forceQuery` method on the `searchResults` component from your page's `onStart` method.
-
-```
-[searchResults]
-resultsPerPage = 10
-showProviderBadge = 1
-noResultsMessage = "Your search returned no results."
-visitPageMessage = "Visit page"
-==
-function onStart() {
-    $query = Request::get('q');
-    $query = str_replace('ё', 'e', $query);
-    $this->page->components['searchResults']->forceQuery($query);
-}
-==
-{% component 'searchResults' %}
-```
 
 ### searchInput
 
