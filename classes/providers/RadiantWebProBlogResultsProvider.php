@@ -1,4 +1,5 @@
 <?php
+
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use Html;
@@ -53,9 +54,11 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
     {
         return Post::with(['categories', 'featured_images'])
                    ->isPublished()
-                   ->where('title', 'like', "%{$this->query}%")
-                   ->orWhere('content', 'like', "%{$this->query}%")
-                   ->orWhere('excerpt', 'like', "%{$this->query}%")
+                   ->where(function ($query) {
+                       $query->where('title', 'like', "%{$this->query}%");
+                       $query->orWhere('content', 'like', "%{$this->query}%");
+                       $query->orWhere('excerpt', 'like', "%{$this->query}%");
+                   })
                    ->orderBy('published_at', 'desc')
                    ->get();
     }
@@ -69,7 +72,7 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
     protected function isInstalledAndEnabled()
     {
         return $this->isPluginAvailable($this->identifier)
-        && SiteSearchSettings::get('radiantweb_problog_enabled', true);
+            && SiteSearchSettings::get('radiantweb_problog_enabled', true);
     }
 
     /**
