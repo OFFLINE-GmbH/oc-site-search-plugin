@@ -128,7 +128,7 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
         }
 
         $content = $post->content;
-        if (Settings::get('markdownMode')) {
+        if (ProBlogSettings::get('markdownMode')) {
             $content = Post::formatHtml($content);
         }
 
