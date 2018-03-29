@@ -2,6 +2,7 @@
 
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
+use Carbon\Carbon;
 use Cms\Classes\Controller;
 use Html;
 use Illuminate\Database\Eloquent\Collection;
@@ -50,6 +51,13 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
             // Make this result more relevant, if the query is found in the title
             $relevance = mb_stripos($post->title, $this->query) === false ? 1 : 2;
 
+            if ($relevance > 1 && $post->published_at) {
+                if ( ! $post->published_at instanceof Carbon) {
+                    $post->published_at = Carbon::createFromFormat('Y-m-d H:i:s', $post->published_at);
+                }
+                $relevance -= $this->getAgePenalty($post->published_at->diffInDays(Carbon::now()));
+            }
+
             $result        = new Result($this->query, $relevance);
             $result->title = $post->title;
             $result->text  = $this->getSummary($post);
@@ -77,7 +85,6 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
                        $query->orWhere('content', 'like', "%{$this->query}%");
                        $query->orWhere('excerpt', 'like', "%{$this->query}%");
                    })
-                   ->orderBy('published_at', 'desc')
                    ->get();
     }
 

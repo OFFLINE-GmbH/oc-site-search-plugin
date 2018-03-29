@@ -257,6 +257,12 @@ public function boot()
 
             // If the query is found in the title, set a relevance of 2
             $relevance = mb_stripos($item->title, $query) !== false ? 2 : 1;
+            
+            // Optional: Add an age penalty to older results. This makes sure that
+            // never results are listed first.
+            // if ($relevance > 1 && $post->published_at) {
+            //     $relevance -= $this->getAgePenalty($post->published_at->diffInDays(Carbon::now()));
+            // }
 
             return [
                 'title'     => $item->title,
