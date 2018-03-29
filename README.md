@@ -260,8 +260,8 @@ public function boot()
             
             // Optional: Add an age penalty to older results. This makes sure that
             // never results are listed first.
-            // if ($relevance > 1 && $post->published_at) {
-            //     $relevance -= $this->getAgePenalty($post->published_at->diffInDays(Carbon::now()));
+            // if ($relevance > 1 && $item->published_at) {
+            //     $relevance -= $this->getAgePenalty($item->published_at->diffInDays(Carbon::now()));
             // }
 
             return [
