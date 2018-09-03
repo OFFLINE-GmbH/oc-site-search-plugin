@@ -7,8 +7,6 @@
         "composer/installers": "~1.0"
     },
     "extra": {
-      "installer-paths": {
-        "plugins/offline/sitesearch": ["offline/oc-site-search-plugin"]
-      }
+        "installer-name": "sitesearch"
     }  
 }
