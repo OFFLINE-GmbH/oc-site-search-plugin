@@ -109,3 +109,5 @@
     - Added the ability to add age penalties to search results. This can be used to show newer results higher up in your search results.
 1.3.8:
     - Optimized support for multiple SearchInput components on a single page.
+1.3.9:
+    - Added Chinese language support (thanks to Ckend)
