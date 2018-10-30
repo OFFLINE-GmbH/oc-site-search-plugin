@@ -52,7 +52,8 @@ abstract class ResultsProvider
      */
     public function __construct($query = null)
     {
-        $this->query       = $query;
+        $this->setQuery($query);
+        
         $this->identifier  = $this->identifier();
         $this->displayName = $this->displayName();
         $this->translator  = $this->translator();
@@ -131,7 +132,7 @@ abstract class ResultsProvider
      */
     public function setQuery($query)
     {
-        $this->query = $query;
+        $this->query = trim($query);
 
         return $this;
     }
