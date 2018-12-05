@@ -112,7 +112,7 @@ class SearchService
      */
     protected function additionalResultsProviders()
     {
-        $returns = collect(Event::fire('offline.sitesearch.extend'))->flatten();
+        $returns = collect(Event::fire('offline.sitesearch.extend'))->filter()->flatten();
 
         $returns->each(function ($return) {
             if ( ! $return instanceof ResultsProvider) {
