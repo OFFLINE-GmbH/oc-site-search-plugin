@@ -119,3 +119,5 @@
     - Stability improvements
 1.3.13:
     - Pre-populate search query in searchInput field
+1.3.14:
+    - Include placeholders on Rainlab.Pages pages in search results

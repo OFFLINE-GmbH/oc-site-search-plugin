@@ -59,6 +59,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
             }
 
             return $this->containsQuery($page->parsedMarkup)
+                || $this->containsQuery($page->placeholders)
                 || $this->viewBagContainsQuery($viewBag);
         });
     }
