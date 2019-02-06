@@ -423,4 +423,3 @@ To overwrite the default markup copy all files from `plugins/offline/sitesearch/
 `themes/your-theme/partials/searchResults` and modify them as needed.
 
 If you gave an alias to the `searchResults` component make sure to put the markup in the appropriate partials directory `themes/your-theme/partials/your-given-alias`.
-
