@@ -122,6 +122,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
     {
         // First fetch all model ids with maching contents.
         $results = DB::table('rainlab_translate_attributes')
+                     ->where('locale', $this->currentLocale())
                      ->where('model_type', Post::class)
                      ->where('attribute_data', 'LIKE', "%{$this->query}%")
                      ->get(['model_id']);
@@ -185,5 +186,21 @@ class RainlabBlogResultsProvider extends ResultsProvider
     public function identifier()
     {
         return 'RainLab.Blog';
+    }
+
+    /**
+     * Return the current locale
+     *
+     * @return string|null
+     */
+    protected function currentLocale()
+    {
+        $translator = $this->translator();
+
+        if ( ! $translator) {
+            return null;
+        }
+
+        return $translator->getLocale();
     }
 }
