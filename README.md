@@ -259,7 +259,7 @@ public function boot()
             $relevance = mb_stripos($item->title, $query) !== false ? 2 : 1;
             
             // Optional: Add an age penalty to older results. This makes sure that
-            // never results are listed first.
+            // newer results are listed first.
             // if ($relevance > 1 && $item->published_at) {
             //     $relevance -= $this->getAgePenalty($item->published_at->diffInDays(Carbon::now()));
             // }
@@ -423,4 +423,3 @@ To overwrite the default markup copy all files from `plugins/offline/sitesearch/
 `themes/your-theme/partials/searchResults` and modify them as needed.
 
 If you gave an alias to the `searchResults` component make sure to put the markup in the appropriate partials directory `themes/your-theme/partials/your-given-alias`.
-
