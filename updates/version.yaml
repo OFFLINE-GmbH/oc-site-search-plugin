@@ -127,3 +127,5 @@
     - Only search RainLab.Blog contents of current locale
 1.3.17:
     - Fixed pagination links when using RainLab.Translate
+1.3.18:
+    - Updated persian translations (thanks to @sajjad-ser)
