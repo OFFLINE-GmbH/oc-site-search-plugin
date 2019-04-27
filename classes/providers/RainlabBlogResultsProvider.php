@@ -51,7 +51,13 @@ class RainlabBlogResultsProvider extends ResultsProvider
             $relevance = mb_stripos($post->title, $this->query) === false ? 1 : 2;
 
             if ($relevance > 1 && $post->published_at) {
-                $relevance -= $this->getAgePenalty($post->published_at->diffInDays(Carbon::now()));
+                $relevance -= $this->getAgePenalty(
+                    // Make sure that `published_at` is Carbon object
+                    (is_string($post->published_at)?
+                        (Carbon::parse($post->published_at)):
+                        $post->published_at
+                    )->diffInDays(Carbon::now())
+                );
             }
 
             $result        = new Result($this->query, $relevance);
