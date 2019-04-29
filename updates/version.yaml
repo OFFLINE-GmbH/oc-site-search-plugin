@@ -133,3 +133,5 @@
     - Added finnish translations (thank to @mediaclinic)
 1.3.20:
     - Added bulgarian translations (thank to @NGavanozov)
+1.3.21:
+    - Fixed RainLab.Blog published_at date handling
