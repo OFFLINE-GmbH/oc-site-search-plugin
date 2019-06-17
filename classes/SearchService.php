@@ -50,7 +50,7 @@ class SearchService
         $resultsCollection = new ResultCollection();
         $resultsCollection->setQuery($this->query);
 
-        if ($this->query === '') {
+        if (trim($this->query) === '') {
             return $resultsCollection;
         }
 
