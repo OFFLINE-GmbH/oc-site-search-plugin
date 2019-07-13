@@ -148,6 +148,8 @@ class SearchResults extends BaseComponent
     {
         $query = $this->forcedQuery ? $this->forcedQuery : Request::get('q', '');
 
+        $query = filter_var($query, FILTER_SANITIZE_STRING);
+
         $this->setVar('pageNumber', Request::get('page', 1));
         $this->setVar('query', $query);
         $this->setVar('noResultsMessage');
