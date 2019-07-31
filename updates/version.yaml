@@ -137,3 +137,6 @@
     - Fixed RainLab.Blog published_at date handling
 1.3.22:
     - Fixed problem with queries that contain only spaces
+1.4.0:
+    - 'SiteSearch can now log all search queries. Enable via backend settings.'
+    - table_create_offline_sitesearch_query_logs.php

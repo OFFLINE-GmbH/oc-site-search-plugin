@@ -1,6 +1,7 @@
 <?php namespace OFFLINE\SiteSearch;
 
 use Backend;
+use OFFLINE\SiteSearch\Models\Settings;
 use System\Classes\PluginBase;
 
 /**
@@ -50,6 +51,10 @@ class Plugin extends PluginBase
                 'tab'   => 'offline.sitesearch::lang.plugin.name',
                 'label' => 'offline.sitesearch::lang.plugin.manage_settings_permission',
             ],
+            'offline.sitesearch.view_log' => [
+                'tab'   => 'offline.sitesearch::lang.plugin.name',
+                'label' => 'offline.sitesearch::lang.plugin.view_log_permission',
+            ],
         ];
     }
 
@@ -69,7 +74,24 @@ class Plugin extends PluginBase
                 'class'       => 'Offline\SiteSearch\Models\Settings',
                 'order'       => 500,
                 'keywords'    => 'search',
-                'permissions' => ['offline.sitesearch.manage_settings']
+                'permissions' => ['offline.sitesearch.manage_settings'],
+            ],
+        ];
+    }
+
+    public function registerNavigation()
+    {
+        if ((bool)Settings::get('log_queries', false) === false) {
+            return [];
+        }
+
+        return [
+            'querylogs' => [
+                'label'        => 'offline.sitesearch::lang.log.title',
+                'url'          => Backend::url('offline/sitesearch/querylogs'),
+                'icon'         => 'icon-search',
+                'permissions'  => ['offline.sitesearch.*'],
+                'order'        => 900,
             ],
         ];
     }

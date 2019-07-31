@@ -21,6 +21,8 @@ use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\ResponsivShowcaseResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\ResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\VojtaSvobodaBrandsResultsProvider;
+use OFFLINE\SiteSearch\Models\QueryLog;
+use OFFLINE\SiteSearch\Models\Settings;
 
 class SearchService
 {
@@ -32,11 +34,16 @@ class SearchService
      * @var Controller
      */
     public $controller;
+    /**
+     * @var bool
+     */
+    public $logQueries;
 
     public function __construct($query, $controller = null)
     {
         $this->query      = $query;
         $this->controller = $controller ?: new Controller();
+        $this->logQueries = Settings::get('log_queries', false);
     }
 
     /**
@@ -47,6 +54,8 @@ class SearchService
      */
     public function results()
     {
+        $this->logQuery($this->query);
+
         $resultsCollection = new ResultCollection();
         $resultsCollection->setQuery($this->query);
 
@@ -121,5 +130,22 @@ class SearchService
         });
 
         return $returns->toArray();
+    }
+
+    /**
+     * Log the current query.
+     *
+     * @return void
+     */
+    protected function logQuery($query)
+    {
+        if ( ! $this->logQueries) {
+            return;
+        }
+
+        QueryLog::cleanup();
+        QueryLog::create([
+            'query' => $query
+        ]);
     }
 }
