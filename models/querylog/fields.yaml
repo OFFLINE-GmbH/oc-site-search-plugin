@@ -21,3 +21,7 @@ fields:
         label: 'offline.sitesearch::lang.log.session_id'
         span: auto
         type: text
+    useragent:
+        label: 'offline.sitesearch::lang.log.useragent'
+        span: auto
+        type: text

@@ -11,6 +11,9 @@ columns:
     location:
         label: 'offline.sitesearch::lang.log.location'
         type: text
+    useragent:
+        label: 'offline.sitesearch::lang.log.useragent'
+        type: text
     session_id:
         label: 'offline.sitesearch::lang.log.session_id'
         type: text
