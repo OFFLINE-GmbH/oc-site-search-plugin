@@ -142,3 +142,5 @@
 1.4.1:
     - 'Minor bugfixes'
     - create_offline_sitesearch_query_logs.php
+1.4.2:
+    - 'Added User-Agent to list view'
