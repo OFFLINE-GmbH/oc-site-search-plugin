@@ -144,3 +144,5 @@
     - create_offline_sitesearch_query_logs.php
 1.4.2:
     - 'Added User-Agent to list view'
+1.4.3:
+    - 'Fixed bug where empty queries resulted in an Exception' 
