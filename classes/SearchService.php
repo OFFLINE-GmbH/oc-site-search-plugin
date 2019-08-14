@@ -139,7 +139,7 @@ class SearchService
      */
     protected function logQuery($query)
     {
-        if ( ! $this->logQueries) {
+        if ( ! $this->logQueries || ! $query) {
             return;
         }
 
