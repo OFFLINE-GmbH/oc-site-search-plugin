@@ -146,3 +146,5 @@
     - 'Added User-Agent to list view'
 1.4.3:
     - 'Fixed bug where empty queries resulted in an Exception' 
+1.4.4:
+    - 'Optimized support for cms pages search: Your Twig markup is now completely rendered and searched!'
