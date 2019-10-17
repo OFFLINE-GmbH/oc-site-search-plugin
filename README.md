@@ -409,11 +409,10 @@ If you want to provide search results for CMS pages change the `enabled` setting
 You have to specifically add the component `siteSearchInclude` to every CMS page you want to be searched.
 Pages **without** this component will **not** be searched.
 
-Components on CMS pages will **not** be rendered. Use this provider only for simple html pages. All Twig syntax will be stripped out to prevent the leaking of source code to the search results.
+This feature works best with simple pages that include components, but don't rely on url parametres or other
+variables (like a page number). CMS pages with dynamic URLs (like `/page/:slug`) won't be linked correctly from the search results listing.
 
-CMS pages with dynamic URLs (like `/page/:slug`) won't be linked correctly from the search results listing.
-
-If you have CMS pages with dynamic contents consider writing your own search provider (see `Add support for custom
+If you have CMS pages with more complex dynamic contents consider writing your own search provider (see `Add support for custom
 plugin contents`)
 
 

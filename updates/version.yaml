@@ -148,3 +148,5 @@
     - 'Fixed bug where empty queries resulted in an Exception' 
 1.4.4:
     - 'Optimized support for cms pages search: Your Twig markup is now completely rendered and searched!'
+1.4.5:
+    - 'Use meta_title for RainLab.Pages results if available'
