@@ -28,7 +28,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
 
         foreach ($this->pages() as $page) {
             // Make this result more relevant, if the query is found in the title
-            $title     = isset($page->viewBag['title']) ? $page->viewBag['title'] : '';
+            $title     = $page->viewBag['meta_title'] ?? $page->viewBag['title'] ?? '';
             $relevance = $this->containsQuery($title) ? 2 : 1;
 
             $result        = new Result($this->query, $relevance);
