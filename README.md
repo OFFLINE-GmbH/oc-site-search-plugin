@@ -264,7 +264,7 @@ public function boot()
             
             // Optional: Add an age penalty to older results. This makes sure that
             // newer results are listed first.
-            // if ($relevance > 1 && $item->published_at) {
+            // if ($relevance > 1 && $item->created_at) {
             //    $ageInDays = $item->created_at->diffInDays(\Illuminate\Support\Carbon::now());
             //    $relevance -= \OFFLINE\SiteSearch\Classes\Providers\ResultsProvider::agePenaltyForDays($ageInDays);
             // }
