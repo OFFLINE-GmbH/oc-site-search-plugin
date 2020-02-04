@@ -150,3 +150,5 @@
     - 'Optimized support for cms pages search: Your Twig markup is now completely rendered and searched!'
 1.4.5:
     - 'Use meta_title for RainLab.Pages results if available'
+1.4.6:
+    - 'Made getAgePenalty method static so it can be re-used in simple Event providers'
