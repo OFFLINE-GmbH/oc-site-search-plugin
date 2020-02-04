@@ -75,7 +75,7 @@ Use the `searchResults.query` parameter to display the user's search query.
 ```html
 title = "Search results"
 url = "/search"
-...
+layout = "default"
 
 [searchResults]
 resultsPerPage = 10
