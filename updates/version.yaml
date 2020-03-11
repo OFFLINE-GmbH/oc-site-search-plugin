@@ -152,3 +152,5 @@
     - 'Use meta_title for RainLab.Pages results if available'
 1.4.6:
     - 'Made getAgePenalty method static so it can be re-used in simple Event providers'
+1.4.7:
+    - 'Optimized searchResults component so it can be used in partials and static pages'
