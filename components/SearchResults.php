@@ -183,7 +183,7 @@ class SearchResults extends BaseComponent
             $this->pageNumber
         );
 
-        $pageUrl = Url::to($this->controller->pageUrl($this->page->name));
+        $pageUrl = Url::to(Request::url());
 
         return $paginator->setPath($pageUrl)->appends('q', $this->query);
     }
