@@ -214,13 +214,15 @@ abstract class ResultsProvider
      * Give old results an age penalty to list them below newer results.
      *
      * @param $ageInDays
+     * @param $penaltyPerDay
+     * @param $maxPenalty
      *
      * @return float
      */
-    public static function agePenaltyForDays($ageInDays)
+    public static function agePenaltyForDays($ageInDays, $penaltyPerDay = 0.003, $maxPenalty = .9)
     {
-        $penalty = $ageInDays * 0.003;
+        $penalty = $ageInDays * $penaltyPerDay;
 
-        return $penalty > .9 ? .9 : $penalty;
+        return $penalty > $maxPenalty ? $maxPenalty : $penalty;
     }
 }
