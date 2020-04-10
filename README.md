@@ -257,7 +257,7 @@ public function boot()
             ->get();
 
         // Now build a results array
-        $results = $items->map(function ($item) use ($query) {
+        $results = $items->map(function ($item) use ($query, $controller) {
 
             // If the query is found in the title, set a relevance of 2
             $relevance = mb_stripos($item->title, $query) !== false ? 2 : 1;

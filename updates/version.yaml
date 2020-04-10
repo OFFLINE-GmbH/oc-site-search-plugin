@@ -154,3 +154,5 @@
     - 'Made getAgePenalty method static so it can be re-used in simple Event providers'
 1.4.7:
     - 'Optimized searchResults component so it can be used in partials and static pages'
+1.4.8:
+    - 'Allow custom penalty parameters in ResultsProvider::agePenaltyForDays method'
