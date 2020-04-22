@@ -156,3 +156,5 @@
     - 'Optimized searchResults component so it can be used in partials and static pages'
 1.4.8:
     - 'Allow custom penalty parameters in ResultsProvider::agePenaltyForDays method'
+1.4.9:
+    - 'Moved query log link from main navbar to backend settings'

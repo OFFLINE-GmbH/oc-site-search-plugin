@@ -91,6 +91,7 @@ href="http://octobercms.com/plugin/offline-sitesearch#documentation">the documen
     ],
     'log'               => [
         'id'           => 'ID',
+        'description'  => 'Log of all search queries',
         'title'        => 'Search queries',
         'title_update' => 'Vie search query',
         'query'        => 'Query',

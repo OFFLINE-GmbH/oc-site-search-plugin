@@ -2,6 +2,7 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use System\Classes\SettingsManager;
 
 class QueryLogs extends Controller
 {
@@ -21,6 +22,7 @@ class QueryLogs extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('OFFLINE.SiteSearch', 'querylogs');
+        BackendMenu::setContext('October.System', 'system', 'settings');
+        SettingsManager::setContext('OFFLINE.SiteSearch', 'querylogs');
     }
 }

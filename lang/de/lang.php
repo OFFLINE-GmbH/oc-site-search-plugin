@@ -90,6 +90,7 @@ href="http://octobercms.com/plugin/offline-sitesearch#documentation">die Dokumen
     'log'               => [
         'id'           => 'ID',
         'title'        => 'Suchanfragen',
+        'description'  => 'Aufzeichnung aller Suchanfragen',
         'title_update' => 'Suchanfrage bearbeiten',
         'query'        => 'Suchbegriff',
         'created_at'   => 'Zeitpunkt',
