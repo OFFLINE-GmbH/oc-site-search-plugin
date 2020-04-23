@@ -158,3 +158,5 @@
     - 'Allow custom penalty parameters in ResultsProvider::agePenaltyForDays method'
 1.4.9:
     - 'Moved query log link from main navbar to backend settings'
+1.4.10:
+    - 'Improved Czech translations'
