@@ -160,3 +160,5 @@
     - 'Moved query log link from main navbar to backend settings'
 1.4.10:
     - 'Improved Czech translations'
+1.5.0:
+    - 'Added `offline.sitesearch.results` event to allow customization (filter, sort) of the results collection before it is displayed'

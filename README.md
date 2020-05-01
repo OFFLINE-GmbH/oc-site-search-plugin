@@ -122,17 +122,42 @@ visitPageMessage = "Visit page"
 
 If you want to modify the user's search query before the search is executed you can call the `forceQuery` method on the `searchResults` component from your page's `onStart` method.
 
-```
+```php
 [searchResults]
 resultsPerPage = 10
 showProviderBadge = 1
 noResultsMessage = "Your search returned no results."
 visitPageMessage = "Visit page"
 ==
-function onStart() {
+function onStart()
+{
     $query = Request::get('q');
     $query = str_replace('ё', 'e', $query);
     $this->page->components['searchResults']->forceQuery($query);
+}
+==
+{% component 'searchResults' %}
+```
+
+#### Change the results collection before displaying 
+
+You can listen for the `offline.sitesearch.results` event and modify the query as you wish.
+
+This is useful to remove certain results or change the sort order.
+
+```php
+[searchResults]
+resultsPerPage = 10
+showProviderBadge = 1
+noResultsMessage = "Your search returned no results."
+visitPageMessage = "Visit page"
+==
+function onInit()
+{
+    \Event::listen('offline.siteserach.results', function ($results) {
+        // return $results->filter(...);
+        return $results->sortByDesc('model.custom_attribute');
+    });
 }
 ==
 {% component 'searchResults' %}

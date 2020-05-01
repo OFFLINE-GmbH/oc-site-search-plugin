@@ -74,7 +74,7 @@ class SearchService
 
         $resultsCollection->addMany($results->toArray());
 
-        return $resultsCollection->sortByDesc('relevance');
+        return $resultsCollection;
     }
 
     /**
