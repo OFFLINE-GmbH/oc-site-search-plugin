@@ -162,3 +162,5 @@
     - 'Improved Czech translations'
 1.5.0:
     - 'Added `offline.sitesearch.results` event to allow customization (filter, sort) of the results collection before it is displayed'
+1.5.1:
+    - 'Fixed typo in the newly added event name'
