@@ -169,7 +169,7 @@ class SearchResults extends BaseComponent
 
         $results = $search->results();
 
-        $modified = Event::fire('offline.siteserach.results', $results);
+        $modified = Event::fire('offline.sitesearch.results', $results);
 
         return count($modified) > 0
             ? $modified[0]
