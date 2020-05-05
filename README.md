@@ -154,7 +154,7 @@ visitPageMessage = "Visit page"
 ==
 function onInit()
 {
-    \Event::listen('offline.siteserach.results', function ($results) {
+    \Event::listen('offline.sitesearch.results', function ($results) {
         // return $results->filter(...);
         return $results->sortByDesc('model.custom_attribute');
     });
