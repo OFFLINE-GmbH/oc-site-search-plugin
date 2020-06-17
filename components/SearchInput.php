@@ -111,7 +111,7 @@ class SearchInput extends BaseComponent
     {
         $this->setVar('useAutoComplete');
         $this->setVar('searchPage');
-	$this->setVar('query', input('q', ''));
+        $this->setVar('query', input('q', ''));
     }
 
     /**
