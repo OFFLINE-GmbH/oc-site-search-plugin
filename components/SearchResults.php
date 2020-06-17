@@ -167,13 +167,7 @@ class SearchResults extends BaseComponent
     {
         $search = new SearchService($this->query, $this->controller);
 
-        $results = $search->results();
-
-        $modified = Event::fire('offline.sitesearch.results', $results);
-
-        return count($modified) > 0
-            ? $modified[0]
-            : $results->sortByDesc('relevance');
+        return $search->results();
     }
 
     /**

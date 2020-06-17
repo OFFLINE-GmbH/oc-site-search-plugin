@@ -74,7 +74,9 @@ class SearchService
 
         $resultsCollection->addMany($results->toArray());
 
-        return $resultsCollection;
+        $modified = Event::fire('offline.sitesearch.results', $resultsCollection);
+
+        return count($modified) > 0 ? $modified[0] : $resultsCollection->sortByDesc('relevance');
     }
 
     /**

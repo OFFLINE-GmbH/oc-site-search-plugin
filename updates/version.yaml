@@ -166,3 +166,5 @@
     - 'Fixed typo in the newly added event name'
 1.5.2:
     - 'Made Result::markQuery method public for easier extension'
+1.5.3:
+    - 'Fixed result order in searchInput component'
