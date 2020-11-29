@@ -168,3 +168,5 @@
     - 'Made Result::markQuery method public for easier extension'
 1.5.3:
     - 'Fixed result order in searchInput component'
+1.5.4:
+    - 'Fixed handling of invalid page url parameter'
