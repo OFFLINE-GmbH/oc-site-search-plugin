@@ -76,6 +76,8 @@ class SearchService
 
         $modified = Event::fire('offline.sitesearch.results', $resultsCollection);
 
+        $modified = array_filter($modified);
+
         return count($modified) > 0 ? $modified[0] : $resultsCollection->sortByDesc('relevance');
     }
 
