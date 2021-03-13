@@ -42,7 +42,7 @@
         'jkshop_itemurl_comment'     => 'Zadejte pevnou část URL bez dynamických parametrů, jako je konkrétní URL článku, nebo stránkování',
         'jkshop_itemurl_badge'       => 'Produkt',
         'experimental'               => 'Experimentalní funkce:',
-        'experimental_refer_to_docs' => 'Tato služba je zatím v testování! Před použitím doporučujeme přečíst <a target="_blank" href="http://octobercms.com/plugin/offline-sitesearch#documentation">stránku dokumentace</a>.',
+        'experimental_refer_to_docs' => 'Tato služba je zatím v testování! Před použitím doporučujeme přečíst <a target="_blank" href="https://octobercms.com/plugin/offline-sitesearch#documentation">stránku dokumentace</a>.',
         'news_page'                  => 'Stránka s novinkou',
         'news_page_comment'          => 'Vyberte stránku používanou k zobrazení detailu jednotlivé novinky. Je to nezbytné pro vytváření správných URL novinek.',
     ],

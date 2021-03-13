@@ -43,7 +43,7 @@
         'jkshop_itemurl_badge'       => 'Produit',
         'experimental'               => 'Fonctionnalité expérimentale:',
         'experimental_refer_to_docs' => 'Ce fournisseur est expérimental ! Veuillez vous référer à <a target="_blank"
-href="http://octobercms.com/plugin/offline-sitesearch#documentation">la documentation</a> avant utilisation.',
+href="https://octobercms.com/plugin/offline-sitesearch#documentation">la documentation</a> avant utilisation.',
         'news_page'                  => 'Page des actualités',
         'news_page_comment'          => 'Sélectionnez une page utilisée pour afficher un seul article. Nécessaire pour former l\'URL des actualités.',
     ],

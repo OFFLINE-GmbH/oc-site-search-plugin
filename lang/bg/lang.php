@@ -40,7 +40,7 @@
         'jkshop_itemurl_badge'       => 'Продукт',
         'experimental'               => 'Експериментални възможности:',
         'experimental_refer_to_docs' => 'Този доставчик е експериментален! Моля, погледнете <a target="_blank"
-href="http://octobercms.com/plugin/offline-sitesearch#documentation">документацията</a> преди да го използвате.',
+href="https://octobercms.com/plugin/offline-sitesearch#documentation">документацията</a> преди да го използвате.',
     ],
     'searchResults'     => [
         'title'       => 'Резултати от търсенето',

@@ -40,7 +40,7 @@
         'jkshop_itemurl_badge'       => 'محصولات',
         'experimental'               => 'ویژگی های تجربی:',
         'experimental_refer_to_docs' => 'این ارائه دهنده تجربی است. لطفا به <a target="_blank"
-href="http://octobercms.com/plugin/offline-sitesearch#documentation">اسنادو مدارک</a>قبل از استفاده از آن است.',
+href="https://octobercms.com/plugin/offline-sitesearch#documentation">اسنادو مدارک</a>قبل از استفاده از آن است.',
     ],
     'searchResults'     => [
         'title'       => 'نتایج جستجو',

@@ -43,7 +43,7 @@
         'jkshop_itemurl_badge'       => 'Товар',
         'experimental'               => 'Эксперементальная фитча":',
         'experimental_refer_to_docs' => 'Этот провайдер является эксперементальным! Пожалуйста, обратитесь <a target="_blank"
-href="http://octobercms.com/plugin/offline-sitesearch#documentation">к документации</a> перед его использованием.',
+href="https://octobercms.com/plugin/offline-sitesearch#documentation">к документации</a> перед его использованием.',
         'news_page'                  => 'Страница новости',
         'news_page_comment'          => 'Выберите страницу, используемую для отображения отдельного новостного сообщения. Требуется для формирования URL-адреса новостей.',
     ],
