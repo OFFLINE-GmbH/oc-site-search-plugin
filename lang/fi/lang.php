@@ -40,7 +40,7 @@
         'jkshop_itemurl_badge'       => 'Tuotetunnus',
         'experimental'               => 'Kokeellinen ominaisuus:',
         'experimental_refer_to_docs' => 'Tämä tarjoaja on kokeellinen! Ole hyvä ja tutustu <a target="_blank"
-href="http://octobercms.com/plugin/offline-sitesearch#documentation">dokumentaatioon</a> ennen käyttöönottoa.',
+href="https://octobercms.com/plugin/offline-sitesearch#documentation">dokumentaatioon</a> ennen käyttöönottoa.',
     ],
     'searchResults'     => [
         'title'       => 'Hakutulokset',

@@ -40,7 +40,7 @@
         'jkshop_itemurl_badge' => '产品',
         'experimental' => '试验特点:',
         'experimental_refer_to_docs' => '该数据提供者是试验性的!使用前请参考 <a target="_blank"
-href="http://octobercms.com/plugin/offline-sitesearch#documentation">文件</a> .',
+href="https://octobercms.com/plugin/offline-sitesearch#documentation">文件</a> .',
     ],
     'searchResults' => [
         'title' => '搜索结果',

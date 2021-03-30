@@ -43,7 +43,7 @@
         'jkshop_itemurl_badge'       => 'Produkt',
         'experimental'               => 'Experimentelle Funktion:',
         'experimental_refer_to_docs' => 'Dieser Provider ist experimentell! Bitte lies <a target="_blank"
-href="http://octobercms.com/plugin/offline-sitesearch#documentation">die Dokumentation</a>, bevor du ihn benutzt!',
+href="https://octobercms.com/plugin/offline-sitesearch#documentation">die Dokumentation</a>, bevor du ihn benutzt!',
     ],
     'searchResults'     => [
         'title'       => 'Suchresultate',
