@@ -172,3 +172,5 @@
     - 'Fixed handling of invalid page url parameter'
 1.5.5:
     - 'Fixed handling of invalid offline.sitesearch.results event returns'
+1.5.6:
+    - 'Updated russian translations (thanks to @Web-VPF)'
