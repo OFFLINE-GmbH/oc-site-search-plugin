@@ -42,7 +42,7 @@
         'jkshop_itemurl_comment'     => 'Vnesite samo fiksni del URL-ja, brez kakršnih koli dinamičnih parametrov.',
         'jkshop_itemurl_badge'       => 'Produkt',
         'experimental'               => 'Eksperimentalna funkcija:',
-        'experimental_refer_to_docs' => 'Ta ponudnik je v preizkusni fazi! Preglejte <a target="_blank" href="http://octobercms.com/plugin/offline-sitesearch#documentation">dokumentacijo</a>, preden uporabite to funkcijo.',
+        'experimental_refer_to_docs' => 'Ta ponudnik je v preizkusni fazi! Preglejte <a target="_blank" href="https://octobercms.com/plugin/offline-sitesearch#documentation">dokumentacijo</a>, preden uporabite to funkcijo.',
         'news_page'                  => 'Stran za prikaz posamezne novice',
         'news_page_comment'          => 'Izberite stran, ki se uporablja za prikaz posamezne novice. Potrebna je za oblikovanje URL-ja za novice.',
     ],
