@@ -16,13 +16,25 @@ use RainLab\Pages\Classes\Page;
 class RainlabPagesResultsProvider extends ResultsProvider
 {
     /**
+     * Page viewbag properties to ignore
+     *
+     * @var array
+     */
+    protected $ignoreViewBagKeys = [
+        'url',
+        'layout',
+        'is_hidden',
+        'navigation_hidden',
+    ];
+
+    /**
      * Runs the search for this provider.
      *
      * @return ResultsProvider
      */
     public function search()
     {
-        if ( ! $this->isInstalledAndEnabled()) {
+        if (! $this->isInstalledAndEnabled()) {
             return $this;
         }
 
@@ -33,7 +45,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
 
             $result        = new Result($this->query, $relevance);
             $result->title = $title;
-            $result->text  = $page->parsedMarkup;
+            $result->text  = $page->queryInViewBag ? $this->getViewBagPropValue($page->viewBag) : $page->parsedMarkup;
             $result->url   = $this->getUrl($page);
             $result->model = $page;
 
@@ -59,9 +71,12 @@ class RainlabPagesResultsProvider extends ResultsProvider
             }
 
             try {
+                $queryInViewBag = $this->viewBagContainsQuery($viewBag);
+                $page['queryInViewBag'] = $queryInViewBag;
+
                 return $this->containsQuery($page->parsedMarkup)
                     || $this->containsQuery($page->placeholders)
-                    || $this->viewBagContainsQuery($viewBag);
+                    || $queryInViewBag;
             } catch(\Throwable $e) {
                 // If an exception was thrown chances are that a page contained invalid markup.
                 return false;
@@ -104,14 +119,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
      */
     protected function viewBagContainsQuery($viewBag)
     {
-        $ignoreViewBagKeys = [
-            'url',
-            'layout',
-            'is_hidden',
-            'navigation_hidden',
-        ];
-
-        $properties = collect($viewBag)->except($ignoreViewBagKeys)->toArray();
+        $properties = collect($viewBag)->except($this->ignoreViewBagKeys)->toArray();
 
         return $this->arrayContainsQuery($properties);
     }
@@ -132,6 +140,52 @@ class RainlabPagesResultsProvider extends ResultsProvider
         }
 
         return false;
+    }
+
+    /**
+     * Return a viewbag property markup that match the query
+     *
+     * @param $viewBag
+     * @return string
+     */
+    protected function getViewBagPropValue($viewBag)
+    {
+        $properties = collect($viewBag)->except($this->ignoreViewBagKeys)->toArray();
+        $propertyContainingQueryKey = $this->arrayKeysMatchingSearch($properties, array());
+
+        return array_get($properties, $propertyContainingQueryKey, "");
+    }
+
+    /**
+     * Return dotted viewbag property's keys that match query
+     *
+     * @param array $properties
+     * @param array $paths
+     * @return string
+     */
+    protected function arrayKeysMatchingSearch($properties, $paths)
+    {
+        if (is_array($properties) && count($properties) > 0) {
+            foreach ($properties as $key => $value) {
+                $temp_path = $paths;
+                array_push($temp_path, $key);
+
+                if (is_array($value) && count($value) > 0) {
+                    $res_path = $this->arrayKeysMatchingSearch(
+                        $value,
+                        $temp_path
+                    );
+
+                    if ($res_path != null) {
+                        return $res_path;
+                    }
+                } elseif (str_contains($value, $this->query)) {
+                    return join(".", $temp_path);
+                }
+            }
+        }
+
+        return null;
     }
 
     /**
