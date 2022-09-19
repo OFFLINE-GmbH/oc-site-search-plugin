@@ -177,4 +177,6 @@
 1.6.0:
     - 'Updated October 3 compatibility'
 1.6.1:
-    - 'Optimized CMS pages search'
+    - 'Optimized RainLab pages search (thanks to @damsfx)'
+1.6.2:
+    - 'Updated chinese translations (thanks to @ZhiweiWu0425)'
