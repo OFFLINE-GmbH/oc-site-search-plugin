@@ -174,9 +174,3 @@
     - 'Fixed handling of invalid offline.sitesearch.results event returns'
 1.5.6:
     - 'Updated russian translations (thanks to @Web-VPF)'
-1.6.0:
-    - 'Updated October 3 compatibility'
-1.6.1:
-    - 'Optimized RainLab pages search (thanks to @damsfx)'
-1.6.2:
-    - 'Updated chinese translations (thanks to @ZhiweiWu0425)'
