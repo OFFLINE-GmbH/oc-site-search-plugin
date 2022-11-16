@@ -180,3 +180,5 @@
     - 'Optimized RainLab pages search (thanks to @damsfx)'
 1.6.2:
     - 'Updated chinese translations (thanks to @ZhiweiWu0425)'
+1.6.3:
+    - 'Added query and controller parameters to offline.sitesearch.extend event (thanks to @rvschuilenburg)'
