@@ -45,7 +45,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
 
             $result        = new Result($this->query, $relevance);
             $result->title = $title;
-            $result->text  = $page->queryInViewBag ? $this->getViewBagPropValue($page->viewBag) : $page->parsedMarkup;
+            $result->text  = $page->queryInViewBag ? $this->getViewBagPropsValue($page->viewBag) : $page->parsedMarkup;
             $result->url   = $this->getUrl($page);
             $result->model = $page;
 
@@ -77,7 +77,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
                 return $this->containsQuery($page->parsedMarkup)
                     || $this->containsQuery($page->placeholders)
                     || $queryInViewBag;
-            } catch(\Throwable $e) {
+            } catch (\Throwable $e) {
                 // If an exception was thrown chances are that a page contained invalid markup.
                 return false;
             }
@@ -148,44 +148,19 @@ class RainlabPagesResultsProvider extends ResultsProvider
      * @param $viewBag
      * @return string
      */
-    protected function getViewBagPropValue($viewBag)
+    protected function getViewBagPropsValue($viewBag)
     {
-        $properties = collect($viewBag)->except($this->ignoreViewBagKeys)->toArray();
-        $propertyContainingQueryKey = $this->arrayKeysMatchingSearch($properties, array());
+        $properties = array_dot(collect($viewBag)->except($this->ignoreViewBagKeys)->toArray());
 
-        return array_get($properties, $propertyContainingQueryKey, "");
-    }
+        $viewbagMatchingValues = [];
 
-    /**
-     * Return dotted viewbag property's keys that match query
-     *
-     * @param array $properties
-     * @param array $paths
-     * @return string
-     */
-    protected function arrayKeysMatchingSearch($properties, $paths)
-    {
-        if (is_array($properties) && count($properties) > 0) {
-            foreach ($properties as $key => $value) {
-                $temp_path = $paths;
-                array_push($temp_path, $key);
-
-                if (is_array($value) && count($value) > 0) {
-                    $res_path = $this->arrayKeysMatchingSearch(
-                        $value,
-                        $temp_path
-                    );
-
-                    if ($res_path != null) {
-                        return $res_path;
-                    }
-                } elseif (str_contains($value, $this->query)) {
-                    return join(".", $temp_path);
-                }
+        foreach ($properties as $key => $value) {
+            if (mb_strpos(mb_strtolower($value), mb_strtolower($this->query)) !== false) {
+                $viewbagMatchingValues[$key] = $value;
             }
         }
 
-        return null;
+        return join(' ', $viewbagMatchingValues);
     }
 
     /**
