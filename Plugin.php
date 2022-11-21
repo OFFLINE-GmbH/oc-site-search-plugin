@@ -1,7 +1,11 @@
-<?php namespace OFFLINE\SiteSearch;
+<?php
 
-use OFFLINE\SiteSearch\Models\Settings;
+namespace OFFLINE\SiteSearch;
+
+use Event;
 use System\Classes\PluginBase;
+use System\Classes\PluginManager;
+use OFFLINE\SiteSearch\Models\Settings;
 
 /**
  * SiteSearch Plugin Information File
@@ -22,6 +26,34 @@ class Plugin extends PluginBase
             'icon' => 'icon-search',
             'homepage' => 'https://github.com/OFFLINE-GmbH/oc-site-search-plugin',
         ];
+    }
+
+
+    public function boot()
+    {
+        // Remove all tabs for un-installed plugins
+        Event::listen('backend.form.extendFields', function ($widget) {
+            if (!$widget->getController() instanceof \System\Controllers\Settings) {
+                return;
+            }
+            if (!$widget->model instanceof \OFFLINE\SiteSearch\Models\Settings) {
+                return;
+            }
+            if ($widget->isNested) {
+                return;
+            }
+
+            $ignoreProviders = [
+                'CMS pages',
+            ];
+            $providersTabs = collect($widget->getTab('primary')->fields)->except($ignoreProviders)->toArray();
+
+            foreach ($providersTabs as $name => $fields) {
+                if (! PluginManager::instance()->hasPlugin($name) || PluginManager::instance()->isDisabled($name)) {
+                    $widget-> removeTab($name);
+                }
+            }
+        });
     }
 
     /**
