@@ -184,3 +184,5 @@
     - 'Added query and controller parameters to offline.sitesearch.extend event (thanks to @rvschuilenburg)'
 1.6.4:
     - 'Fixed static pages search when using multiple syntax fields (thanks to @damsfx)'
+1.6.5:
+    - 'Only show search providers of installed plugins in the backend settings (thanks to @damsfx)'
