@@ -36,11 +36,11 @@ class Plugin extends PluginBase
             if (!$widget->getController() instanceof \System\Controllers\Settings) {
                 return;
             }
-            
+
             if (!$widget->model instanceof \OFFLINE\SiteSearch\Models\Settings) {
                 return;
             }
-            
+
             if ($widget->isNested) {
                 return;
             }
@@ -48,7 +48,7 @@ class Plugin extends PluginBase
             $ignoreProviders = [
                 'CMS pages',
             ];
-            
+
             $providersTabs = collect($widget->getTab('primary')->getAllFields())
                 ->keyBy('tab')
                 ->except($ignoreProviders);
