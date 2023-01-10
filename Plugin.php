@@ -36,9 +36,11 @@ class Plugin extends PluginBase
             if (!$widget->getController() instanceof \System\Controllers\Settings) {
                 return;
             }
+            
             if (!$widget->model instanceof \OFFLINE\SiteSearch\Models\Settings) {
                 return;
             }
+            
             if ($widget->isNested) {
                 return;
             }
@@ -46,13 +48,16 @@ class Plugin extends PluginBase
             $ignoreProviders = [
                 'CMS pages',
             ];
-            $providersTabs = collect($widget->getTab('primary')->fields)->except($ignoreProviders)->toArray();
+            
+            $providersTabs = collect($widget->getTab('primary')->getAllFields())
+                ->keyBy('tab')
+                ->except($ignoreProviders);
 
-            foreach ($providersTabs as $name => $fields) {
-                if (! PluginManager::instance()->hasPlugin($name) || PluginManager::instance()->isDisabled($name)) {
-                    $widget-> removeTab($name);
+            $providersTabs->each(function ($formField, $tabName) use ($widget) {
+                if (! PluginManager::instance()->exists($tabName)) {
+                    $widget->removeTab($tabName);
                 }
-            }
+            });
         });
     }
 
