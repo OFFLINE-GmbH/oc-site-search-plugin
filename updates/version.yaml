@@ -186,3 +186,5 @@
     - 'Fixed static pages search when using multiple syntax fields (thanks to @damsfx)'
 1.6.5:
     - 'Only show search providers of installed plugins in the backend settings (thanks to @damsfx)'
+1.6.6:
+    - 'Fixed bug in backend settings form (thanks to @igor-tv)'
