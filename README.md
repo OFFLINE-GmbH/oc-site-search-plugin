@@ -26,6 +26,7 @@ You can translate all contents into your own language.
 * [VojtaSvoboda.Brands](https://octobercms.com/plugin/vojtasvoboda-brands)
 * [Graker.PhotoAlbums](https://octobercms.com/plugin/graker-photoalbums)
 * Native CMS pages (experimental)
+* Tailor Section Records (experimental)
 
 **Multilingual contents via RainLab.Translate are supported.**
 
@@ -445,6 +446,30 @@ variables (like a page number). CMS pages with dynamic URLs (like `/page/:slug`)
 If you have CMS pages with more complex dynamic contents consider writing your own search provider (see `Add support for custom
 plugin contents`)
 
+### Tailor Section Records (experimental)
+
+If you want to provide search results for Tailor Sections Records change the `enabled` setting to `On`.
+
+You need to add further properties to the blueprints you created for Tailor-Sections:
+``` yaml
+...
+
+siteSearch:
+    url: 'jobs' (required)
+    withSlug: false (default: false)
+    titleField: 'title' (default: 'title')
+    textField: 'excerpt' (default: null)
+
+...
+```
+
+| Property     | Description                                                                                                   | Default  |
+|--------------|:--------------------------------------------------------------------------------------------------------------|:---------|
+| `siteSearch` | Include if you want to index this section to SiteSearch.                                                      | required |
+| `url`        | The URL segment of the page to refer.                                                                         | required |
+| `withSlug`   | Indicates, if the url should be extended with the slug parameter.                                             | false    |
+| `titleField` | The model-field which contains the title of the record. Will be displayed as the results title.               | `title`  |
+| `textField`  | The model-field which contains the text of the record. Will be displayed as the results text under the title. | optional |
 
 ## Overwrite default markup
 

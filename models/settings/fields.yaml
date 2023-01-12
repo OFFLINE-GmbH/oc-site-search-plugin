@@ -286,3 +286,18 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: Page
+
+        tailor_sections_enabled:
+            type: switch
+            tab: Tailor sections
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: false
+
+        tailor_sections_label:
+            type: text
+            tab: Tailor sections
+            label: offline.sitesearch::lang.settings.provider_badge
+            comment: offline.sitesearch::lang.settings.provider_badge_comment
+            span: auto
+            default: TailorSections
