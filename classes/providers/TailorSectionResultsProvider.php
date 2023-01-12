@@ -9,6 +9,12 @@ use Tailor\Classes\BlueprintIndexer;
 
 class TailorSectionResultsProvider extends ResultsProvider
 {
+    const ALLOWED_FIELD_TYPES = [
+        'text',
+        'textarea',
+        'richeditor',
+    ];
+
     public function search()
     {
         if (!$this->isEnabled() && !starts_with(\System::VERSION, '3')) {
@@ -17,11 +23,6 @@ class TailorSectionResultsProvider extends ResultsProvider
 
         $controller = \Cms\Classes\Controller::getController() ?? new \Cms\Classes\Controller();
         $sections = BlueprintIndexer::instance()->listSections();
-        $allowedFieldTypes = collect([
-            'text',
-            'textarea',
-            'richeditor',
-        ]);
 
         foreach ($sections as $section) {
             if (!$section->siteSearch) {
@@ -31,9 +32,9 @@ class TailorSectionResultsProvider extends ResultsProvider
             $fields = $entryRecord->getBlueprintAttribute()->attributes['fields'];
 
             $items = $entryRecord->applyPublishedStatus()
-                ->where(function ($q) use ($fields, $allowedFieldTypes) {
+                ->where(function ($q) use ($fields) {
                     foreach ($fields as $field => $definitions) {
-                        if (!$allowedFieldTypes->contains($definitions['type'])) {
+                        if (!collect(self::ALLOWED_FIELD_TYPES)->contains($definitions['type'])) {
                             continue;
                         }
                         $q->orWhere($field, 'like', "%{$this->query}%");
