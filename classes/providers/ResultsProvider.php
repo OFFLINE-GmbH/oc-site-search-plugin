@@ -53,7 +53,7 @@ abstract class ResultsProvider
     public function __construct($query = null)
     {
         $this->setQuery($query);
-        
+
         $this->identifier  = $this->identifier();
         $this->displayName = $this->displayName();
         $this->translator  = $this->translator();
@@ -102,7 +102,7 @@ abstract class ResultsProvider
      */
     public function addResult(Result $result, $provider = null)
     {
-        if ($provider === null) {
+        if ($provider === null && ! $result->provider) {
             $result->provider = $this->displayName;
         }
 

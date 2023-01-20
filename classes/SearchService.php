@@ -20,7 +20,7 @@ use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\ResponsivShowcaseResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\ResultsProvider;
-use OFFLINE\SiteSearch\Classes\Providers\TailorSectionResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\TailorResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\VojtaSvobodaBrandsResultsProvider;
 use OFFLINE\SiteSearch\Models\QueryLog;
 use OFFLINE\SiteSearch\Models\Settings;
@@ -114,7 +114,7 @@ class SearchService
             new GenericResultsProvider(),
             new VojtaSvobodaBrandsResultsProvider(),
             new GrakerPhotoAlbumsResultsProvider($this->query, $this->controller),
-            new TailorSectionResultsProvider()
+            new TailorResultsProvider()
         ];
     }
 
