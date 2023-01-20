@@ -188,3 +188,5 @@
     - 'Only show search providers of installed plugins in the backend settings (thanks to @damsfx)'
 1.6.6:
     - 'Fixed bug in backend settings form (thanks to @igor-tv)'
+1.7.0:
+    - 'Added native support for Tailor content'
