@@ -25,8 +25,8 @@ You can translate all contents into your own language.
 * [Responsiv.Showcase](https://octobercms.com/plugin/responsiv-showcase)
 * [VojtaSvoboda.Brands](https://octobercms.com/plugin/vojtasvoboda-brands)
 * [Graker.PhotoAlbums](https://octobercms.com/plugin/graker-photoalbums)
-* Native CMS pages (experimental)
-* Tailor Section Records (experimental)
+* Tailor
+* Native CMS pages
 
 **Multilingual contents via RainLab.Translate are supported.**
 
