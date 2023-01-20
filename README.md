@@ -466,6 +466,7 @@ siteSearch:
                            # the output is: /target-cms-page/slug-field-value/else
 
     # See "Custom URL Resolver" below
+    # This is used *instead of* pageName + urlParams
     urlResolver: '\App\Provider::resolveSiteSearchUrl'
 
     searchFields:          # Fields to search in.
