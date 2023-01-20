@@ -25,7 +25,8 @@ You can translate all contents into your own language.
 * [Responsiv.Showcase](https://octobercms.com/plugin/responsiv-showcase)
 * [VojtaSvoboda.Brands](https://octobercms.com/plugin/vojtasvoboda-brands)
 * [Graker.PhotoAlbums](https://octobercms.com/plugin/graker-photoalbums)
-* Native CMS pages (experimental)
+* Tailor
+* Native CMS pages
 
 **Multilingual contents via RainLab.Translate are supported.**
 
@@ -139,7 +140,7 @@ function onStart()
 {% component 'searchResults' %}
 ```
 
-#### Change the results collection before displaying 
+#### Change the results collection before displaying
 
 You can listen for the `offline.sitesearch.results` event and modify the query as you wish.
 
@@ -240,7 +241,7 @@ If this property is enabled, a search query will be executed as soon as the user
 
 ##### autoCompleteResultCount
 
-This many results will be displayed to the user below the input field. There will be a 
+This many results will be displayed to the user below the input field. There will be a
 "Show all results" link the user can click that takes her to a full search results page if one has
 been specified via the `searchPage` property.
 
@@ -253,7 +254,7 @@ This is useful if your site has many different entities (ex. teams, employees, p
 
 ##### searchPage
 
-The filename of the page where you have placed a `searchResults` component. If a user clicks on the "Show all 
+The filename of the page where you have placed a `searchResults` component. If a user clicks on the "Show all
 results" link it will take him to this page where a full search is run using the `searchResults` component.
 
 ## Add support for custom plugin contents
@@ -263,7 +264,7 @@ results" link it will take him to this page where a full search is run using the
 To return search results for you own custom plugin, register an event listener for the `offline.sitesearch.query`
 event in your plugin's boot method.
 
-Return an array containing a `provider` string and `results` array. Each result must provide at least a `title` key.  
+Return an array containing a `provider` string and `results` array. Each result must provide at least a `title` key.
 
 #### Example to search for custom `documents`
 
@@ -286,7 +287,7 @@ public function boot()
 
             // If the query is found in the title, set a relevance of 2
             $relevance = mb_stripos($item->title, $query) !== false ? 2 : 1;
-            
+
             // Optional: Add an age penalty to older results. This makes sure that
             // newer results are listed first.
             // if ($relevance > 1 && $item->created_at) {
@@ -319,13 +320,13 @@ That's it!
 
 ### Advanced method
 
-If you need a bit more flexibility you can also create your own `ResultsProvider` class. Simply extend SiteSearch's 
+If you need a bit more flexibility you can also create your own `ResultsProvider` class. Simply extend SiteSearch's
 `ResultProvider` and implement the needed methods. Have a look at the existing providers shipped by this plugin to get
 an idea of all the possibilities.
 
 When your own `ResultsProvider` class is ready, register an event listener for the `offline.sitesearch.extend`
 event in your plugin's boot method. There you can return one `ResultsProvider` (or multiple in an array) which will
-be included every time a user runs a search on your website.  
+be included every time a user runs a search on your website.
 
 #### Advanced example to search for custom `documents`
 
@@ -334,9 +335,9 @@ public function boot()
 {
     Event::listen('offline.sitesearch.extend', function () {
         return new DocumentsSearchProvider();
-        
+
         // or
-        // return [new DocumentsSearchProvider(), new FilesSearchProvider()]; 
+        // return [new DocumentsSearchProvider(), new FilesSearchProvider()];
     });
 }
 ```
@@ -445,6 +446,83 @@ variables (like a page number). CMS pages with dynamic URLs (like `/page/:slug`)
 If you have CMS pages with more complex dynamic contents consider writing your own search provider (see `Add support for custom
 plugin contents`)
 
+### Tailor
+
+SiteSearch has first-party support to search in your Tailor content. You have to add a new `siteSearch`
+section to each blueprint you want to be searched.
+
+All configuration values are *optional*, but it makes sense to set at least one `searchFields`
+value so the plugin has something to search through.
+
+``` yaml
+# your-blueprint.yaml
+siteSearch:
+    providerBadge: MyEntry # Display this beside each search result.
+
+    pageName: 'cms-page'   # Filename of the target CMS page, used to build links.
+    urlParams:             # Given a page URL: /target-cms-page/:slug/:something
+    - slug: $slug          # Use the value of the "slug" field, since it is prefixed with a "$"
+    - something: else      # Use the literal string "else", since there is no $-prefix
+                           # the output is: /target-cms-page/slug-field-value/else
+
+    # See "Custom URL Resolver" below
+    urlResolver: '\App\Provider::resolveSiteSearchUrl'
+
+    searchFields:          # Fields to search in.
+    - title
+    - description
+    - something_elase
+
+    resultFields:
+        title: title       # Use the "title" field as the search result title
+        text: description  # Use the "description" field as the search result text
+```
+
+### Custom URL Resolver
+
+Instead of specifying `pageName` and `urlParams` settings, you can set a custom URL resolver.
+This is useful if you want to have full control over generating the target URL of your search results.
+
+You can provide any callable as a string, like a static method on your app's `Provider` class, for example.
+
+The callable will receive the following arguments:
+
+- `$controller` - A CMS Controller instance
+- `$record` - The Tailor Entry Record
+- `$blueprint` - The Tailor Blueprint
+
+#### Example implementation
+
+```php
+<?php // app/Provider.php
+namespace App;
+
+use Cms\Classes\Controller;
+use System\Classes\AppBase;
+use Tailor\Classes\Blueprint\EntryBlueprint;
+use Tailor\Models\EntryRecord;
+
+class Provider extends AppBase
+{
+    // ...
+
+    /**
+     * Build the target URL for a OFFLINE.SiteSearch result.
+     */
+    public static function resolveSiteSearchUrl(Controller $controller,
+                                                EntryRecord $record,
+                                                EntryBlueprint $blueprint): string
+    {
+        if ($blueprint->handle === 'SomethingSpecial') {
+            return '/special-url';
+        }
+
+        return $controller->pageUrl('my-custom-page', [
+            'slug' => $record->slug,
+        ]);
+    }
+}
+```
 
 ## Overwrite default markup
 
