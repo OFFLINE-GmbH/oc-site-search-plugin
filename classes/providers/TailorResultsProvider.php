@@ -5,6 +5,7 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 use Cms\Classes\Controller;
 use OFFLINE\SiteSearch\Classes\Result;
 use OFFLINE\SiteSearch\Models\Settings;
+use System\Facades\System;
 use Tailor\Classes\BlueprintIndexer;
 use Tailor\Models\EntryRecord;
 
@@ -12,9 +13,7 @@ class TailorResultsProvider extends ResultsProvider
 {
     public function search()
     {
-        $isAtLeastOctober2 = class_exists('System');
-
-        if (!$isAtLeastOctober2) {
+        if (!class_exists('System') || version_compare(System::VERSION, '3', '<')) {
             return $this;
         }
 
