@@ -190,3 +190,5 @@
     - 'Fixed bug in backend settings form (thanks to @igor-tv)'
 1.7.0:
     - 'Added native support for Tailor content'
+1.7.1:
+    - 'Fixed version check for Tailor support'
