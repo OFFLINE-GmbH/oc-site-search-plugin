@@ -8,8 +8,9 @@
                     {% if __SELF__.useAutoComplete %}
                         data-track-input
                         data-request="{{ __SELF__ }}::onType"
-                        data-request-before-update="document.getElementById('autocomplete-results').classList.add('ss-search-form__results--visible')"
+                        data-request-before-update="if(this.value != ''){document.getElementById('autocomplete-results').classList.add('ss-search-form__results--visible')}else{document.getElementById('autocomplete-results').classList.remove('ss-search-form__results--visible')}"
                         data-request-update="'{{ __SELF__ }}::autocomplete': '#autocomplete-results'"
+                        onfocusout="document.getElementById('autocomplete-results').classList.remove('ss-search-form__results--visible')"
                     {% endif %}
             >
             <button class="ss-search-form__submit" type="submit">Search</button>
