@@ -26,7 +26,23 @@ class TailorResultsProvider extends ResultsProvider
             }
 
             $query = EntryRecord::inSection($section->handle);
-            $fields = $query->getBlueprintAttribute()->attributes['fields'];
+
+            $fields = [];
+
+            $blueprint = $query->getBlueprintAttribute();
+
+            if (isset($blueprint->attributes['groups'])) {
+                foreach ($blueprint->attributes['groups'] as $group) {
+                    $fields += $group['fields'];
+                }
+            } elseif (isset($blueprint->attributes['fields'])) {
+                $fields = $blueprint->attributes['fields'];
+            }
+
+            if (count($fields) === 0) {
+                continue;
+            }
+
             $searchFields = $section->siteSearch['searchFields'] ?? [];
             $resultFields = $section->siteSearch['resultFields'] ?? [];
 
