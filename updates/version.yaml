@@ -192,3 +192,5 @@
     - 'Added native support for Tailor content'
 1.7.1:
     - 'Fixed version check for Tailor support'
+1.7.2:
+    - 'Added support to search in "groups" fields in Tailor'
