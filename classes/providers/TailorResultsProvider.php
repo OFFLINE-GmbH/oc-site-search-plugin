@@ -100,9 +100,9 @@ class TailorResultsProvider extends ResultsProvider
 
                     $this->addResult($result);
                 });
-
-            return $this;
         }
+
+        return $this;
     }
 
     /**
