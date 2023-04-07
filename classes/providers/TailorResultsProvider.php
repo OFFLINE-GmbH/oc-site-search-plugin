@@ -97,6 +97,7 @@ class TailorResultsProvider extends ResultsProvider
                     $result->title = $title;
                     $result->text = $text;
                     $result->url = $url;
+                    $result->setModel($item);
 
                     $this->addResult($result);
                 });
