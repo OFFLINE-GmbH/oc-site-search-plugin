@@ -8,7 +8,7 @@
                     {% if __SELF__.useAutoComplete %}
                         data-track-input
                         data-request="{{ __SELF__ }}::onType"
-                        data-request-before-update="document.getElementById('autocomplete-results').classList.add('ss-search-form__results--visible')"
+                        data-request-before-update="document.getElementById('autocomplete-results').classList.toggle('ss-search-form__results--visible', !!this.value)"
                         data-request-update="'{{ __SELF__ }}::autocomplete': '#autocomplete-results'"
                     {% endif %}
             >
