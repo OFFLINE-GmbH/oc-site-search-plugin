@@ -461,8 +461,8 @@ siteSearch:
 
     pageName: 'cms-page'   # Filename of the target CMS page, used to build links.
     urlParams:             # Given a page URL: /target-cms-page/:slug/:something
-    - slug: $slug          # Use the value of the "slug" field, since it is prefixed with a "$"
-    - something: else      # Use the literal string "else", since there is no $-prefix
+      slug: $slug          # Use the value of the "slug" field, since it is prefixed with a "$"
+      something: else      # Use the literal string "else", since there is no $-prefix
                            # the output is: /target-cms-page/slug-field-value/else
 
     # See "Custom URL Resolver" below
