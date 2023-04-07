@@ -196,3 +196,5 @@
     - 'Added support to search in "groups" fields in Tailor'
 1.7.3:
     - 'Fixed bug where only first matching Tailor blueprint returned results'
+1.7.4:
+    - 'Added Tailor models to search results'
