@@ -198,3 +198,5 @@
     - 'Fixed bug where only first matching Tailor blueprint returned results'
 1.7.4:
     - 'Added Tailor models to search results'
+1.7.5:
+    - 'Fixed visibility class on searchInput component'
