@@ -208,3 +208,5 @@
     - 'Added minQueryLength parameter to searchResults component'
 1.7.10:
     - 'Always prefer forced query in searchResults component'
+1.7.11:
+    - 'Fixed search call'

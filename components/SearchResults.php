@@ -141,7 +141,7 @@ class SearchResults extends BaseComponent
     {
         $this->prepareVars();
 
-        if (strlen($this->query) < $this->minQueryLength) {
+        if (strlen($this->query) >= $this->minQueryLength) {
             $this->resultCollection = $this->search();
         }
     }
