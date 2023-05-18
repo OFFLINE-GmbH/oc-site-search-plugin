@@ -1,11 +1,19 @@
 {% set results = __SELF__.results %}
 
-{% for result in results %}
-    {# Display all results #}
-    {% partial __SELF__ ~ '::searchresult.htm' result = result %}
-{% else %}
-    {# No results found #}
-    {% partial __SELF__ ~ '::no-results.htm' %}
-{% endfor %}
+{% if (__SELF__.query | length) < __SELF__.minQueryLength %}
 
-{% partial __SELF__ ~ '::pagination.htm' results = results %}
+    {% partial __SELF__ ~ '::query-too-short.htm' %}
+
+{% else %}
+
+    {% for result in results %}
+        {# Display all results #}
+        {% partial __SELF__ ~ '::searchresult.htm' result = result %}
+    {% else %}
+        {# No results found #}
+        {% partial __SELF__ ~ '::no-results.htm' %}
+    {% endfor %}
+
+    {% partial __SELF__ ~ '::pagination.htm' results = results %}
+
+{% endif %}

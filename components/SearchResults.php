@@ -39,6 +39,12 @@ class SearchResults extends BaseComponent
      */
     public $query;
     /**
+     * The minimum length of the query.
+     *
+     * @var integer
+     */
+    public $minQueryLength;
+    /**
      * @var int
      */
     protected $resultsPerPage = 10;
@@ -110,6 +116,14 @@ class SearchResults extends BaseComponent
                 'default'           => 'Visit page',
                 'showExternalParam' => false,
             ],
+            'minQueryLength'  => [
+                'title'             => 'offline.sitesearch::lang.searchResults.properties.min_query_length.title',
+                'description'       => 'offline.sitesearch::lang.searchResults.properties.min_query_length.description',
+                'type'              => 'string',
+                'default'           => '0',
+                'validationPattern' => '^[0-9]+$',
+                'validationMessage' => 'Please enter only numbers',
+            ],
         ];
     }
 
@@ -122,7 +136,9 @@ class SearchResults extends BaseComponent
     {
         $this->prepareVars();
 
-        $this->resultCollection = $this->search();
+        if (strlen($this->query) < $this->minQueryLength) {
+            $this->resultCollection = $this->search();
+        }
     }
 
 
@@ -155,6 +171,9 @@ class SearchResults extends BaseComponent
         $this->setVar('visitPageMessage');
         $this->setVar('showProviderBadge');
         $this->setVar('resultsPerPage');
+        $this->setVar('minQueryLength');
+
+        $this->resultCollection = new ResultCollection();
     }
 
     /**
