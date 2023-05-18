@@ -8,12 +8,12 @@
 
     {% for result in results %}
         {# Display all results #}
-        {% partial __SELF__ ~ '::searchresult.htm' result = result %}
+        {% partial __SELF__ ~ '::searchresult.htm' result=result %}
     {% else %}
         {# No results found #}
         {% partial __SELF__ ~ '::no-results.htm' %}
     {% endfor %}
 
-    {% partial __SELF__ ~ '::pagination.htm' results = results %}
+    {% partial __SELF__ ~ '::pagination.htm' results=results %}
 
 {% endif %}

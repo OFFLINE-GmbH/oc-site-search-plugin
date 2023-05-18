@@ -210,3 +210,5 @@
     - 'Always prefer forced query in searchResults component'
 1.7.11:
     - 'Fixed search call'
+1.7.12:
+    - 'Added thumbFrom field to Tailor search results'

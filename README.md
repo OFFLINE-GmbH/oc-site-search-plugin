@@ -474,6 +474,7 @@ siteSearch:
     - description
     - something_elase
 
+    thumbFrom: image       # Use the `image` field as thumbnail. Must be a fileupload.
     resultFields:
         title: title       # Use the "title" field as the search result title
         text: description  # Use the "description" field as the search result text

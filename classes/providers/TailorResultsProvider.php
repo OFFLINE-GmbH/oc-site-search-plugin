@@ -3,6 +3,7 @@
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use Cms\Classes\Controller;
+use October\Rain\Database\Collection;
 use OFFLINE\SiteSearch\Classes\Result;
 use OFFLINE\SiteSearch\Models\Settings;
 use System\Facades\System;
@@ -94,10 +95,23 @@ class TailorResultsProvider extends ResultsProvider
                     $provider = $section->siteSearch['providerBadge'] ?? '';
 
                     $result = new Result($this->query, $relevance, $provider);
-                    $result->title = $title;
-                    $result->text = $text;
-                    $result->url = $url;
-                    $result->model = $item;
+                    $result->setTitle($title);
+                    $result->setText($text);
+                    $result->setUrl($url);
+                    $result->setModel($item);
+                    $result->setMeta($item->attributesToArray());
+
+                    if ($thumbFrom = ($section->siteSearch['thumbFrom'] ?? '')) {
+                        $thumb = $item->{$thumbFrom};
+
+                        if ($thumb instanceof Collection) {
+                            $thumb = $thumb->first();
+                        }
+
+                        if ($thumb) {
+                            $result->setThumb($thumb);
+                        }
+                    }
 
                     $this->addResult($result);
                 });
