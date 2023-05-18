@@ -67,6 +67,11 @@ class SearchResults extends BaseComponent
      * @var string
      */
     protected $forcedQuery;
+    /**
+     * Marks whether a forced query is set.
+     * @var true
+     */
+    private $hasForcedQuery = false;
 
     /**
      * The component's details.
@@ -154,6 +159,8 @@ class SearchResults extends BaseComponent
     public function forceQuery($query)
     {
         $this->forcedQuery = $query;
+
+        $this->hasForcedQuery = true;
     }
 
     /**
@@ -163,7 +170,7 @@ class SearchResults extends BaseComponent
      */
     protected function prepareVars()
     {
-        $query = $this->forcedQuery ? $this->forcedQuery : Request::get('q', '');
+        $query = $this->hasForcedQuery ? $this->forcedQuery : Request::get('q', '');
 
         $this->setVar('pageNumber', (int)Request::get('page', 1));
         $this->setVar('query', $query);

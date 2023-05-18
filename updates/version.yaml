@@ -206,3 +206,5 @@
     - 'Fixed locale prefix in search results'
 1.7.9:
     - 'Added minQueryLength parameter to searchResults component'
+1.7.10:
+    - 'Always prefer forced query in searchResults component'
