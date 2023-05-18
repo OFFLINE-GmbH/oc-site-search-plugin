@@ -200,3 +200,5 @@
     - 'Added Tailor models to search results'
 1.7.5:
     - 'Fixed visibility class on searchInput component'
+1.7.6:
+    - 'Leave additional setting fields that are added by the user to the backend settings from untouched'
