@@ -76,10 +76,9 @@ class ArrizalaminPortfolioResultsProvider extends ResultsProvider
      */
     protected function getUrl($post)
     {
-        $url        = trim(Settings::get('arrizalamin_portfolio_url', '/portfolio/project'), '/');
-        $langPrefix = $this->translator ? $this->translator->getLocale() : '';
+        $url = trim(Settings::get('arrizalamin_portfolio_url', '/portfolio/project'), '/');
 
-        return implode('/', [$langPrefix, $url, $post->slug]);
+        return $this->withLocalePrefix(implode('/', [$url, $post->slug]));
     }
 
     /**

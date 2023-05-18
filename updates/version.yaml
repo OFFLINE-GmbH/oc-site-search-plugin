@@ -202,3 +202,5 @@
     - 'Fixed visibility class on searchInput component'
 1.7.6:
     - 'Leave additional setting fields that are added by the user to the backend settings from untouched'
+1.7.8:
+    - 'Fixed locale prefix in search results'

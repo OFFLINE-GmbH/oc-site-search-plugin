@@ -81,9 +81,8 @@ class IndikatorNewsResultsProvider extends ResultsProvider
     protected function getUrl($post)
     {
         $url = trim(Settings::get('indikator_news_posturl', '/news/post'), '/');
-        $langPrefix = $this->translator ? $this->translator->getLocale() : '';
 
-        return implode('/', [$langPrefix, $url, $post->slug]);
+        return $this->withLocalePrefix(implode('/', [$url, $post->slug]));
     }
 
     /**

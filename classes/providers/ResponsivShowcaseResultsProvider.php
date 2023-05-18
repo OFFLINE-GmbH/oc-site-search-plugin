@@ -75,10 +75,9 @@ class ResponsivShowcaseResultsProvider extends ResultsProvider
      */
     protected function getUrl($post)
     {
-        $url        = trim(Settings::get('responsiv_showcase_url', '/showcase/project'), '/');
-        $langPrefix = $this->translator ? $this->translator->getLocale() : '';
+        $url = trim(Settings::get('responsiv_showcase_url', '/showcase/project'), '/');
 
-        return implode('/', [$langPrefix, $url, $post->slug]);
+        return $this->withLocalePrefix(implode('/', [$url, $post->slug]));
     }
 
     /**

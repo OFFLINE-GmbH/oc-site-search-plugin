@@ -74,10 +74,9 @@ class VojtaSvobodaBrandsResultsProvider extends ResultsProvider
      */
     protected function getUrl($post)
     {
-        $url        = trim(Settings::get('vojtasvoboda_brands_url', '/brand'), '/');
-        $langPrefix = $this->translator ? $this->translator->getLocale() : '';
+        $url = trim(Settings::get('vojtasvoboda_brands_url', '/brand'), '/');
 
-        return implode('/', [$langPrefix, $url, $post->slug]);
+        return $this->withLocalePrefix(implode('/', [$url, $post->slug]));
     }
 
     /**
