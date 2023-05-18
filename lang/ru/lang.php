@@ -66,6 +66,10 @@ href="https://octobercms.com/plugin/offline-sitesearch#documentation">к док�
                 'title'       => 'Ссылка Посетить страницу',
                 'description' => 'Этот текс помещается как ссылка под каждым результатом поиска',
             ],
+            'min_query_length'       => [
+                'title'       => 'Min. длина запроса',
+                'description' => 'Символов в поисковом запросе должно быть не меньше этого числа.',
+            ],
         ],
     ],
     'searchInput'       => [
@@ -102,4 +106,5 @@ href="https://octobercms.com/plugin/offline-sitesearch#documentation">к док�
         'export'       => 'Export log',
         'useragent'    => 'User agent',
     ],
+    'query_too_short' => 'Пожалуйста, введите не менее :min символов.'
 ];
