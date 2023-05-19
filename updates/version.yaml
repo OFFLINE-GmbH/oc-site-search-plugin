@@ -212,3 +212,5 @@
     - 'Fixed search call'
 1.7.12:
     - 'Added thumbFrom field to Tailor search results'
+1.7.13:
+    - 'Updated RU translations (thanks to @point111)'
