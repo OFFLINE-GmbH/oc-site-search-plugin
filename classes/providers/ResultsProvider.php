@@ -4,6 +4,7 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use OFFLINE\SiteSearch\Classes\Result;
 use RainLab\Translate\Classes\Translator;
+use RainLab\Translate\Models\Locale;
 use System\Classes\PluginManager;
 use System\Models\File;
 
@@ -164,14 +165,14 @@ abstract class ResultsProvider
 
 
     /**
-     * Check if the Rainlab.Translate plugin is installed
-     * and if yes, get the translator instance.
+     * Check if the RainLab.Translate plugin is installed
+     * If so, get the translator instance.
      *
      * @return Translator|bool
      */
     protected function translator()
     {
-        return $this->isPluginAvailable('RainLab.Translate')
+        return class_exists('RainLab\Translate\Classes\Translator') && $this->isPluginAvailable('RainLab.Translate')
             ? Translator::instance()
             : false;
     }
@@ -224,5 +225,29 @@ abstract class ResultsProvider
         $penalty = $ageInDays * $penaltyPerDay;
 
         return $penalty > $maxPenalty ? $maxPenalty : $penalty;
+    }
+
+    /**
+     * Return the currently active locale.
+     *
+     * @param string $url
+     *
+     * @return string
+     */
+    public function withLocalePrefix($url)
+    {
+        if (!$this->translator) {
+            return $url;
+        }
+
+        // Do not prefix if there is only one locale enabled.
+        $locales = Locale::listEnabled();
+        if (count($locales) <= 1) {
+            return $url;
+        }
+
+        $locale = $this->translator->getLocale();
+
+        return trim("/{$locale}/{$url}", '/');
     }
 }

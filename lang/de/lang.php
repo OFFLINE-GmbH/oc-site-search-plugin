@@ -64,6 +64,10 @@ href="https://octobercms.com/plugin/offline-sitesearch#documentation">die Dokume
                 'title'       => '«Treffer anzeigen» Text',
                 'description' => 'Dieser Text wird unterhalb jedes Suchresultates angezeigt',
             ],
+            'min_query_length'       => [
+                'title'       => 'Min. Anzahl Zeichen',
+                'description' => 'Die Suche wird erst ab dieser Anzahl Zeichen ausgeführt',
+            ],
         ],
     ],
     'searchInput'       => [
@@ -100,4 +104,5 @@ href="https://octobercms.com/plugin/offline-sitesearch#documentation">die Dokume
         'export'       => 'Suchanfragen exportieren',
         'useragent'    => 'User-Agent',
     ],
+    'query_too_short' => 'Bitte geben Sie mindestens :min Zeichen ein.'
 ];

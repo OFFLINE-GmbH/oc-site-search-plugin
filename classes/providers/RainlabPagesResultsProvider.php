@@ -182,9 +182,7 @@ class RainlabPagesResultsProvider extends ResultsProvider
      */
     protected function getUrl($page)
     {
-        $langPrefix = $this->translator ? $this->translator->getLocale() : '';
-
-        return $langPrefix . $page->viewBag['url'];
+        return $this->withLocalePrefix($page->viewBag['url']);
     }
 
     /**

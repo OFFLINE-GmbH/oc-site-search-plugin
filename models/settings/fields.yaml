@@ -34,6 +34,7 @@ tabs:
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
+            native: true
 
         rainlab_blog_label:
             type: text
@@ -42,6 +43,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: Blog
+            native: true
 
         rainlab_blog_page:
             type: dropdown
@@ -50,6 +52,7 @@ tabs:
             label: offline.sitesearch::lang.settings.blog_page
             comment: offline.sitesearch::lang.settings.blog_page_comment
             span: auto
+            native: true
 
         rainlab_pages_enabled:
             type: switch
@@ -57,6 +60,7 @@ tabs:
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
+            native: true
 
         rainlab_pages_label:
             type: text
@@ -65,6 +69,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: Page
+            native: true
 
         indikator_news_enabled:
             type: switch
@@ -72,6 +77,7 @@ tabs:
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
+            native: true
 
         indikator_news_label:
             type: text
@@ -80,6 +86,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: News
+            native: true
 
         indikator_news_posturl:
             type: text
@@ -88,6 +95,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.news_page_comment
             default: /news
             span: auto
+            native: true
 
         octoshop_products_enabled:
             type: switch
@@ -95,6 +103,7 @@ tabs:
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
+            native: true
 
         octoshop_products_label:
             type: text
@@ -102,6 +111,7 @@ tabs:
             label: offline.sitesearch::lang.settings.provider_badge
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
+            native: true
 
         octoshop_products_itemurl:
             type: text
@@ -110,20 +120,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.octoshop_itemurl_comment
             span: auto
             default: /product
-
-        snipcartshop_products_enabled:
-            type: switch
-            tab: OFFLINE.SnipcartShop
-            label: offline.sitesearch::lang.settings.use_this_provider
-            comment: offline.sitesearch::lang.settings.use_this_provider_comment
-            default: true
-
-        snipcartshop_products_label:
-            type: text
-            tab: OFFLINE.SnipcartShop
-            label: offline.sitesearch::lang.settings.provider_badge
-            comment: offline.sitesearch::lang.settings.provider_badge_comment
-            span: auto
+            native: true
 
         jiri_jkshop_enabled:
             type: switch
@@ -131,6 +128,8 @@ tabs:
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
+            native: true
+
 
         jiri_jkshop_label:
             type: text
@@ -138,6 +137,7 @@ tabs:
             label: offline.sitesearch::lang.settings.provider_badge
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
+            native: true
 
         jiri_jkshop_itemurl:
             type: text
@@ -146,6 +146,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.jkshop_itemurl_comment
             span: auto
             default: /product
+            native: true
 
         radiantweb_problog_enabled:
             type: switch
@@ -153,6 +154,7 @@ tabs:
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
+            native: true
 
         radiantweb_problog_label:
             type: text
@@ -161,6 +163,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: Blog
+            native: true
 
         arrizalamin_portfolio_enabled:
             type: switch
@@ -168,6 +171,7 @@ tabs:
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
+            native: true
 
         arrizalamin_portfolio_label:
             type: text
@@ -176,6 +180,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: Portfolio
+            native: true
 
         arrizalamin_portfolio_url:
             type: text
@@ -184,12 +189,14 @@ tabs:
             comment: offline.sitesearch::lang.settings.portfolio_itemurl_comment
             span: auto
             default: /portfolio/project
+            native: true
 
         vojtasvoboda_brands_enabled:
             type: switch
             tab: VojtaSvoboda.Brands
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            native: true
             default: true
 
         vojtasvoboda_brands_label:
@@ -199,6 +206,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: Brands
+            native: true
 
         vojtasvoboda_brands_url:
             type: text
@@ -207,6 +215,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.brands_itemurl_comment
             span: auto
             default: /brand
+            native: true
 
         responsiv_showcase_enabled:
             type: switch
@@ -214,6 +223,7 @@ tabs:
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
+            native: true
 
         responsiv_showcase_label:
             type: text
@@ -222,6 +232,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: Showcase
+            native: true
 
         responsiv_showcase_url:
             type: text
@@ -230,6 +241,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.showcase_itemurl_comment
             span: auto
             default: /showcase/project
+            native: true
 
         graker_photoalbums_enabled:
             type: switch
@@ -237,6 +249,7 @@ tabs:
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
+            native: true
 
         graker_photoalbums_label:
             type: text
@@ -245,6 +258,7 @@ tabs:
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
             default: PhotoAlbums
+            native: true
 
         graker_photoalbums_album_page:
             type: dropdown
@@ -253,6 +267,7 @@ tabs:
             label: offline.sitesearch::lang.settings.album_page
             comment: offline.sitesearch::lang.settings.album_page_comment
             span: auto
+            native: true
 
         graker_photoalbums_photo_page:
             type: dropdown
@@ -261,6 +276,7 @@ tabs:
             label: offline.sitesearch::lang.settings.photo_page
             comment: offline.sitesearch::lang.settings.photo_page_comment
             span: auto
+            native: true
 
         cms_pages_warning:
             type: partial

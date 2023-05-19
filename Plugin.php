@@ -31,7 +31,7 @@ class Plugin extends PluginBase
 
     public function boot()
     {
-        // Remove all tabs for un-installed plugins
+        // Remove all tabs for uninstalled plugins
         Event::listen('backend.form.extendFields', function ($widget) {
             if (!$widget->getController() instanceof \System\Controllers\Settings) {
                 return;
@@ -45,13 +45,11 @@ class Plugin extends PluginBase
                 return;
             }
 
-            $ignoreProviders = [
-                'CMS pages',
-            ];
-
             $providersTabs = collect($widget->getTab('primary')->getAllFields())
-                ->keyBy('tab')
-                ->except($ignoreProviders);
+                ->filter(function ($formField) {
+                    return array_get($formField->config, 'native');
+                })
+                ->keyBy('tab');
 
             $providersTabs->each(function ($formField, $tabName) use ($widget) {
                 if (! PluginManager::instance()->exists($tabName)) {

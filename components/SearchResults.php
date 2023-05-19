@@ -39,6 +39,12 @@ class SearchResults extends BaseComponent
      */
     public $query;
     /**
+     * The minimum length of the query.
+     *
+     * @var integer
+     */
+    public $minQueryLength;
+    /**
      * @var int
      */
     protected $resultsPerPage = 10;
@@ -61,6 +67,11 @@ class SearchResults extends BaseComponent
      * @var string
      */
     protected $forcedQuery;
+    /**
+     * Marks whether a forced query is set.
+     * @var true
+     */
+    private $hasForcedQuery = false;
 
     /**
      * The component's details.
@@ -110,6 +121,14 @@ class SearchResults extends BaseComponent
                 'default'           => 'Visit page',
                 'showExternalParam' => false,
             ],
+            'minQueryLength'  => [
+                'title'             => 'offline.sitesearch::lang.searchResults.properties.min_query_length.title',
+                'description'       => 'offline.sitesearch::lang.searchResults.properties.min_query_length.description',
+                'type'              => 'string',
+                'default'           => '0',
+                'validationPattern' => '^[0-9]+$',
+                'validationMessage' => 'Please enter only numbers',
+            ],
         ];
     }
 
@@ -122,7 +141,9 @@ class SearchResults extends BaseComponent
     {
         $this->prepareVars();
 
-        $this->resultCollection = $this->search();
+        if (strlen($this->query) >= $this->minQueryLength) {
+            $this->resultCollection = $this->search();
+        }
     }
 
 
@@ -138,6 +159,8 @@ class SearchResults extends BaseComponent
     public function forceQuery($query)
     {
         $this->forcedQuery = $query;
+
+        $this->hasForcedQuery = true;
     }
 
     /**
@@ -147,7 +170,7 @@ class SearchResults extends BaseComponent
      */
     protected function prepareVars()
     {
-        $query = $this->forcedQuery ? $this->forcedQuery : Request::get('q', '');
+        $query = $this->hasForcedQuery ? $this->forcedQuery : Request::get('q', '');
 
         $this->setVar('pageNumber', (int)Request::get('page', 1));
         $this->setVar('query', $query);
@@ -155,6 +178,9 @@ class SearchResults extends BaseComponent
         $this->setVar('visitPageMessage');
         $this->setVar('showProviderBadge');
         $this->setVar('resultsPerPage');
+        $this->setVar('minQueryLength');
+
+        $this->resultCollection = new ResultCollection();
     }
 
     /**

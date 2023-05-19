@@ -200,3 +200,17 @@
     - 'Added Tailor models to search results'
 1.7.5:
     - 'Fixed visibility class on searchInput component'
+1.7.6:
+    - 'Leave additional setting fields that are added by the user to the backend settings from untouched'
+1.7.8:
+    - 'Fixed locale prefix in search results'
+1.7.9:
+    - 'Added minQueryLength parameter to searchResults component'
+1.7.10:
+    - 'Always prefer forced query in searchResults component'
+1.7.11:
+    - 'Fixed search call'
+1.7.12:
+    - 'Added thumbFrom field to Tailor search results'
+1.7.13:
+    - 'Updated RU translations (thanks to @point111)'

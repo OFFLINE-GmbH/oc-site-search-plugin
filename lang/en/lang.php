@@ -66,6 +66,10 @@ href="https://octobercms.com/plugin/offline-sitesearch#documentation">the docume
                 'title'       => 'Visit page label',
                 'description' => 'This link text is placed below each result',
             ],
+            'min_query_length'       => [
+                'title'       => 'Min. query length',
+                'description' => 'The search query must be at least this long to be executed',
+            ],
         ],
     ],
     'searchInput'       => [
@@ -102,4 +106,5 @@ href="https://octobercms.com/plugin/offline-sitesearch#documentation">the docume
         'export'       => 'Export log',
         'useragent'    => 'User agent',
     ],
+    'query_too_short' => 'Please enter at least :min characters.'
 ];

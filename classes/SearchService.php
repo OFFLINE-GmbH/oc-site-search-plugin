@@ -42,7 +42,7 @@ class SearchService
 
     public function __construct($query, $controller = null)
     {
-        $this->query      = $query;
+        $this->query      = trim($query);
         $this->controller = $controller ?: new Controller();
         $this->logQueries = Settings::get('log_queries', false);
     }
