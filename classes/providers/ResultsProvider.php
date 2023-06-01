@@ -4,7 +4,7 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use OFFLINE\SiteSearch\Classes\Result;
 use RainLab\Translate\Classes\Translator;
-use RainLab\Translate\Models\Locale;
+use RainLab\Translate\Classes\Locale;
 use System\Classes\PluginManager;
 use System\Models\File;
 
