@@ -4,7 +4,6 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use OFFLINE\SiteSearch\Classes\Result;
 use RainLab\Translate\Classes\Translator;
-use RainLab\Translate\Models\Locale;
 use System\Classes\PluginManager;
 use System\Models\File;
 
@@ -240,8 +239,16 @@ abstract class ResultsProvider
             return $url;
         }
 
+        if (class_exists('\RainLab\Translate\Models\Locale')) {
+            $class = new \RainLab\Translate\Models\Locale;
+        } elseif (class_exists('\RainLab\Translate\Classes\Locale')) {
+            $class = new \RainLab\Translate\Classes\Locale;
+        } else {
+            return $url;
+        }
+
         // Do not prefix if there is only one locale enabled.
-        $locales = Locale::listEnabled();
+        $locales = $class::listEnabled();
         if (count($locales) <= 1) {
             return $url;
         }
