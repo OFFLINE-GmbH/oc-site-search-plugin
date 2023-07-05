@@ -37,7 +37,7 @@ class CmsPagesResultsProvider extends ResultsProvider
             // Render page in empty layout.
             $page->settings['layout'] = null;
 
-            $contents = \Html::strip((new Controller())->runPage($page));
+            $contents = \Html::strip((new Controller())->runPage($page, false));
             if ( ! $this->containsQueryIn($contents, $page)) {
                 continue;
             }
