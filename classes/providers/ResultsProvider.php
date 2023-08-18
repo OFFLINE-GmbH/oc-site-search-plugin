@@ -2,6 +2,8 @@
 
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
+use October\Rain\Database\Traits\Multisite;
+use October\Rain\Support\Facades\Site;
 use OFFLINE\SiteSearch\Classes\Result;
 use RainLab\Translate\Classes\Translator;
 use System\Classes\PluginManager;
@@ -235,6 +237,11 @@ abstract class ResultsProvider
      */
     public function withLocalePrefix($url)
     {
+        // This is an October 3 installation, let the CMS handle the URL generation.
+        if (class_exists(\Site::class)) {
+            return \Cms::url($url);
+        }
+
         if (!$this->translator) {
             return $url;
         }
