@@ -218,3 +218,5 @@
     - 'Fixed compatibility issue with RainLab.Translate 2.0 (thanks to @aarondiel)'
 1.7.15:
     - 'Fixed bug in cms results provider (thanks to @PubliAlex)'
+1.7.16:
+    - 'Fixed URL generation when using Multisite'
