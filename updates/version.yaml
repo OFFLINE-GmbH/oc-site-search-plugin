@@ -220,3 +220,5 @@
     - 'Fixed bug in cms results provider (thanks to @PubliAlex)'
 1.7.16:
     - 'Fixed URL generation when using Multisite'
+1.7.17:
+    - 'Added support for mixins to Tailor search'

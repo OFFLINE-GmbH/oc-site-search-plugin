@@ -28,17 +28,9 @@ class TailorResultsProvider extends ResultsProvider
 
             $query = EntryRecord::inSection($section->handle);
 
-            $fields = [];
+            $blueprint = $query->getFieldsetDefinition();
 
-            $blueprint = $query->getBlueprintAttribute();
-
-            if (isset($blueprint->attributes['groups'])) {
-                foreach ($blueprint->attributes['groups'] as $group) {
-                    $fields += $group['fields'];
-                }
-            } elseif (isset($blueprint->attributes['fields'])) {
-                $fields = $blueprint->attributes['fields'];
-            }
+            $fields = $blueprint->getAllFields();
 
             if (count($fields) === 0) {
                 continue;
@@ -47,16 +39,23 @@ class TailorResultsProvider extends ResultsProvider
             $searchFields = $section->siteSearch['searchFields'] ?? [];
             $resultFields = $section->siteSearch['resultFields'] ?? [];
 
+            // If no field matched, we want to return no results.
+            $hasMatchingField = false;
+
             $query
                 ->applyPublishedStatus()
-                ->where(function ($q) use ($fields, $searchFields) {
+                ->where(function ($q) use ($fields, $searchFields, &$hasMatchingField) {
                     foreach ($fields as $field => $definitions) {
                         if (!in_array($field, $searchFields, true)) {
                             continue;
                         }
+
+                        $hasMatchingField = true;
+
                         $q->orWhere($field, 'like', "%{$this->query}%");
                     }
                 })
+                ->when(!$hasMatchingField, fn ($q) => $q->whereRaw("1 = 0"))
                 ->get()
                 ->each(function ($item) use ($section, $controller, $resultFields) {
                     $urlParams = collect($section->siteSearch['urlParams'] ?? [])
