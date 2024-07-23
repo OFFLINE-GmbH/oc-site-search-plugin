@@ -28,6 +28,14 @@ fields:
             condition: checked
 tabs:
     fields:
+        tailor_sections_enabled:
+            type: switch
+            tab: Tailor
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: true
+            native: true
+
         rainlab_blog_enabled:
             type: switch
             tab: RainLab.Blog

@@ -52,6 +52,9 @@ class Plugin extends PluginBase
                 ->keyBy('tab');
 
             $providersTabs->each(function ($formField, $tabName) use ($widget) {
+                if ($tabName === 'Tailor') {
+                    return;
+                }
                 if (! PluginManager::instance()->exists($tabName)) {
                     $widget->removeTab($tabName);
                 }
