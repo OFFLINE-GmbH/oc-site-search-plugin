@@ -222,3 +222,7 @@
     - 'Fixed URL generation when using Multisite'
 1.7.17:
     - 'Added support for mixins to Tailor search'
+1.7.18:
+    - 'Fixed searching in Tailor title fields'
+1.7.20:
+    - 'Added setting to disable/enable Tailor search'

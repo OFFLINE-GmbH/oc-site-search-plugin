@@ -30,11 +30,8 @@ class TailorResultsProvider extends ResultsProvider
 
             $blueprint = $query->getFieldsetDefinition();
 
-            $fields = $blueprint->getAllFields();
-
-            if (count($fields) === 0) {
-                continue;
-            }
+            $fields = array_wrap($blueprint->getAllFields());
+            $fields['title'] = [];
 
             $searchFields = $section->siteSearch['searchFields'] ?? [];
             $resultFields = $section->siteSearch['resultFields'] ?? [];
@@ -45,7 +42,7 @@ class TailorResultsProvider extends ResultsProvider
             $query
                 ->applyPublishedStatus()
                 ->where(function ($q) use ($fields, $searchFields, &$hasMatchingField) {
-                    foreach ($fields as $field => $definitions) {
+                    foreach ($fields as $field => $_) {
                         if (!in_array($field, $searchFields, true)) {
                             continue;
                         }
