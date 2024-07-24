@@ -14,6 +14,10 @@ class TailorResultsProvider extends ResultsProvider
 {
     public function search()
     {
+        if (!$this->isEnabled()) {
+            return $this;
+        }
+
         if (!class_exists('System') || version_compare(System::VERSION, '3', '<')) {
             return $this;
         }
@@ -52,7 +56,7 @@ class TailorResultsProvider extends ResultsProvider
                         $q->orWhere($field, 'like', "%{$this->query}%");
                     }
                 })
-                ->when(!$hasMatchingField, fn ($q) => $q->whereRaw("1 = 0"))
+                ->when(!$hasMatchingField, fn($q) => $q->whereRaw("1 = 0"))
                 ->get()
                 ->each(function ($item) use ($section, $controller, $resultFields) {
                     $urlParams = collect($section->siteSearch['urlParams'] ?? [])
@@ -124,7 +128,7 @@ class TailorResultsProvider extends ResultsProvider
      */
     protected function isEnabled()
     {
-        return Settings::get('tailor_sections_enabled', false);
+        return Settings::get('tailor_sections_enabled', true);
     }
 
     public function displayName()

@@ -226,3 +226,5 @@
     - 'Fixed searching in Tailor title fields'
 1.7.20:
     - 'Added setting to disable/enable Tailor search'
+1.7.21:
+    - 'Fixed setting to disable/enable Tailor search'
