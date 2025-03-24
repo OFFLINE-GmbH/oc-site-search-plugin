@@ -86,7 +86,7 @@ class CmsPagesResultsProvider extends ResultsProvider
      */
     protected function containsQuery($subject)
     {
-        return mb_strpos(strtolower($subject), strtolower($this->query)) !== false;
+        return mb_strpos(mb_strtolower($subject), mb_strtolower($this->query)) !== false;
     }
 
     /**
