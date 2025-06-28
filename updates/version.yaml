@@ -230,3 +230,5 @@
     - 'Fixed setting to disable/enable Tailor search'
 1.7.22:
     - 'Fixed handling of case-insensitive search queries'
+1.7.23:
+    - 'Fixed CMS provider markup parsing'
