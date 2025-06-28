@@ -42,6 +42,11 @@ class SearchInput extends BaseComponent
     public $searchPage;
 
     /**
+     * The search results.
+     */
+    public $results;
+
+    /**
      * The component's details.
      *
      * @return array
