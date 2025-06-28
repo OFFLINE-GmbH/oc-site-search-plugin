@@ -1,5 +1,11 @@
 <div class="ss-result__aside">
     <a href="{{ result.url }}">
-        <img class="ss-result__image" src="{{ result.thumb.getThumb(120, auto) }}" alt=""/>
+        {# Support mediafinder and fileuploads #}
+        {% if result.thumb.attributes is not defined %}
+            {% set src = result.thumb|media|resize(120, auto) %}
+        {% else %}
+            {% set src = result.thumb.getThumb(120, auto) %}
+        {% endif %}
+        <img class="ss-result__image" src="{{ src }}" alt=""/>
     </a>
 </div>

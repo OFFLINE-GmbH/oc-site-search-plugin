@@ -232,3 +232,5 @@
     - 'Fixed handling of case-insensitive search queries'
 1.7.23:
     - 'Fixed CMS provider markup parsing'
+1.7.24:
+    - 'Added support for mediafinder images'

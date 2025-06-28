@@ -186,7 +186,7 @@ class Result
      *
      * @return Result
      */
-    public function setThumb(File $thumb = null)
+    public function setThumb(File|string $thumb)
     {
         $this->thumb = $thumb;
 

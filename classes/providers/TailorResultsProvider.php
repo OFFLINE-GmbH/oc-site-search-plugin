@@ -108,6 +108,10 @@ class TailorResultsProvider extends ResultsProvider
                             $thumb = $thumb->first();
                         }
 
+                        if (is_array($thumb) && count($thumb) > 0) {
+                            $thumb = $thumb[0];
+                        }
+
                         if ($thumb) {
                             $result->setThumb($thumb);
                         }
