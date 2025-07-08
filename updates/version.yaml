@@ -234,3 +234,5 @@
     - 'Fixed CMS provider markup parsing'
 1.7.24:
     - 'Added support for mediafinder images'
+1.7.25:
+    - 'Code cleanup'

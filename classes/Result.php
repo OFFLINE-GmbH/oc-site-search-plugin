@@ -17,41 +17,34 @@ use URL;
  */
 class Result
 {
-    /**
-     * @var string
-     */
-    public $excerpt;
-    /**
-     * @var float
-     */
-    public $relevance;
-    /**
-     * @var string
-     */
-    public $provider;
-    /**
-     * @var string
-     */
-    public $identifier;
-    /**
-     * @var string
-     */
-    public $query;
-    /**
-     * @var mixed
-     */
+    public string $excerpt;
+   
+    public float $relevance;
+
+    public string $provider;
+
+    public string $identifier;
+
+    public string $query;
+
     public $meta;
-    /**
-     * @var Model
-     */
+
     public $model;
+
+    public string|null|File $thumb = null;
+
+    public string $url = '';
+
+    public string $text = '';
+
+    public string $title = '';
 
     /**
      * Result constructor.
      *
      * @param              $query
-     * @param int          $relevance
-     * @param string       $provider
+     * @param int $relevance
+     * @param string $provider
      */
     public function __construct($query, $relevance = 1, $provider = '')
     {
@@ -77,7 +70,7 @@ class Result
     public function __set($property, $value)
     {
         $method = 'set' . ucfirst($property);
-        if ( ! method_exists($this, $method)) {
+        if (!method_exists($this, $method)) {
             throw new \InvalidArgumentException(sprintf('"%s" is not a valid property to set.', $property));
         }
 
@@ -155,7 +148,7 @@ class Result
      */
     public function setText($text)
     {
-        $this->text    = $this->prepare($text);
+        $this->text = $this->prepare($text);
         $this->excerpt = $this->createExcerpt($this->text);
 
         return $this;
@@ -182,11 +175,11 @@ class Result
     }
 
     /**
-     * @param File $thumb
+     * @param File|string|null $thumb
      *
      * @return Result
      */
-    public function setThumb(File|string $thumb)
+    public function setThumb(File|string|null $thumb = null)
     {
         $this->thumb = $thumb;
 
@@ -216,7 +209,7 @@ class Result
     public function markQuery($text)
     {
         // Only mark the query if this feature is enabled
-        if ( ! Settings::get('mark_results', true)) {
+        if (!Settings::get('mark_results', true)) {
             return $text;
         }
 
@@ -252,11 +245,11 @@ class Result
     {
         $length = Settings::get('excerpt_length', 250);
 
-        $loweredText  = mb_strtolower($text);
+        $loweredText = mb_strtolower($text);
         $loweredQuery = mb_strtolower($this->query);
 
         $position = mb_strpos($loweredText, $loweredQuery);
-        $start    = (int)$position - ($length / 2);
+        $start = (int)$position - ($length / 2);
 
         if ($start < 0) {
             $excerpt = Str::limit($text, $length);
