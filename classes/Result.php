@@ -17,15 +17,15 @@ use URL;
  */
 class Result
 {
-    public string $excerpt;
-   
-    public float $relevance;
+    public float $relevance = 1;
 
-    public string $provider;
+    public string $excerpt = '';
 
-    public string $identifier;
+    public string $provider = '';
 
-    public string $query;
+    public string $identifier = '';
+
+    public string $query = '';
 
     public $meta;
 
