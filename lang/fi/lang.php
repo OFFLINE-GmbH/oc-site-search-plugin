@@ -5,10 +5,15 @@
         'author'                     => 'OFFLINE LLC',
         'manage_settings'            => 'Hallinnoi Sivusto Haun asetuksia',
         'manage_settings_permission' => 'saa hallita Sivusto Haun asetuksia',
+        'view_log_permission'        => 'Voi katsoa hakulokia',
     ],
     'settings'          => [
         'mark_results'               => 'Merkitse osumat hakutuloksista',
         'mark_results_comment'       => 'Kääri hakutulokset <mark> tagiin',
+        'log_queries'                => 'Kirjaa kyselyt',
+        'log_queries_comment'        => 'Kirjaa kaikki kyselyt tietokantaan',
+        'log_keep_days'              => 'Tyhjennä loki x päivän kuluttua',
+        'log_keep_days_comment'      => 'Poista vanhat lokit x päivän jälkeen (Oletus: 365)',
         'excerpt_length'             => 'Poiminnan pituus',
         'excerpt_length_comment'     => 'Kuinka monta merkkiä poimitaan hakutuloksiin.',
         'use_this_provider'          => 'Käytä tätä toimittajaa',
@@ -23,8 +28,6 @@
         'album_page_comment'         => 'Valitse yksittäinen valokuva-albumi. Tarvitaan URL-osoitteen muodostamiseksi.',
         'photo_page'                 => 'Valokuvasivu',
         'photo_page_comment'         => 'Valitse yksittäinen valokuvasivu. Tarvitaan URL-osoitteen muodostamiseksi.',
-        'news_page'                  => 'Uutissivu',
-        'news_page_comment'          => 'Valitse yksittäinen uutissivu. Tarvitaan URL-osoitteen muodostamiseksi.',
         'portfolio_itemurl'          => 'Portfoliosivun URL-osoite',
         'portfolio_itemurl_comment'  => 'Sisällytä vain URL-osoitteen kiinteä osa ilman dynaamisia parametreja',
         'brands_itemurl'             => 'Brändisivun URL-osoite',
@@ -41,6 +44,8 @@
         'experimental'               => 'Kokeellinen ominaisuus:',
         'experimental_refer_to_docs' => 'Tämä tarjoaja on kokeellinen! Ole hyvä ja tutustu <a target="_blank"
 href="https://octobercms.com/plugin/offline-sitesearch#documentation">dokumentaatioon</a> ennen käyttöönottoa.',
+        'news_page'                  => 'Uutissivu',
+        'news_page_comment'          => 'Valitse yksittäinen uutissivu. Tarvitaan URL-osoitteen muodostamiseksi.',
     ],
     'searchResults'     => [
         'title'       => 'Hakutulokset',
@@ -60,6 +65,10 @@ href="https://octobercms.com/plugin/offline-sitesearch#documentation">dokumentaa
             'visit_page'       => [
                 'title'       => 'Vierailusivun lappu',
                 'description' => 'Tämä teksti näytetään jokaisen hakutuloksen alapuolella',
+            ],
+            'min_query_length'       => [
+                'title'       => 'Min. kyselyn pituus',
+                'description' => 'Haun merkkimäärä on oltava vähintään tämän pituinen haun suorittamiseksi',
             ],
         ],
     ],
@@ -84,4 +93,18 @@ href="https://octobercms.com/plugin/offline-sitesearch#documentation">dokumentaa
         'title'       => 'Sisällytä Sivusto Hakuun',
         'description' => 'Lisää tämä sivu hakutuloksiin',
     ],
+    'log'               => [
+        'id'           => 'ID',
+        'description'  => 'Kirjaa lokiin kaikki haut',
+        'title'        => 'Hakusanat',
+        'title_update' => 'Muokkaa hakua',
+        'query'        => 'Haku',
+        'created_at'   => 'Luotu',
+        'domain'       => 'Domain',
+        'location'     => 'Polku',
+        'session_id'   => 'Sessio',
+        'export'       => 'Vie loki',
+        'useragent'    => 'Agentti',
+    ],
+    'query_too_short' => 'Käytä haussa vähintään :min merkkiä, kiitos.'
 ];
