@@ -240,3 +240,5 @@
     - 'Code cleanup'
 1.7.27:
     - 'Updated FI translations'
+1.7.28:
+    - 'Handle null results correctly'

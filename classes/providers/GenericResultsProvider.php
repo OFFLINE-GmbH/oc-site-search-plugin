@@ -52,7 +52,9 @@ class GenericResultsProvider extends ResultsProvider
 
             $result = new Result($this->query, $relevance, $provider);
             foreach ($return as $key => $value) {
-                $result->{$key} = $value;
+                if ($value !== null) {
+                    $result->{$key} = $value;
+                }
             }
 
             $result->identifier = $provider;
