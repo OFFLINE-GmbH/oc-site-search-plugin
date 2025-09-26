@@ -242,3 +242,5 @@
     - 'Updated FI translations'
 1.7.28:
     - 'Handle null results correctly'
+1.7.29:
+    - 'Added | trans filter to default visitPageMessage'
