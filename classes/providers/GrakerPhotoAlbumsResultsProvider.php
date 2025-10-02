@@ -69,16 +69,16 @@ class GrakerPhotoAlbumsResultsProvider extends ResultsProvider
         $relevance = mb_stripos($model->title, $this->query) === false ? 1 : 2;
 
         $result        = new Result($this->query, $relevance);
-        $result->title = $model->title;
-        $result->text  = $model->description;
-        $result->meta  = $model->created_at;
-        $result->url   = $model->setUrl(Settings::get('graker_photoalbums_' . $type . '_page', ''), $this->controller);
-        $result->model = $model;
+        $result->setTitle($model->title);
+        $result->setText($model->description);
+        $result->setMeta($model->created_at);
+        $result->setUrl($model->setUrl(Settings::get('graker_photoalbums_' . $type . '_page', ''), $this->controller));
+        $result->setModel($model);
 
         if ($type == 'album') {
-            $result->thumb = $model->getImage();
+            $result->setThumb($model->getImage());
         } else if ($type == 'photo') {
-            $result->thumb = $model->image;
+            $result->setThumb($model->image);
         }
 
         $this->addResult($result);

@@ -44,10 +44,10 @@ class RainlabPagesResultsProvider extends ResultsProvider
             $relevance = $this->containsQuery($title) ? 2 : 1;
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $title;
-            $result->text  = $page->queryInViewBag ? $this->getViewBagPropsValue($page->viewBag) : $page->parsedMarkup;
-            $result->url   = $this->getUrl($page);
-            $result->model = $page;
+            $result->setTitle($title);
+            $result->setText($page->queryInViewBag ? $this->getViewBagPropsValue($page->viewBag) : $page->parsedMarkup);
+            $result->setUrl($this->getUrl($page));
+            $result->setModel($page);
 
             $this->addResult($result);
         }

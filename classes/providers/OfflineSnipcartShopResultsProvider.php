@@ -33,14 +33,14 @@ class OfflineSnipcartShopResultsProvider extends ResultsProvider
             $description = $product->description_short ?: $product->description;
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $product->name;
-            $result->text  = $description;
-            $result->url   = $this->getUrl($product);
-            $result->thumb = $product->image;
-            $result->model = $product;
-            $result->meta  = [
+            $result->setTitle($product->name);
+            $result->setText($description);
+            $result->setUrl($this->getUrl($product));
+            $result->setThumb($product->image);
+            $result->setModel($product);
+            $result->setMeta([
                 'price' => $product->price,
-            ];
+            ]);
 
             $this->addResult($result);
         }

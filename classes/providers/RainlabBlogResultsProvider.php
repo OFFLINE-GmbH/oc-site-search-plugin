@@ -66,19 +66,19 @@ class RainlabBlogResultsProvider extends ResultsProvider
             }
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $post->title;
-            $result->text  = $post->summary;
-            $result->meta  = $post->created_at;
-            $result->model = $post;
+            $result->setTitle($post->title);
+            $result->setText($post->summary);
+            $result->setMeta($post->created_at);
+            $result->setModel($post);
 
             // Maintain compatibility with old setting
             if (Settings::get('rainlab_blog_page') !== null) {
-                $result->url = $post->setUrl(Settings::get('rainlab_blog_page', ''), $this->controller);
+                $result->setUrl($post->setUrl(Settings::get('rainlab_blog_page', ''), $this->controller));
             } else {
-                $result->url = $this->getUrl($post);
+                $result->setUrl($this->getUrl($post));
             }
 
-            $result->thumb = $this->getThumb($post->featured_images);
+            $result->setThumb($this->getThumb($post->featured_images));
 
             $this->addResult($result);
         }

@@ -30,10 +30,10 @@ class ResponsivShowcaseResultsProvider extends ResultsProvider
             $relevance = mb_stripos($item->title, $this->query) === false ? 1 : 2;
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $item->title;
-            $result->text  = $item->description;
-            $result->url   = $this->getUrl($item);
-            $result->model = $item;
+            $result->setTitle($item->title);
+            $result->setText($item->description);
+            $result->setUrl($this->getUrl($item));
+            $result->setModel($item);
 
             $this->addResult($result);
         }

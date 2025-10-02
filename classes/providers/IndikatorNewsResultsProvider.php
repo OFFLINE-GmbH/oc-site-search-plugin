@@ -30,11 +30,11 @@ class IndikatorNewsResultsProvider extends ResultsProvider
             $relevance = mb_stripos($post->title, $this->query) === false ? 1 : 2;
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $post->title;
-            $result->text  = $post->introductory;
-            $result->url   = $this->getUrl($post);
-            $result->meta  = $post->published_at;
-            $result->model = $post;
+            $result->setTitle($post->title);
+            $result->setText($post->introductory);
+            $result->setUrl($this->getUrl($post));
+            $result->setMeta($post->published_at);
+            $result->setModel($post);
 
             $this->addResult($result);
         }

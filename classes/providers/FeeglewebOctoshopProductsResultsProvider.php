@@ -30,11 +30,11 @@ class FeeglewebOctoshopProductsResultsProvider extends ResultsProvider
             $relevance = mb_stripos($product->title, $this->query) === false ? 1 : 2;
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $product->title;
-            $result->text  = $product->intro;
-            $result->url   = $this->getUrl($product);
-            $result->thumb = $this->getThumb($product->images);
-            $result->model = $product;
+            $result->setTitle($product->title);
+            $result->setText($product->intro);
+            $result->setUrl($this->getUrl($product));
+            $result->setThumb($this->getThumb($product->images));
+            $result->setModel($product);
 
             $this->addResult($result);
         }

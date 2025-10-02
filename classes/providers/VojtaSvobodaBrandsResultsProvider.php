@@ -28,11 +28,11 @@ class VojtaSvobodaBrandsResultsProvider extends ResultsProvider
             $relevance = mb_stripos($item->name, $this->query) === false ? 1 : 2;
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $item->name;
-            $result->text  = $item->description;
-            $result->url   = $this->getUrl($item);
-            $result->thumb = $this->getThumb($item->logo);
-            $result->model = $item;
+            $result->setTitle($item->name);
+            $result->setText($item->description);
+            $result->setUrl($this->getUrl($item));
+            $result->setThumb($this->getThumb($item->logo));
+            $result->setModel($item);
 
             $this->addResult($result);
         }

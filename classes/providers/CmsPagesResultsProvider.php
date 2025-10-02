@@ -45,10 +45,10 @@ class CmsPagesResultsProvider extends ResultsProvider
             $relevance = $this->containsQuery($page->settings['title']) ? 2 : 1;
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $page->settings['title'];
-            $result->text  = $contents;
-            $result->url   = $page->settings['url'];
-            $result->model = $page;
+            $result->setTitle($page->settings['title']);
+            $result->setText($contents);
+            $result->setUrl($page->settings['url']);
+            $result->setModel($page);
 
             $this->addResult($result);
         }

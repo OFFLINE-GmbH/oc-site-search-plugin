@@ -59,11 +59,11 @@ class RadiantWebProBlogResultsProvider extends ResultsProvider
             }
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $post->title;
-            $result->text  = $this->getSummary($post);
-            $result->url   = $this->getUrl($post);
-            $result->thumb = $this->getThumb($post->featured_images);
-            $result->model = $post;
+            $result->setTitle($post->title);
+            $result->setText($this->getSummary($post));
+            $result->setUrl($this->getUrl($post));
+            $result->setThumb($this->getThumb($post->featured_images));
+            $result->setModel($post);
 
             $this->addResult($result);
         }

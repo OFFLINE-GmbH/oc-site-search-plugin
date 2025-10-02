@@ -31,16 +31,16 @@ class JiriJKShopResultsProvider extends ResultsProvider
             $relevance = mb_stripos($product->title, $this->query) === false ? 1 : 2;
 
             $result        = new Result($this->query, $relevance);
-            $result->title = $product->title;
-            $result->text  = $product->short_description;
-            $result->url   = $this->getUrl($product);
-            $result->meta  = $product->getFinalPriceFormated();
-            $result->model = $product;
+            $result->setTitle($product->title);
+            $result->setText($product->short_description);
+            $result->setUrl($this->getUrl($product));
+            $result->setMeta($product->getFinalPriceFormated());
+            $result->setModel($product);
 
             if (count($product->images) > 0) {
                 $image = $product->images->first();
                 if ($image instanceof File) {
-                    $result->thumb = $image;
+                    $result->setThumb($image);
                 }
             }
 
