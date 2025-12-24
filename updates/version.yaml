@@ -246,3 +246,5 @@
     - 'Added | trans filter to default visitPageMessage'
 1.7.30:
     - 'Use setter methods to build search results'
+1.7.31:
+    - 'Added trans filter to default no results message'
