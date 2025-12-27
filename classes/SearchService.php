@@ -13,6 +13,7 @@ use OFFLINE\SiteSearch\Classes\Providers\FeeglewebOctoshopProductsResultsProvide
 use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\GrakerPhotoAlbumsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\IndikatorNewsResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\IndikatorContentResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\JiriJKShopResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\OfflineSnipcartShopResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;

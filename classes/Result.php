@@ -9,6 +9,7 @@ use OFFLINE\SiteSearch\Models\Settings;
 use Str;
 use System\Models\File;
 use URL;
+use Request;
 
 /**
  * Object to store a result's data.
@@ -31,7 +32,7 @@ class Result
 
     public $model;
 
-    public string|null|File $thumb = null;
+    public string $thumb = '';
 
     public string $url = '';
 
@@ -164,7 +165,8 @@ class Result
         // If a provider returns the absolute URL to a result
         // remove the base url to make sure every result can
         // be linked by using the "app" filter in Twig.
-        $baseUrl = URL::to('/');
+
+        $baseUrl = Request::getBaseUrl(); 
         if (starts_with($url, $baseUrl)) {
             $url = str_replace($baseUrl, '', $url);
         }
@@ -179,7 +181,7 @@ class Result
      *
      * @return Result
      */
-    public function setThumb(File|string|null $thumb = null)
+    public function setThumb($thumb = '')
     {
         $this->thumb = $thumb;
 
