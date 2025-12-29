@@ -1,9 +1,9 @@
 <?php
+
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
-use Log;
-use Indikator\Content\Models\Blog;
 use Illuminate\Database\Eloquent\Collection;
+use Indikator\Content\Models\Blog;
 use OFFLINE\SiteSearch\Classes\Result;
 use OFFLINE\SiteSearch\Models\Settings;
 
@@ -22,7 +22,7 @@ class IndikatorContentResultsProvider extends ResultsProvider
      */
     public function search()
     {
-        if ( ! $this->isInstalledAndEnabled()) {
+        if (!$this->isInstalledAndEnabled()) {
             return $this;
         }
 
@@ -30,14 +30,12 @@ class IndikatorContentResultsProvider extends ResultsProvider
             // Make this result more relevant, if the query is found in the title
             $relevance = mb_stripos($post->title, $this->query) === false ? 1 : 2;
 
-            $result        = new Result($this->query, $relevance);
+            $result = new Result($this->query, $relevance);
             $result->setTitle($post->title);
             $result->setText($post->summary);
             $result->setUrl($this->getUrl($post));
             $result->setMeta($post->published_at);
             $result->setModel($post);
-#            Log::info('DEBUG', ['post' => '/storage/app/media' . $post->image]);
-#            $result->thumb = '/storage/app/media' . $post->image;
             $result->setThumb($post->image);
 
             $this->addResult($result);
@@ -54,13 +52,13 @@ class IndikatorContentResultsProvider extends ResultsProvider
     protected function posts()
     {
         return Blog::isPublished()
-                    ->where(function ($query) {
-                        $query->where('title', 'like', "%{$this->query}%")
-                            ->orWhere('summary', 'like', "%{$this->query}%")
-                            ->orWhere('content', 'like', "%{$this->query}%");
-                    })
-                   ->orderBy('updated_at', 'desc')
-                   ->get();
+            ->where(function ($query) {
+                $query->where('title', 'like', "%{$this->query}%")
+                    ->orWhere('summary', 'like', "%{$this->query}%")
+                    ->orWhere('content', 'like', "%{$this->query}%");
+            })
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 
     /**
@@ -72,7 +70,7 @@ class IndikatorContentResultsProvider extends ResultsProvider
     protected function isInstalledAndEnabled()
     {
         return $this->isPluginAvailable($this->identifier)
-        && Settings::get('indikator_news_enabled', true);
+            && Settings::get('indikator_content_enabled', true);
     }
 
     /**
@@ -84,18 +82,8 @@ class IndikatorContentResultsProvider extends ResultsProvider
      */
     protected function getUrl($post)
     {
-#        $url = trim(Settings::get('indikator_news_posturl', '/news/post'), '/');
-#        return $this->withLocalePrefix(implode('/', [$url, $post->slug]));
-
-        // $url = trim(Settings::get('indikator_news_posturl', '/news/post'), '/');
         $langPrefix = $this->translator ? $this->translator->getLocale() : '';
-
-        // fido: Kategorien des Blogs lesen und die erste fuer den Pfad verwenden
-        $categories  = $post->getCategories();
-
-#Log::info('DEBUG', ['categories' => $categories]);
-#Log::info('DEBUG', ['postslug'       => $post->slug]);
-#Log::info('DEBUG', ['array_key_first'     => array_key_first($categories)]);
+        $categories = $post->getCategories();
 
         if (array_key_first($categories)) {
             $url = implode('/', [$langPrefix, $categories[array_key_first($categories)]['slug'], $post->slug]);
@@ -113,7 +101,7 @@ class IndikatorContentResultsProvider extends ResultsProvider
      */
     public function displayName()
     {
-        return Settings::get('indikator_news_label', 'Content');
+        return Settings::get('indikator_content_label', 'Content');
     }
 
     /**

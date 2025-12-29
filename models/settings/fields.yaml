@@ -105,6 +105,23 @@ tabs:
             span: auto
             native: true
 
+        indikator_content_enabled:
+            type: switch
+            tab: Indikator.Content
+            label: offline.sitesearch::lang.settings.use_this_provider
+            comment: offline.sitesearch::lang.settings.use_this_provider_comment
+            default: true
+            native: true
+
+        indikator_content_label:
+            type: text
+            tab: Indikator.Content
+            label: offline.sitesearch::lang.settings.provider_badge
+            comment: offline.sitesearch::lang.settings.provider_badge_comment
+            span: auto
+            default: News
+            native: true
+
         octoshop_products_enabled:
             type: switch
             tab: Feegleweb.Octoshop

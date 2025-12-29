@@ -107,6 +107,7 @@ class SearchService
             new FeeglewebOctoshopProductsResultsProvider(),
             new JiriJKShopResultsProvider(),
             new IndikatorNewsResultsProvider(),
+            new IndikatorContentResultsProvider(),
             new ArrizalaminPortfolioResultsProvider(),
             new ResponsivShowcaseResultsProvider(),
             new RainlabBlogResultsProvider($this->query, $this->controller),

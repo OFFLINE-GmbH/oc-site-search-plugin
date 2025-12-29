@@ -32,7 +32,7 @@ class Result
 
     public $model;
 
-    public string $thumb = '';
+    public string|null|File $thumb = '';
 
     public string $url = '';
 
@@ -165,13 +165,14 @@ class Result
         // If a provider returns the absolute URL to a result
         // remove the base url to make sure every result can
         // be linked by using the "app" filter in Twig.
-
-        $baseUrl = Request::getBaseUrl(); 
+        $baseUrl = Request::getBaseUrl();
         if (starts_with($url, $baseUrl)) {
             $url = str_replace($baseUrl, '', $url);
         }
 
-        $this->url = $url;
+        if ($url) {
+            $this->url = $url;
+        }
 
         return $this;
     }
@@ -181,7 +182,7 @@ class Result
      *
      * @return Result
      */
-    public function setThumb($thumb = '')
+    public function setThumb(string|null|File $thumb = null)
     {
         $this->thumb = $thumb;
 
