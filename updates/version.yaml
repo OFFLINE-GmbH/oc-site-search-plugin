@@ -248,3 +248,5 @@
     - 'Use setter methods to build search results'
 1.7.31:
     - 'Added trans filter to default no results message'
+1.7.32:
+    - 'Added support for Indikator.Content plugin (thanks to @FidoWue)'
