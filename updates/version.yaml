@@ -145,7 +145,7 @@
 1.4.2:
     - 'Added User-Agent to list view'
 1.4.3:
-    - 'Fixed bug where empty queries resulted in an Exception' 
+    - 'Fixed bug where empty queries resulted in an Exception'
 1.4.4:
     - 'Optimized support for cms pages search: Your Twig markup is now completely rendered and searched!'
 1.4.5:
@@ -250,3 +250,6 @@
     - 'Added trans filter to default no results message'
 1.7.32:
     - 'Added support for Indikator.Content plugin (thanks to @FidoWue)'
+1.7.33:
+    - 'Improved support for long user-agent strings in query logs table'
+    - change_user_agent_to_text.php
