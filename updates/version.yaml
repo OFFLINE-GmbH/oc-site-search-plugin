@@ -253,3 +253,5 @@
 1.7.33:
     - 'Improved support for long user-agent strings in query logs table'
     - change_user_agent_to_text.php
+1.7.34:
+    - 'October 4 compatibility'
