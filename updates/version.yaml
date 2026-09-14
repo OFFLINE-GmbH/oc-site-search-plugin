@@ -255,3 +255,5 @@
     - change_user_agent_to_text.php
 1.7.34:
     - 'October 4 compatibility'
+1.7.35:
+    - 'Added support for Meloncart.Shop plugin (products, categories, manufacturers)'
