@@ -52,6 +52,7 @@ class MeloncartProductsResultsProvider extends ResultsProvider
     protected function products()
     {
         return Product::applyVisible()
+            ->with('images')
             ->searchWhere($this->query, Product::$searchableColumns)
             ->orderBy('updated_at', 'desc')
             ->get();
