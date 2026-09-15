@@ -81,7 +81,7 @@ tabs:
 
         meloncart_products_enabled:
             type: switch
-            tab: Meloncart.Shop Products
+            tab: Meloncart.Shop
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
@@ -89,7 +89,7 @@ tabs:
 
         meloncart_products_label:
             type: text
-            tab: Meloncart.Shop Products
+            tab: Meloncart.Shop
             label: offline.sitesearch::lang.settings.provider_badge
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
@@ -98,7 +98,7 @@ tabs:
 
         meloncart_categories_enabled:
             type: switch
-            tab: Meloncart.Shop Categories
+            tab: Meloncart.Shop
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
@@ -106,7 +106,7 @@ tabs:
 
         meloncart_categories_label:
             type: text
-            tab: Meloncart.Shop Categories
+            tab: Meloncart.Shop
             label: offline.sitesearch::lang.settings.provider_badge
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
@@ -115,7 +115,7 @@ tabs:
 
         meloncart_manufacturers_enabled:
             type: switch
-            tab: Meloncart.Shop Manufacturers
+            tab: Meloncart.Shop
             label: offline.sitesearch::lang.settings.use_this_provider
             comment: offline.sitesearch::lang.settings.use_this_provider_comment
             default: true
@@ -123,7 +123,7 @@ tabs:
 
         meloncart_manufacturers_label:
             type: text
-            tab: Meloncart.Shop Manufacturers
+            tab: Meloncart.Shop
             label: offline.sitesearch::lang.settings.provider_badge
             comment: offline.sitesearch::lang.settings.provider_badge_comment
             span: auto
