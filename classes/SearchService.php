@@ -15,6 +15,9 @@ use OFFLINE\SiteSearch\Classes\Providers\GrakerPhotoAlbumsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\IndikatorNewsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\IndikatorContentResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\JiriJKShopResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\MeloncartCategoriesResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\MeloncartManufacturersResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\MeloncartProductsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\OfflineSnipcartShopResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
@@ -106,6 +109,9 @@ class SearchService
             new RadiantWebProBlogResultsProvider($this->query, $this->controller),
             new FeeglewebOctoshopProductsResultsProvider(),
             new JiriJKShopResultsProvider(),
+            new MeloncartProductsResultsProvider(),
+            new MeloncartCategoriesResultsProvider(),
+            new MeloncartManufacturersResultsProvider(),
             new IndikatorNewsResultsProvider(),
             new IndikatorContentResultsProvider(),
             new ArrizalaminPortfolioResultsProvider(),
